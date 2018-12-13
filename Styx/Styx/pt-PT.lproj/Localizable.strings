@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Styx
+
+  Created by HwangSeungmin on 12/12/18.
+  Copyright © 2018 Min. All rights reserved.
+*/
+
+// Common strings
+"Ok"="Ok";
+"Cancel"="Cancel";
+"Yes"="Yes";
+"No"="No";
+"Close"="Close";
+"Delete"="Delete";
