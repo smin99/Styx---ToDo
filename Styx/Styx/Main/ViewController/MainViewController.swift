@@ -57,8 +57,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskNotDueTableViewCell", for: indexPath) as! taskNotDueTableViewCell
         
         //cell.pictureImageView.image = UIImage(named: "")
-        cell.titleLabel.text = tasks[].Title
-        cell.timeLabel.text = tasks[indexPath].Due
+        cell.titleLabel.text = tasks[indexPath.row].Title
+        cell.timeLabel.text = tasks[indexPath.row].Due.toString(dateformat: "mm-dd")
         
         return cell
     }
