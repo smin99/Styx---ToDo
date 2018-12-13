@@ -10,8 +10,8 @@ import UIKit
 
 class taskNotDueTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var taskNotDueTitleLabel: UITextField!
-    @IBOutlet weak var taskNotDueTimeLabel: UITextField!
+    @IBOutlet weak var titleLabel: UITextField!
+    @IBOutlet weak var timeLabel: UITextField!
     @IBOutlet weak var taskDoneButton: UIButton!
     
     override func awakeFromNib() {

@@ -61,7 +61,7 @@
         <!--Task Details-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskTableViewController" id="BYZ-38-t0r" customClass="TaskTableViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,13 +125,13 @@
         <!--To Do-->
         <scene sceneID="eQc-o0-MHW">
             <objects>
-                <tableViewController title="To Do" id="25I-nv-poX" customClass="MainViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MainViewController" title="To Do" id="25I-nv-poX" customClass="MainViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GvB-Un-mR9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8qd-XP-qdZ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8qd-XP-qdZ" customClass="taskNotDueTableViewCell" customModule="Styx" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8qd-XP-qdZ" id="Yi1-jN-tXL">
@@ -139,19 +139,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8S-tx-Lwo">
-                                            <rect key="frame" x="8" y="6" width="213" height="31.5"/>
+                                            <rect key="frame" x="8" y="6" width="51" height="31.5"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F6s-76-SQh">
-                                            <rect key="frame" x="337" y="6" width="30" height="31.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="L8o-NY-HHE"/>
-                                            </constraints>
-                                        </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Time" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Qa-aB-QPC">
-                                            <rect key="frame" x="229" y="7" width="100" height="30"/>
+                                            <rect key="frame" x="213" y="7" width="100" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="yxn-fF-yP7"/>
                                             </constraints>
@@ -159,25 +153,31 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yJ-Gi-qQB">
+                                            <rect key="frame" x="321" y="8" width="46" height="27.5"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="4Qa-aB-QPC" firstAttribute="leading" secondItem="X8S-tx-Lwo" secondAttribute="trailing" constant="8" id="1FC-ae-jcP"/>
-                                        <constraint firstAttribute="trailing" secondItem="F6s-76-SQh" secondAttribute="trailing" constant="8" id="AOu-yS-gDP"/>
-                                        <constraint firstItem="F6s-76-SQh" firstAttribute="top" secondItem="Yi1-jN-tXL" secondAttribute="top" constant="6" id="NBY-XZ-nVK"/>
+                                        <constraint firstItem="4Qa-aB-QPC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X8S-tx-Lwo" secondAttribute="trailing" constant="8" id="DfF-ae-eCd"/>
+                                        <constraint firstAttribute="trailing" secondItem="5yJ-Gi-qQB" secondAttribute="trailing" constant="8" id="Efg-Ar-zGN"/>
+                                        <constraint firstAttribute="bottom" secondItem="5yJ-Gi-qQB" secondAttribute="bottom" constant="8" id="Pyg-xG-xj9"/>
                                         <constraint firstItem="X8S-tx-Lwo" firstAttribute="leading" secondItem="Yi1-jN-tXL" secondAttribute="leading" constant="8" id="QBo-V5-K5U"/>
                                         <constraint firstAttribute="bottom" secondItem="X8S-tx-Lwo" secondAttribute="bottom" constant="6" id="Qdy-cy-g5e"/>
-                                        <constraint firstAttribute="bottom" secondItem="F6s-76-SQh" secondAttribute="bottom" constant="6" id="URW-XA-K2B"/>
-                                        <constraint firstItem="F6s-76-SQh" firstAttribute="leading" secondItem="4Qa-aB-QPC" secondAttribute="trailing" constant="8" id="eMA-U3-eIH"/>
+                                        <constraint firstItem="5yJ-Gi-qQB" firstAttribute="top" secondItem="Yi1-jN-tXL" secondAttribute="top" constant="8" id="hGO-Ra-ERf"/>
                                         <constraint firstItem="4Qa-aB-QPC" firstAttribute="centerY" secondItem="Yi1-jN-tXL" secondAttribute="centerY" id="l2O-E4-qAz"/>
+                                        <constraint firstItem="5yJ-Gi-qQB" firstAttribute="leading" secondItem="4Qa-aB-QPC" secondAttribute="trailing" constant="8" id="rLH-aR-XSY"/>
                                         <constraint firstItem="X8S-tx-Lwo" firstAttribute="top" secondItem="Yi1-jN-tXL" secondAttribute="top" constant="6" id="xgn-i1-EvJ"/>
-                                        <constraint firstItem="F6s-76-SQh" firstAttribute="centerY" secondItem="Yi1-jN-tXL" secondAttribute="centerY" id="zuI-vH-5oE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="tT8-ME-8LZ"/>
+                                    <outlet property="taskDoneButton" destination="5yJ-Gi-qQB" id="QH1-Qz-4ad"/>
+                                    <outlet property="timeLabel" destination="4Qa-aB-QPC" id="NhV-Xj-g8e"/>
+                                    <outlet property="titleLabel" destination="X8S-tx-Lwo" id="9IV-cc-pF0"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="xzz-yj-kib"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dAq-pw-FNB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dAq-pw-FNB" customClass="taskDueTableViewCell" customModule="Styx" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dAq-pw-FNB" id="yKC-Ra-Uzb">
@@ -185,13 +185,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tsS-d7-ve0">
-                                            <rect key="frame" x="8" y="6" width="213" height="31.5"/>
+                                            <rect key="frame" x="8" y="6" width="51" height="31.5"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQW-64-5I8">
-                                            <rect key="frame" x="229" y="6" width="100" height="31.5"/>
+                                            <rect key="frame" x="213" y="6" width="100" height="31.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="OLq-1p-muW"/>
                                             </constraints>
@@ -202,47 +202,54 @@
                                                 </segue>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4la-6k-Ndx">
-                                            <rect key="frame" x="337" y="6" width="30" height="31.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="ag9-Ek-HfP"/>
-                                            </constraints>
-                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5b-i6-43e">
+                                            <rect key="frame" x="321" y="8" width="46" height="27.5"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="4la-6k-Ndx" firstAttribute="top" secondItem="yKC-Ra-Uzb" secondAttribute="top" constant="6" id="02H-Hf-MZA"/>
                                         <constraint firstAttribute="bottom" secondItem="fQW-64-5I8" secondAttribute="bottom" constant="6" id="15c-7i-MKF"/>
-                                        <constraint firstItem="4la-6k-Ndx" firstAttribute="leading" secondItem="fQW-64-5I8" secondAttribute="trailing" constant="8" id="4lT-hw-ahu"/>
                                         <constraint firstItem="tsS-d7-ve0" firstAttribute="top" secondItem="yKC-Ra-Uzb" secondAttribute="top" constant="6" id="Hkv-ah-wB4"/>
                                         <constraint firstItem="fQW-64-5I8" firstAttribute="top" secondItem="yKC-Ra-Uzb" secondAttribute="top" constant="6" id="I8M-dr-eXa"/>
-                                        <constraint firstAttribute="bottom" secondItem="4la-6k-Ndx" secondAttribute="bottom" constant="6" id="KT3-FV-TVL"/>
-                                        <constraint firstAttribute="trailing" secondItem="4la-6k-Ndx" secondAttribute="trailing" constant="8" id="dMJ-pg-u0g"/>
+                                        <constraint firstAttribute="trailing" secondItem="s5b-i6-43e" secondAttribute="trailing" constant="8" id="OYc-lU-UsG"/>
                                         <constraint firstItem="tsS-d7-ve0" firstAttribute="leading" secondItem="yKC-Ra-Uzb" secondAttribute="leading" constant="8" id="dYl-Pl-aAV"/>
+                                        <constraint firstItem="s5b-i6-43e" firstAttribute="leading" secondItem="fQW-64-5I8" secondAttribute="trailing" constant="8" id="nCe-e4-3M7"/>
+                                        <constraint firstItem="fQW-64-5I8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tsS-d7-ve0" secondAttribute="trailing" constant="8" id="nlZ-DG-VvT"/>
                                         <constraint firstAttribute="bottom" secondItem="tsS-d7-ve0" secondAttribute="bottom" constant="6" id="pCR-Gv-42j"/>
-                                        <constraint firstItem="fQW-64-5I8" firstAttribute="leading" secondItem="tsS-d7-ve0" secondAttribute="trailing" constant="8" id="rgP-uU-hc5"/>
+                                        <constraint firstAttribute="bottom" secondItem="s5b-i6-43e" secondAttribute="bottom" constant="8" id="sq3-Nb-htq"/>
+                                        <constraint firstItem="s5b-i6-43e" firstAttribute="top" secondItem="yKC-Ra-Uzb" secondAttribute="top" constant="8" id="vYV-z3-Y64"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="taskDueDoneButton" destination="s5b-i6-43e" id="kh4-7p-gcB"/>
+                                    <outlet property="timeButton" destination="fQW-64-5I8" id="o89-aV-1pW"/>
+                                    <outlet property="titleLabel" destination="tsS-d7-ve0" id="6Kh-gl-HR6"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hdC-vb-AWb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hdC-vb-AWb" customClass="addTableViewCell" customModule="Styx" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdC-vb-AWb" id="2di-NM-YOk">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ps9-dW-Plk">
-                                            <rect key="frame" x="337" y="7" width="30" height="29.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="Oz6-kf-Nif"/>
-                                            </constraints>
-                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXu-P6-zZ2">
+                                            <rect key="frame" x="321" y="8" width="46" height="27.5"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <segue destination="XEB-Q5-ZTd" kind="show" id="aAk-Eo-bNQ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ps9-dW-Plk" firstAttribute="top" secondItem="2di-NM-YOk" secondAttribute="top" constant="7" id="7pz-iY-LmI"/>
-                                        <constraint firstAttribute="bottom" secondItem="ps9-dW-Plk" secondAttribute="bottom" constant="7" id="Sgk-ji-Jr3"/>
-                                        <constraint firstAttribute="trailing" secondItem="ps9-dW-Plk" secondAttribute="trailing" constant="8" id="bJ2-aA-I0f"/>
+                                        <constraint firstAttribute="bottom" secondItem="rXu-P6-zZ2" secondAttribute="bottom" constant="8" id="Sqh-78-szK"/>
+                                        <constraint firstAttribute="trailing" secondItem="rXu-P6-zZ2" secondAttribute="trailing" constant="8" id="YRs-s6-ZbU"/>
+                                        <constraint firstItem="rXu-P6-zZ2" firstAttribute="top" secondItem="2di-NM-YOk" secondAttribute="top" constant="8" id="swf-ie-iFf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addTaskButton" destination="rXu-P6-zZ2" id="67f-QN-JFl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -252,8 +259,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="To Do List" id="Ul2-mS-mGR"/>
                     <connections>
-                        <outlet property="taskAddImageButton" destination="ps9-dW-Plk" id="vzi-2C-sIX"/>
-                        <outlet property="taskDoneImageButton" destination="F6s-76-SQh" id="cKS-hl-LnU"/>
+                        <outlet property="tableView" destination="GvB-Un-mR9" id="DhH-p0-Ucy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RK8-RJ-FGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
