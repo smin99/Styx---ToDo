@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0E565F3FC95F5CEA6E556C06 /* Pods_Styx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F159ED3098E5E162570D4F /* Pods_Styx.framework */; };
+		561C541F21C4065A00A880BE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C541E21C4065A00A880BE /* Label.swift */; };
+		561C542121C4067E00A880BE /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542021C4067E00A880BE /* Image.swift */; };
 		56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C7621C17D5700D31172 /* AppDelegate.swift */; };
 		56435C7C21C17D5700D31172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7A21C17D5700D31172 /* Main.storyboard */; };
 		56435C7E21C17D5900D31172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7D21C17D5900D31172 /* Assets.xcassets */; };
@@ -21,10 +23,13 @@
 		56435CAA21C308C200D31172 /* addTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA921C308C200D31172 /* addTableViewCell.swift */; };
 		56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */; };
 		56435CAE21C3276000D31172 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAD21C3275F00D31172 /* Date.swift */; };
+		568F803721C36B5F00D8F652 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F803621C36B5F00D8F652 /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47F159ED3098E5E162570D4F /* Pods_Styx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Styx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		561C541E21C4065A00A880BE /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		561C542021C4067E00A880BE /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		56435C7321C17D5700D31172 /* Styx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Styx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56435C7621C17D5700D31172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56435C7B21C17D5700D31172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 		56435CA921C308C200D31172 /* addTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTableViewCell.swift; sourceTree = "<group>"; };
 		56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		56435CAD21C3275F00D31172 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		568F803621C36B5F00D8F652 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		A07E8C5BEDFD7638C623837F /* Pods-Styx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.release.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.release.xcconfig"; sourceTree = "<group>"; };
 		BB9F35C68141377B8E513CDB /* Pods-Styx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				56435CA121C2DC5F00D31172 /* Task.swift */,
+				568F803621C36B5F00D8F652 /* List.swift */,
+				561C541E21C4065A00A880BE /* Label.swift */,
+				561C542021C4067E00A880BE /* Image.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -266,9 +275,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Styx/Pods-Styx-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/JJFloatingActionButton/JJFloatingActionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/EZLoadingActivity/EZLoadingActivity.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -276,9 +287,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JJFloatingActionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZLoadingActivity.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -324,6 +337,9 @@
 				56435CA221C2DC5F00D31172 /* Task.swift in Sources */,
 				56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
+				561C541F21C4065A00A880BE /* Label.swift in Sources */,
+				561C542121C4067E00A880BE /* Image.swift in Sources */,
+				568F803721C36B5F00D8F652 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
