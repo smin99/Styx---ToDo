@@ -26,6 +26,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+//        let rightButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: showEditing(sender: editBarButton))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +35,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillDisappear(_ animated: Bool) {
         print("View will disappear")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("View did appear")
+        tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         print("View did disappear")
     }
+    
     
     public func numberOfSections(in tableView: UITableView) -> Int{
         return 1
@@ -70,6 +74,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskTableViewController")
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func tableEditing(_ sender: Any) {
+        self.tableView.isEditing = !self.tableView.isEditing
+        
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            
+            self.tasks.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
 //    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
