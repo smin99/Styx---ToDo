@@ -17,8 +17,9 @@ class Task {
     var Notif: Int          // int for each choice; 1 (one day before), 2 (two days before), 3 (an hour before), 4 (10 minutes before)
     var isNotif: Bool       // false if there's no notification; false by default
     var isDone: Bool        // is the task finished; false if not done; false by default
+    var isDeleted: Bool     // deleted task appear in trash; false by default; true if deleted
     
-    init(ID: Int64 = 0, Title: String = "", Due: Date, Detail: String = "", Notif: Int = 0, isNotif: Bool = false, LabelID: Int64 = 0, isDone: Bool = false) {
+    init(ID: Int64 = 0, Title: String = "", Due: Date, Detail: String = "", Notif: Int = 0, isNotif: Bool = false, LabelID: Int64 = 0, isDone: Bool = false, isDeleted: Bool = false) {
         self.ID = ID
         self.LabelID = LabelID
         self.Title = Title
@@ -27,5 +28,6 @@ class Task {
         self.Notif = Notif
         self.isNotif = isNotif
         self.isDone = isDone
+        self.isDeleted = isDeleted
     }
 }
