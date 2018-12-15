@@ -14,7 +14,7 @@ class Task {
     var Title: String       // name of the task
     var Due: Date           // Due date of the task
     var Detail: String      // Details for the
-    var Notif: Int          // int for each choice; 1 (one day before), 2 (two days before), 3 (an hour before), 4 (10 minutes before)
+    var Notif: Int          // int for each choice; minute
     var isNotif: Bool       // false if there's no notification; false by default
     var isDone: Bool        // is the task finished; false if not done; false by default
     var isDeleted: Bool     // deleted task appear in trash; false by default; true if deleted

@@ -13,10 +13,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableView: UITableView!
     
     // Test case
-    let task1 = Task(Title: "Review hw3", Due: Date(timeIntervalSinceNow: 30000000), Notif: Date(timeIntervalSinceNow: 29000000), Label: ["homework", "math"])  // case 1: task not due
-    let task2 = Task(Title: "Work on project", Due: Date(timeIntervalSinceNow: 2000000), Notif: Date(timeIntervalSinceNow: 1900000), Label: ["project", "cs"])    // case 2: task not due
-    let task3 = Task(Title: "Read chapter 3", Due: Date(timeIntervalSinceNow: -3000), Notif: Date(timeIntervalSinceNow: -2000), Label: ["homework", "english"])   // case 3: task due
-    let task4 = Task(Title: "Write journal", Due: Date(timeIntervalSinceNow: -1000), Notif: Date(timeIntervalSinceNow: -500), Label: ["homework", "english"])    // case 4: task due
+    let label1 = Label(ID: 1, Title: "", ColorID: 1)//  (ID: 1, Title: "homework", ColorID: 1)
+    let label2 = Label(ID: 2, Title: "project", ColorID: 4)
+    let task1 = Task(Title: "Review hw3", Due: Date(timeIntervalSinceNow: 30000000), Notif: 1, LabelID: 1)  // case 1: task not due
+    let task2 = Task(Title: "Work on project", Due: Date(timeIntervalSinceNow: 2000000), LabelID: 2)    // case 2: task not due
+    let task3 = Task(Title: "Read chapter 3", Due: Date(timeIntervalSinceNow: -3000), LabelID: 1)   // case 3: task due
+    let task4 = Task(Title: "Write journal", Due: Date(timeIntervalSinceNow: -1000), LabelID: 1)    // case 4: task due
     lazy var tasks: [Task] = [task1, task2, task3, task4]
     
     override func viewDidLoad() {

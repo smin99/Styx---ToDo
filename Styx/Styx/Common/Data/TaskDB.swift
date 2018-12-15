@@ -331,7 +331,8 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 for list in try db.prepare(listTable.filter(listTaskID == taskID)) {
-                    return List(ID: list[listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone])
+                    return List(ID: list[self.listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone])
+                             //(ID: list.  [listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone])
                 }
             } catch let error {
                 lastErrorMessage = error.localizedDescription
