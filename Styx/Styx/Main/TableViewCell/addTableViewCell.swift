@@ -10,7 +10,7 @@ import UIKit
 
 class addTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var addLabelButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,5 +1,5 @@
 //
-//  taskDueTableViewCell.swift
+//  ListTableViewCell.swift
 //  Styx
 //
 //  Created by HwangSeungmin on 12/13/18.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class taskDueTableViewCell: UITableViewCell {
+class taskTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UITextField!
-    @IBOutlet weak var timeButton: UIButton!
-    @IBOutlet weak var taskDueDoneButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dueLabel: UILabel!
+    @IBOutlet weak var taskProgressBar: UIProgressView!
+    @IBOutlet weak var taskProgressPercentageLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
