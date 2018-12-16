@@ -8,14 +8,21 @@
 
 import Foundation
 
+// Top Data Structure
 class Label {
     var ID: Int64
     var Title: String
     var ColorID: Int    // 0 if no color
     
+    var taskList: Array<Task>!
+    var isOpened: Bool = false
+    
     init(ID: Int64 = 0, Title: String = "", ColorID: Int = 0) {
         self.ID = ID
         self.Title = Title
         self.ColorID = ColorID
+        
+        taskList = Array<Task>()
+        isOpened = false
     }
 }

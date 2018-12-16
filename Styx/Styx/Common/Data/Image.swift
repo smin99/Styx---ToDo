@@ -8,6 +8,7 @@
 
 import Foundation
 
+// additional information that will be part of Task
 class Image {
     var ID: Int64
     var TaskID: Int64

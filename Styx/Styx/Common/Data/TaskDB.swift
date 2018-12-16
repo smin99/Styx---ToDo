@@ -27,11 +27,13 @@ protocol TaskDBProtocol {
     func DeleteTask(id: Int64) -> Bool
     
     func GetList(listID: Int64) -> List?
+    func GetListList() -> Array<List>
     func UpsertList(list: List) -> Int64
     func DeleteList(ID: Int64) -> Bool
     func DeleteList(taskID: Int64) -> Bool
     
     func GetImageIDList(taskID: Int64) -> Image?
+    func GetImageList() -> Array<Image>
     func UpsertImage(image: Image) -> Int64
     func DeleteImage(ID: Int64) -> Bool
 }
@@ -160,7 +162,7 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 if label.ID == 0 {
-                    let insert = labelTable.insert(labelTitle <- label.Title)
+                    let insert = labelTable.insert(labelTitle <- label.Title, labelColorID <- label.ColorID)
                     retVal = try db.run(insert)
                 } else {
                     let row = labelTable.filter(labelID == label.ID)
@@ -341,6 +343,21 @@ class TaskDB : TaskDBProtocol {
         return nil
     }
     
+    func GetListList() -> Array<List> {
+        var listList: Array<List> = Array<List>()
+        if let db = self.db {
+            do {
+                for list in try db.prepare(listTable) {
+                    let element = List(ID: list[listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone])
+                    listList.append(element)
+                }
+            } catch let error {
+                lastErrorMessage = error.localizedDescription
+            }
+        }
+        return listList
+    }
+    
     func UpsertList(list: List) -> Int64 {
         
         var retVal: Int64 = 0
@@ -410,6 +427,21 @@ class TaskDB : TaskDBProtocol {
             }
         }
         return nil
+    }
+    
+    func GetImageList() -> Array<Image> {
+        var imageList: Array<Image> = Array<Image>()
+        if let db = self.db {
+            do {
+                for image in try db.prepare(imageTable) {
+                    let label = Image(ID: image[imageID], TaskID: image[imageTaskID], fileName: image[imageFileName])
+                    imageList.append(label)
+                }
+            } catch let error {
+                lastErrorMessage = error.localizedDescription
+            }
+        }
+        return imageList
     }
     
     func UpsertImage(image: Image) -> Int64 {

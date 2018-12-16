@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Bottom data structure
 class List {
     var ID: Int64
     var TaskID: Int64

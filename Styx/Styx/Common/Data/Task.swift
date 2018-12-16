@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Second Data Structure; contains most information
 class Task {
     var ID: Int64           // Primary key
     var LabelID: Int64      // labels are to search task more easily
@@ -19,6 +20,9 @@ class Task {
     var isDone: Bool        // is the task finished; false if not done; false by default
     var isDeleted: Bool     // deleted task appear in trash; false by default; true if deleted
     
+    var listList: Array<List>!
+    var imageList: Array<Image>!
+    
     init(ID: Int64 = 0, Title: String = "", Due: Date, Detail: String = "", Notif: Int = 0, isNotif: Bool = false, LabelID: Int64 = 0, isDone: Bool = false, isDeleted: Bool = false) {
         self.ID = ID
         self.LabelID = LabelID
@@ -29,5 +33,8 @@ class Task {
         self.isNotif = isNotif
         self.isDone = isDone
         self.isDeleted = isDeleted
+        
+        listList = Array<List>()
+        imageList = Array<Image>()
     }
 }
