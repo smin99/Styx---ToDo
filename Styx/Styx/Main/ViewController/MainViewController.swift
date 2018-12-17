@@ -206,29 +206,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func tableEditing(_ sender: Any) {
         self.tableView.isEditing = !self.tableView.isEditing
-        
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             print("Deleted")
-            
-            
-            if (labelList[indexPath.row].isOpened) {
-                let labelID: Int64 = labelList[indexPath.row].ID
-                let maxIndex: Int = labelList[indexPath.row].taskList.count
+            let labelID: Int64 = labelList[indexPath.row].ID
+            let taskArray: Array<Task> = labelList[indexPath.row].taskList
+            if !taskArray.isEmpty{
+                let maxIndex: Int = taskArray.count - 1
+                
+                // loops through task array in label and delete all tasks in DB
                 for index in 0...maxIndex {
-                    self.tableView.deleteRows(at: [IndexPath(index: indexPath.row + index)], with: .automatic)
+                    if (labelList[indexPath.row].isOpened) {
+                        self.tableView.deleteRows(at: [IndexPath(row: indexPath.row + maxIndex - index, section: 0)], with: .automatic)
+                    }
+                    
+                    let id: Int64 = taskArray[index].ID
+                    _ = MainViewController.Database.DeleteTask(id: id)
                 }
-                openedLabelIndex = nil
-                _ = MainViewController.Database.DeleteLabel(labID: labelID)
             }
+            
+            openedLabelIndex = nil
+            _ = MainViewController.Database.DeleteLabel(labID: labelID)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
-//    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "Tasks to do"
-//    }
-
 }

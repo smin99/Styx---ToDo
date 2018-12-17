@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="2508" y="246.9265367316342"/>
         </scene>
-        <!--Push deadline-->
+        <!--Delete Modal-->
         <scene sceneID="IF6-1w-moP">
             <objects>
-                <viewController title="Push deadline" id="gOQ-On-kiE" sceneMemberID="viewController">
+                <viewController title="Delete Modal" id="gOQ-On-kiE" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="shd-v9-CPa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
