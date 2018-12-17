@@ -7,24 +7,52 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
     
-    // Test case
-    let label1 = Label(ID: 1, Title: "", ColorID: 1)//  (ID: 1, Title: "homework", ColorID: 1)
-    let label2 = Label(ID: 2, Title: "project", ColorID: 4)
-    let task1 = Task(Title: "Review hw3", Due: Date(timeIntervalSinceNow: 30000000), Notif: 1, LabelID: 1)  // case 1: task not due
-    let task2 = Task(Title: "Work on project", Due: Date(timeIntervalSinceNow: 2000000), LabelID: 2)    // case 2: task not due
-    let task3 = Task(Title: "Read chapter 3", Due: Date(timeIntervalSinceNow: -3000), LabelID: 1)   // case 3: task due
-    let task4 = Task(Title: "Write journal", Due: Date(timeIntervalSinceNow: -1000), LabelID: 1)    // case 4: task due
-    lazy var tasks: [Task] = [task1, task2, task3, task4]
+//    // Test case
+//    let label1 = Label(ID: 1, Title: "", ColorID: 1)//  (ID: 1, Title: "homework", ColorID: 1)
+//    let label2 = Label(ID: 2, Title: "project", ColorID: 4)
+//    let task1 = Task(Title: "Review hw3", Due: Date(timeIntervalSinceNow: 30000000), Notif: 1, LabelID: 1)  // case 1: task not due
+//    let task2 = Task(Title: "Work on project", Due: Date(timeIntervalSinceNow: 2000000), LabelID: 2)    // case 2: task not due
+//    let task3 = Task(Title: "Read chapter 3", Due: Date(timeIntervalSinceNow: -3000), LabelID: 1)   // case 3: task due
+//    let task4 = Task(Title: "Write journal", Due: Date(timeIntervalSinceNow: -1000), LabelID: 1)    // case 4: task due
+//    lazy var tasks: [Task] = [task1, task2, task3, task4]
+    
+    var names = [ "AAA", "BBB", "CC" ]
+    
+    static var Database: TaskDBProtocol!
+    static var mainView: MainViewController!
+    
+    var labelList: Array<Label>!
+    var taskList: Array<Task>!
+    var listList: Array<List>!
+    var imageList: Array<Image>!
+    
+    var isInitData: Bool = false
+    var openedLabelIndex: IndexPath? = nil
     
     override func viewDidLoad() {
-        print("View did load")
         super.viewDidLoad()
         
+        MainViewController.mainView = self
+        
+        // Initialize DB Object
+        if(MainViewController.Database == nil) {
+            if let dataUrl = FileUtil.getDataFolder() {
+                let dbUrl = dataUrl.appendingPathComponent("todo.sqlite3")
+                MainViewController.Database = TaskDB(dbPath: dbUrl.absoluteString)
+            }
+        }
+        
+        // Initialize if the DB is not opened
+        if MainViewController.Database != nil && !MainViewController.Database.IsDBOpened {
+            let bOpen = MainViewController.Database.OpenDB()
+            print("DBOpen Return: \(bOpen), isOpen: \(MainViewController.Database.IsDBOpened), Error Message: \(MainViewController.Database.LastErrorMessage)")
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -41,8 +69,52 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("View did appear")
-        tableView.reloadData()
+        EZLoadingActivity.show("Loading...", disableUI: true)
+        DispatchQueue.global().async {
+            
+            self.labelList = MainViewController.Database.GetLabelList()
+            self.taskList = MainViewController.Database.GetTaskList()
+            self.listList = MainViewController.Database.GetListList()
+            self.imageList = MainViewController.Database.GetImageList()
+            
+            // when labelList is empty, make a test case
+            if self.labelList.count == 0 {
+                _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Homework", ColorID: 0))
+                let id1 = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Project", ColorID: 0))
+                _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 3", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1, isDone: false, isDeleted: false))
+                _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 5", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
+                _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 6", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
+                _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Shopping List", ColorID: 0))
+            }
+            
+            // Map Task Object to the Label Object
+            for task in self.taskList {
+                if let index = self.labelList.index(where: { $0.ID == task.LabelID}){
+                    self.labelList[index].taskList.append(task)
+                }
+            }
+            
+            // Map List Object to the corresponding Task Obejct
+            for list in self.listList {
+                if let index = self.taskList.index(where: {$0.ID == list.TaskID}) {
+                    self.taskList[index].listList.append(list)
+                }
+            }
+            
+            // Map Image Object to the corresponding Task Object
+            for image in self.imageList {
+                if let index = self.taskList.index(where: {$0.ID == image.TaskID}) {
+                    self.taskList[index].imageList.append(image)
+                }
+            }
+            
+            DispatchQueue.main.sync {
+                EZLoadingActivity.hide()
+                
+                self.isInitData = true
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -55,27 +127,81 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        if labelList == nil { return 0 }
+        
+        return openedLabelIndex == nil ? labelList.count : (labelList.count + labelList[openedLabelIndex!.row].taskList.count)
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskNotDueTableViewCell", for: indexPath) as! taskNotDueTableViewCell
-        
-        //cell.pictureImageView.image = UIImage(named: "")
-        cell.titleLabel.text = tasks[indexPath.row].Title
-        cell.timeLabel.text = tasks[indexPath.row].Due.toString(dateformat: "mm-dd")
-        
+    public func createLabelCell(index: Int) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelTableViewCell") as! LabelTableViewCell
+        cell.titleLabel.text = labelList[index].Title
+        cell.openImageView.image = UIImage(named: labelList[index].isOpened ? "LabelOpenIcon" : "LabelCloseIcon")
+        cell.labelItem = labelList[index]
         return cell
     }
     
+    public func createTaskCell(labelIndex: Int, index: Int) -> UITableViewCell {
+        let labelItem = labelList[labelIndex]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell") as! taskTableViewCell
+        cell.titleLabel.text = labelItem.taskList[index].Title
+        cell.dueLabel.text = labelItem.taskList[index].Due.toString(dateformat: "MM-DD-YY")
+        // cell.taskProgressBar
+        // cell.taskProgressPercentageLabel
+        return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var labelIndex: Int = 0
+        var taskIndex: Int = -1
+        
+        if let openIndex = openedLabelIndex {
+            let count = labelList[openIndex.row].taskList.count
+            if openIndex.row >= indexPath.row { labelIndex = indexPath.row }
+            else if openIndex.row + count < indexPath.row { labelIndex = indexPath.row - count }
+            else {
+                labelIndex = openIndex.row
+                taskIndex = indexPath.row - openIndex.row - 1
+            }
+        } else {
+            labelIndex = indexPath.row
+        }
+        
+        if taskIndex >= 0 {
+            return createTaskCell(labelIndex: labelIndex, index: taskIndex)
+        }
+        
+        return createLabelCell(index: labelIndex)
+    }
+    
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
+            return 50.0
+        }
+        
+        return 60.0
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskTableViewController")
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
+            if let openedIndexPath = openedLabelIndex {
+                labelList[openedIndexPath.row].isOpened = false
+                openedLabelIndex = nil
+                if openedIndexPath == indexPath {
+                    tableView.reloadData()
+                    return
+                }
+            }
+            
+            if labelList[indexPath.row].taskList.count > 0 {
+                labelList[indexPath.row].isOpened = true
+                openedLabelIndex = indexPath
+            }
+            tableView.reloadData()
+        }
+        else if let _ = tableView.cellForRow(at: indexPath) as? taskTableViewCell {
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskTableViewController")
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     @IBAction func tableEditing(_ sender: Any) {
@@ -87,7 +213,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if editingStyle == .delete {
             print("Deleted")
             
-            self.tasks.remove(at: indexPath.row)
+            
+            if (labelList[indexPath.row].isOpened) {
+                let labelID: Int64 = labelList[indexPath.row].ID
+                let maxIndex: Int = labelList[indexPath.row].taskList.count
+                for index in 0...maxIndex {
+                    self.tableView.deleteRows(at: [IndexPath(index: indexPath.row + index)], with: .automatic)
+                }
+                openedLabelIndex = nil
+                _ = MainViewController.Database.DeleteLabel(labID: labelID)
+            }
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
