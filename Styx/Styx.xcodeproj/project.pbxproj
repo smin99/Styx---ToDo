@@ -13,6 +13,9 @@
 		561C542321C4161500A880BE /* TaskDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542221C4161500A880BE /* TaskDB.swift */; };
 		561C542521C5A81700A880BE /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542421C5A81700A880BE /* FileUtil.swift */; };
 		561C542721C6F63B00A880BE /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542621C6F63B00A880BE /* LabelTableViewCell.swift */; };
+		561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542B21C8A4BB00A880BE /* StringExtension.swift */; };
+		561C543021C8A61A00A880BE /* ConfirmDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */; };
+		561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */; };
 		56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C7621C17D5700D31172 /* AppDelegate.swift */; };
 		56435C7C21C17D5700D31172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7A21C17D5700D31172 /* Main.storyboard */; };
 		56435C7E21C17D5900D31172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7D21C17D5900D31172 /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 		561C542221C4161500A880BE /* TaskDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDB.swift; sourceTree = "<group>"; };
 		561C542421C5A81700A880BE /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		561C542621C6F63B00A880BE /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		561C542B21C8A4BB00A880BE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmDialogView.xib; sourceTree = "<group>"; };
+		561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDialogView.swift; sourceTree = "<group>"; };
 		56435C7321C17D5700D31172 /* Styx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Styx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56435C7621C17D5700D31172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56435C7B21C17D5700D31172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		561C542A21C8A49F00A880BE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				561C542B21C8A4BB00A880BE /* StringExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		561C542D21C8A56000A880BE /* DialogView */ = {
+			isa = PBXGroup;
+			children = (
+				561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */,
+				561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */,
+			);
+			path = DialogView;
+			sourceTree = "<group>";
+		};
 		56435C6A21C17D5700D31172 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +137,7 @@
 		56435C8821C17F8900D31172 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				561C542A21C8A49F00A880BE /* Extension */,
 				56435C8C21C17FEC00D31172 /* Data */,
 				56435CAD21C3275F00D31172 /* Date.swift */,
 				561C542421C5A81700A880BE /* FileUtil.swift */,
@@ -124,6 +148,8 @@
 		56435C8921C17F9500D31172 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				561C542D21C8A56000A880BE /* DialogView */,
+				56435CA421C3066C00D31172 /* TableViewCell */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -131,8 +157,8 @@
 		56435C8A21C17FA100D31172 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				56435CA421C3066C00D31172 /* TableViewCell */,
-				56435CA321C3066200D31172 /* ViewController */,
+				56435C9F21C2036000D31172 /* MainViewController.swift */,
+				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -154,15 +180,6 @@
 				561C542221C4161500A880BE /* TaskDB.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		56435CA321C3066200D31172 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				56435C9F21C2036000D31172 /* MainViewController.swift */,
-				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		56435CA421C3066C00D31172 /* TableViewCell */ = {
@@ -262,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56435C9121C1839900D31172 /* Localizable.strings in Resources */,
+				561C543021C8A61A00A880BE /* ConfirmDialogView.xib in Resources */,
 				56435C8121C17D5900D31172 /* LaunchScreen.storyboard in Resources */,
 				56435C7E21C17D5900D31172 /* Assets.xcassets in Resources */,
 				56435C8E21C1818F00D31172 /* GoogleService-Info.plist in Resources */,
@@ -343,9 +361,11 @@
 				56435CA221C2DC5F00D31172 /* Task.swift in Sources */,
 				56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
+				561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */,
 				561C542321C4161500A880BE /* TaskDB.swift in Sources */,
 				561C541F21C4065A00A880BE /* Label.swift in Sources */,
 				561C542521C5A81700A880BE /* FileUtil.swift in Sources */,
+				561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */,
 				561C542121C4067E00A880BE /* Image.swift in Sources */,
 				568F803721C36B5F00D8F652 /* List.swift in Sources */,
 			);

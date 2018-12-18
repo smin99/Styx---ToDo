@@ -22,8 +22,9 @@ class Task {
     
     var listList: Array<List>!
     var imageList: Array<Image>!
+    var listCompleted: Int!
     
-    init(ID: Int64 = 0, Title: String = "", Due: Date, Detail: String = "", Notif: Int = 0, isNotif: Bool = false, LabelID: Int64 = 0, isDone: Bool = false, isDeleted: Bool = false) {
+    init(ID: Int64 = 0, Title: String = "", Due: Date, Detail: String = "", Notif: Int = 0, isNotif: Bool = false, LabelID: Int64 = 0, isDone: Bool = false, isDeleted: Bool = false, listCompleted: Int = 0) {
         self.ID = ID
         self.LabelID = LabelID
         self.Title = Title
@@ -33,8 +34,10 @@ class Task {
         self.isNotif = isNotif
         self.isDone = isDone
         self.isDeleted = isDeleted
+        self.listCompleted = listCompleted
         
         listList = Array<List>()
         imageList = Array<Image>()
+//        listCompleted = 0
     }
 }

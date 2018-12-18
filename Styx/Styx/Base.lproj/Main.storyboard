@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="2508" y="-440.32983508245883"/>
         </scene>
-        <!--Task Details-->
+        <!--[Task] Details-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="TaskTableViewController" id="BYZ-38-t0r" customClass="TaskTableViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,22 +77,33 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hoT-ma-Li7" id="xLY-Ko-Khl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTq-L4-3c3">
+                                                    <rect key="frame" x="338" y="6" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="i"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZs-Th-kQe">
+                                                    <rect key="frame" x="8" y="6" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CQK-pg-IwC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fjy-XR-zue">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CQK-pg-IwC" id="9zi-xQ-T93">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fjy-XR-zue" id="rAa-9e-Bpd">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4fG-by-gSc">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4fG-by-gSc" id="HFp-rA-7Ge">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7g-CX-FW3">
+                                                    <rect key="frame" x="129" y="6" width="117" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Show Completed"/>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -101,7 +112,15 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Task Details" id="TMl-uK-ir7"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="[Task] Details" id="TMl-uK-ir7">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="H8E-bq-E5A">
+                            <connections>
+                                <action selector="tableEditing:" destination="25I-nv-poX" id="M9q-qW-QdY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,19 +219,20 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tK2-Yz-iOu">
-                                            <rect key="frame" x="55" y="43" width="150" height="2"/>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tK2-Yz-iOu">
+                                            <rect key="frame" x="55" y="40" width="224" height="5"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="2" id="P0x-uc-Kh9"/>
+                                                <constraint firstAttribute="height" constant="5" id="G8Q-cN-cVQ"/>
                                             </constraints>
                                         </progressView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="tK2-Yz-iOu" firstAttribute="top" secondItem="ssT-4c-sMV" secondAttribute="bottom" constant="11" id="6ws-eD-8px"/>
                                         <constraint firstAttribute="trailing" secondItem="sl4-2S-umf" secondAttribute="trailing" constant="8" id="B9i-3v-M4r"/>
                                         <constraint firstItem="tCP-Xl-A3L" firstAttribute="top" secondItem="sl4-2S-umf" secondAttribute="bottom" constant="8" id="DhD-2A-PAI"/>
-                                        <constraint firstItem="tK2-Yz-iOu" firstAttribute="leading" secondItem="mfb-cx-CdQ" secondAttribute="leadingMargin" constant="55" id="KOw-ER-bfm"/>
-                                        <constraint firstItem="tK2-Yz-iOu" firstAttribute="top" secondItem="ssT-4c-sMV" secondAttribute="bottom" constant="14" id="Kri-w6-D79"/>
+                                        <constraint firstItem="tK2-Yz-iOu" firstAttribute="leading" secondItem="mfb-cx-CdQ" secondAttribute="leading" constant="55" id="EuH-n8-Niy"/>
                                         <constraint firstItem="sl4-2S-umf" firstAttribute="top" secondItem="mfb-cx-CdQ" secondAttribute="top" constant="8" id="S7E-Ra-hmt"/>
+                                        <constraint firstItem="tCP-Xl-A3L" firstAttribute="leading" secondItem="tK2-Yz-iOu" secondAttribute="trailing" constant="8" id="bOA-Yk-DsR"/>
                                         <constraint firstItem="sl4-2S-umf" firstAttribute="leading" secondItem="ssT-4c-sMV" secondAttribute="trailing" constant="8" id="fZM-sF-9Wr"/>
                                         <constraint firstAttribute="trailing" secondItem="tCP-Xl-A3L" secondAttribute="trailing" constant="8" id="lZO-lA-dGH"/>
                                         <constraint firstItem="ssT-4c-sMV" firstAttribute="leading" secondItem="mfb-cx-CdQ" secondAttribute="leading" constant="55" id="oZX-Dn-jEe"/>
