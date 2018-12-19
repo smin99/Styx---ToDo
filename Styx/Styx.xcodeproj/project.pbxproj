@@ -16,6 +16,11 @@
 		561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542B21C8A4BB00A880BE /* StringExtension.swift */; };
 		561C543021C8A61A00A880BE /* ConfirmDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */; };
 		561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */; };
+		561C543521CAC68000A880BE /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543421CAC68000A880BE /* SideMenuViewController.swift */; };
+		561C543721CAD6A800A880BE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543621CAD6A800A880BE /* ListTableViewCell.swift */; };
+		561C543921CAD6BD00A880BE /* CompletedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */; };
+		561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */; };
+		561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543C21CAFA3F00A880BE /* ListRadioButton.swift */; };
 		56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C7621C17D5700D31172 /* AppDelegate.swift */; };
 		56435C7C21C17D5700D31172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7A21C17D5700D31172 /* Main.storyboard */; };
 		56435C7E21C17D5900D31172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7D21C17D5900D31172 /* Assets.xcassets */; };
@@ -24,8 +29,8 @@
 		56435C9121C1839900D31172 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56435C9321C1839900D31172 /* Localizable.strings */; };
 		56435CA021C2036000D31172 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C9F21C2036000D31172 /* MainViewController.swift */; };
 		56435CA221C2DC5F00D31172 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA121C2DC5F00D31172 /* Task.swift */; };
-		56435CA621C306EF00D31172 /* taskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA521C306EF00D31172 /* taskTableViewCell.swift */; };
-		56435CAA21C308C200D31172 /* addTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA921C308C200D31172 /* addTableViewCell.swift */; };
+		56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA521C306EF00D31172 /* TaskTableViewCell.swift */; };
+		56435CAA21C308C200D31172 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA921C308C200D31172 /* AddTableViewCell.swift */; };
 		56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */; };
 		56435CAE21C3276000D31172 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAD21C3275F00D31172 /* Date.swift */; };
 		568F803721C36B5F00D8F652 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F803621C36B5F00D8F652 /* List.swift */; };
@@ -41,6 +46,11 @@
 		561C542B21C8A4BB00A880BE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmDialogView.xib; sourceTree = "<group>"; };
 		561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDialogView.swift; sourceTree = "<group>"; };
+		561C543421CAC68000A880BE /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		561C543621CAD6A800A880BE /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedListTableViewCell.swift; sourceTree = "<group>"; };
+		561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCompletedListTableViewCell.swift; sourceTree = "<group>"; };
+		561C543C21CAFA3F00A880BE /* ListRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRadioButton.swift; sourceTree = "<group>"; };
 		56435C7321C17D5700D31172 /* Styx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Styx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56435C7621C17D5700D31172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56435C7B21C17D5700D31172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,8 +70,8 @@
 		56435C9C21C184B900D31172 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		56435C9F21C2036000D31172 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		56435CA121C2DC5F00D31172 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		56435CA521C306EF00D31172 /* taskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskTableViewCell.swift; sourceTree = "<group>"; };
-		56435CA921C308C200D31172 /* addTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTableViewCell.swift; sourceTree = "<group>"; };
+		56435CA521C306EF00D31172 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		56435CA921C308C200D31172 /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
 		56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		56435CAD21C3275F00D31172 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		568F803621C36B5F00D8F652 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -150,6 +160,7 @@
 			children = (
 				561C542D21C8A56000A880BE /* DialogView */,
 				56435CA421C3066C00D31172 /* TableViewCell */,
+				561C543C21CAFA3F00A880BE /* ListRadioButton.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 			children = (
 				56435C9F21C2036000D31172 /* MainViewController.swift */,
 				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
+				561C543421CAC68000A880BE /* SideMenuViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -185,9 +197,12 @@
 		56435CA421C3066C00D31172 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				56435CA521C306EF00D31172 /* taskTableViewCell.swift */,
-				56435CA921C308C200D31172 /* addTableViewCell.swift */,
+				56435CA521C306EF00D31172 /* TaskTableViewCell.swift */,
+				56435CA921C308C200D31172 /* AddTableViewCell.swift */,
 				561C542621C6F63B00A880BE /* LabelTableViewCell.swift */,
+				561C543621CAD6A800A880BE /* ListTableViewCell.swift */,
+				561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */,
+				561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -304,6 +319,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -316,6 +332,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -353,13 +370,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */,
+				561C543521CAC68000A880BE /* SideMenuViewController.swift in Sources */,
 				56435CA021C2036000D31172 /* MainViewController.swift in Sources */,
-				56435CA621C306EF00D31172 /* taskTableViewCell.swift in Sources */,
+				56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */,
 				56435CAE21C3276000D31172 /* Date.swift in Sources */,
 				561C542721C6F63B00A880BE /* LabelTableViewCell.swift in Sources */,
-				56435CAA21C308C200D31172 /* addTableViewCell.swift in Sources */,
+				561C543721CAD6A800A880BE /* ListTableViewCell.swift in Sources */,
+				561C543921CAD6BD00A880BE /* CompletedListTableViewCell.swift in Sources */,
+				56435CAA21C308C200D31172 /* AddTableViewCell.swift in Sources */,
 				56435CA221C2DC5F00D31172 /* Task.swift in Sources */,
 				56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */,
+				561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
 				561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */,
 				561C542321C4161500A880BE /* TaskDB.swift in Sources */,

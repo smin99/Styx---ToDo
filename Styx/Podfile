@@ -13,5 +13,6 @@ target 'Styx' do
   pod 'SCLAlertView'
   pod 'SQLite.swift', '~> 0.11.5'
   pod 'EZLoadingActivity'
+  pod 'SideMenu'
   
 end
