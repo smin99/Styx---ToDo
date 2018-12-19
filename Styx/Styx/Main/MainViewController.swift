@@ -33,6 +33,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var listList: Array<List>!
     var imageList: Array<Image>!
     
+    var labelIndex: Int = 0
+    
     var isInitData: Bool = false
     var openedLabelIndex: IndexPath? = nil
     
@@ -137,62 +139,71 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return openedLabelIndex == nil ? labelList.count : (labelList.count + labelList[openedLabelIndex!.row].taskList.count)
     }
     
-    public func createLabelCell(index: Int) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelTableViewCell") as! LabelTableViewCell
-        cell.titleLabel.text = labelList[index].Title
-        cell.openImageView.image = UIImage(named: labelList[index].isOpened ? "LabelOpenIcon" : "LabelCloseIcon")
-        cell.labelItem = labelList[index]
-        return cell
-    }
+//    public func createLabelCell(index: Int) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelTableViewCell") as! LabelTableViewCell
+//        cell.titleLabel.text = labelList[index].Title
+//        cell.openImageView.image = UIImage(named: labelList[index].isOpened ? "LabelOpenIcon" : "LabelCloseIcon")
+//        cell.labelItem = labelList[index]
+//        return cell
+//    }
     
-    public func createTaskCell(labelIndex: Int, index: Int) -> UITableViewCell {
-        let labelItem = labelList[labelIndex]
+//    public func createTaskCell(index: Int) -> UITableViewCell {
+//        let labelItem = labelList[labelIndex]
+//
+//        // count the list completed and save it
+//        var numListCompleted = 0
+//        for list in labelList[labelIndex].taskList[index].listList {
+//            if list.isDone { numListCompleted = numListCompleted + 1 }
+//        }
+//        labelList[labelIndex].taskList[index].listCompleted = numListCompleted
+//
+//
+//    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        var labelIndex: Int = 0
+//        var taskIndex: Int = -1
+//
+//        if let openIndex = openedLabelIndex {
+//            let count = labelList[openIndex.row].taskList.count
+//            if openIndex.row >= indexPath.row { labelIndex = indexPath.row }
+//            else if openIndex.row + count < indexPath.row { labelIndex = indexPath.row - count }
+//            else {
+//                labelIndex = openIndex.row
+//                taskIndex = indexPath.row - openIndex.row - 1
+//            }
+//        } else {
+//            labelIndex = indexPath.row
+//        }
+//
+//        if taskIndex >= 0 {
+//            return createTaskCell(labelIndex: labelIndex, index: taskIndex)
+//        }
+//
+//        return createLabelCell(index: labelIndex)
         
         // count the list completed and save it
         var numListCompleted = 0
-        for list in labelList[labelIndex].taskList[index].listList {
+        for list in labelList[labelIndex].taskList[indexPath.row].listList {
             if list.isDone { numListCompleted = numListCompleted + 1 }
         }
-        labelList[labelIndex].taskList[index].listCompleted = numListCompleted
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCell") as! taskTableViewCell
-        cell.titleLabel.text = labelItem.taskList[index].Title
-        cell.dueLabel.text = labelItem.taskList[index].Due.toString(dateformat: "MM-DD-YY")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell") as! TaskTableViewCell
+        cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
+        cell.dueLabel.text = labelList[labelIndex].taskList[indexPath.row].Due.toString(dateformat: "MM-DD-YY")
         
-        let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(numListCompleted / labelItem.taskList[index].listList.count)
+        let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(numListCompleted / labelList[labelIndex].taskList[indexPath.row].listList.count)
         cell.taskProgressBar.progress = progressFloat
         cell.taskProgressPercentageLabel.text = NSString(format: "%.2f", progressFloat * 100) as String + " %"
         
         return cell
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var labelIndex: Int = 0
-        var taskIndex: Int = -1
         
-        if let openIndex = openedLabelIndex {
-            let count = labelList[openIndex.row].taskList.count
-            if openIndex.row >= indexPath.row { labelIndex = indexPath.row }
-            else if openIndex.row + count < indexPath.row { labelIndex = indexPath.row - count }
-            else {
-                labelIndex = openIndex.row
-                taskIndex = indexPath.row - openIndex.row - 1
-            }
-        } else {
-            labelIndex = indexPath.row
-        }
-        
-        if taskIndex >= 0 {
-            return createTaskCell(labelIndex: labelIndex, index: taskIndex)
-        }
-        
-        return createLabelCell(index: labelIndex)
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
-            return 50.0
-        }
+//        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
+//            return 50.0
+//        }
         
         return 60.0
     }
@@ -214,7 +225,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             tableView.reloadData()
         }
-        else if let _ = tableView.cellForRow(at: indexPath) as? taskTableViewCell {
+        else if let _ = tableView.cellForRow(at: indexPath) as? TaskTableViewCell {
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskTableViewController")
             self.navigationController?.pushViewController(viewController, animated: true)
         }
@@ -229,30 +240,35 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if editingStyle == .delete {
             let view: ConfirmDialogView = try! SwiftMessages.viewFromNib()
             view.configureDropShadow()
+            
             view.yesAction = {
-//                let labelID: Int64 = labelList[indexPath.row].ID
-//                let taskArray: Array<Task> = labelList[indexPath.row].taskList
-//                if !taskArray.isEmpty{
-//                    let maxIndex: Int = taskArray.count - 1
-//
-//                    // loops through task array in label and delete all tasks in DB
-//                    for index in 0...maxIndex {
-//                        if (labelList[indexPath.row].isOpened) {
-//                            self.tableView.deleteRows(at: [IndexPath(row: indexPath.row + maxIndex - index, section: 0)], with: .automatic)
-//                        }
-//
-//                        let id: Int64 = taskArray[index].ID
-//                        _ = MainViewController.Database.DeleteTask(id: id)
-//                    }
-//                }
-//
-//                openedLabelIndex = nil
-//                _ = MainViewController.Database.DeleteLabel(labID: labelID)
-//                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                let labelID: Int64 = self.labelList[indexPath.row].ID
+                let taskArray: Array<Task> = self.labelList[indexPath.row].taskList
+                if !taskArray.isEmpty{
+                    let maxIndex: Int = taskArray.count - 1
+
+                    // loops through task array in label and delete all tasks in DB
+                    for index in 0...maxIndex {
+                        if (self.labelList[indexPath.row].isOpened) {
+                            self.tableView.deleteRows(at: [IndexPath(row: indexPath.row + maxIndex - index, section: 0)], with: .automatic)
+                        }
+
+                        let id: Int64 = taskArray[index].ID
+                        _ = MainViewController.Database.DeleteTask(id: id)
+                    }
+                }
+
+                self.openedLabelIndex = nil
+                _ = MainViewController.Database.DeleteLabel(labID: labelID)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                SwiftMessages.hide()
+                tableView.reloadData()
             }
+            
             view.cancelAction = {
                 SwiftMessages.hide()
             }
+            
             view.cancelAction = { SwiftMessages.hide() }
             var config = SwiftMessages.defaultConfig
             config.presentationContext = .window(windowLevel: UIWindow.Level.normal)
