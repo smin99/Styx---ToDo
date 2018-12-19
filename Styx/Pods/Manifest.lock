@@ -1,11 +1,11 @@
 PODS:
   - EZLoadingActivity (1.01)
-  - Firebase/Core (5.14.0):
+  - Firebase/Core (5.15.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.4.0)
-  - Firebase/CoreOnly (5.14.0):
-    - FirebaseCore (= 5.1.9)
-  - Firebase/Messaging (5.14.0):
+  - Firebase/CoreOnly (5.15.0):
+    - FirebaseCore (= 5.1.10)
+  - Firebase/Messaging (5.15.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (= 3.2.2)
   - FirebaseAnalytics (5.4.0):
@@ -18,7 +18,7 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.1.0)
-  - FirebaseCore (5.1.9):
+  - FirebaseCore (5.1.10):
     - GoogleUtilities/Logger (~> 5.2)
   - FirebaseInstanceID (3.3.0):
     - FirebaseCore (~> 5.1)
@@ -62,6 +62,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
   - SCLAlertView (0.8)
+  - SideMenu (5.0.3)
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
@@ -74,6 +75,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
   - SCLAlertView
+  - SideMenu
   - SQLite.swift (~> 0.11.5)
   - SwiftMessages
 
@@ -91,15 +93,16 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SCLAlertView
+    - SideMenu
     - SQLite.swift
     - SwiftMessages
 
 SPEC CHECKSUMS:
   EZLoadingActivity: edd7e387e5197b116ce2cccb3fd747ababc2a510
-  Firebase: 963d5685fae888a56d6d4d9cfce6b9c976958798
+  Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
   FirebaseAnalyticsInterop: e5f21be9af6548372e2f0815834ff909bff395a2
-  FirebaseCore: 8f49b70f57ab5cbb032ef41d64992ded21606459
+  FirebaseCore: 35747502d9e8c6ee217385ad04446c7c2aaf9c5c
   FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
   FirebaseMessaging: b412996f6a09337d232bb3a6676ce4d1f353d024
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
@@ -107,9 +110,10 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SwiftMessages: 42ed7b6e1f2f1ead9ee667dc61a0ae87e4f49570
 
-PODFILE CHECKSUM: ec67905e560a18bc50d27f3704bb1a373c6436e3
+PODFILE CHECKSUM: 115fb37ce2354682cf1a7cdb90bc54c143a85338
 
 COCOAPODS: 1.5.3
