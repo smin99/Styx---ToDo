@@ -8,6 +8,7 @@
 
 import UIKit
 import EZLoadingActivity
+import SwiftMessages
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -89,6 +90,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 5", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
                 _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 6", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Shopping List", ColorID: 0))
+                self.tableView.reloadData()
             }
             
             // Map Task Object to the Label Object
@@ -220,30 +222,45 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func tableEditing(_ sender: Any) {
         self.tableView.isEditing = !self.tableView.isEditing
+        
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("Deleted")
-            let labelID: Int64 = labelList[indexPath.row].ID
-            let taskArray: Array<Task> = labelList[indexPath.row].taskList
-            if !taskArray.isEmpty{
-                let maxIndex: Int = taskArray.count - 1
-                
-                // loops through task array in label and delete all tasks in DB
-                for index in 0...maxIndex {
-                    if (labelList[indexPath.row].isOpened) {
-                        self.tableView.deleteRows(at: [IndexPath(row: indexPath.row + maxIndex - index, section: 0)], with: .automatic)
-                    }
-                    
-                    let id: Int64 = taskArray[index].ID
-                    _ = MainViewController.Database.DeleteTask(id: id)
-                }
+            let view: ConfirmDialogView = try! SwiftMessages.viewFromNib()
+            view.configureDropShadow()
+            view.yesAction = {
+//                let labelID: Int64 = labelList[indexPath.row].ID
+//                let taskArray: Array<Task> = labelList[indexPath.row].taskList
+//                if !taskArray.isEmpty{
+//                    let maxIndex: Int = taskArray.count - 1
+//
+//                    // loops through task array in label and delete all tasks in DB
+//                    for index in 0...maxIndex {
+//                        if (labelList[indexPath.row].isOpened) {
+//                            self.tableView.deleteRows(at: [IndexPath(row: indexPath.row + maxIndex - index, section: 0)], with: .automatic)
+//                        }
+//
+//                        let id: Int64 = taskArray[index].ID
+//                        _ = MainViewController.Database.DeleteTask(id: id)
+//                    }
+//                }
+//
+//                openedLabelIndex = nil
+//                _ = MainViewController.Database.DeleteLabel(labID: labelID)
+//                self.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
-            
-            openedLabelIndex = nil
-            _ = MainViewController.Database.DeleteLabel(labID: labelID)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            view.cancelAction = {
+                SwiftMessages.hide()
+            }
+            view.cancelAction = { SwiftMessages.hide() }
+            var config = SwiftMessages.defaultConfig
+            config.presentationContext = .window(windowLevel: UIWindow.Level.normal)
+            config.duration = .forever
+            config.presentationStyle = .center
+            config.dimMode = .gray(interactive: true)
+            view.initControl()
+            SwiftMessages.show(config: config, view: view)
         }
     }
     
