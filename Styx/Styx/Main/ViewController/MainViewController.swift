@@ -9,6 +9,7 @@
 import UIKit
 import EZLoadingActivity
 import SwiftMessages
+import SideMenu
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -32,11 +33,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var taskList: Array<Task>!
     var listList: Array<List>!
     var imageList: Array<Image>!
-    
-    var labelIndex: Int = 0
-    
+        
     var isInitData: Bool = false
-    var openedLabelIndex: IndexPath? = nil
+    
+    // passed from side menu: if not given, set it to 0
+    var labelIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("DBOpen Return: \(bOpen), isOpen: \(MainViewController.Database.IsDBOpened), Error Message: \(MainViewController.Database.LastErrorMessage)")
         }
         
+        // SideMenu Initialization
+        SideMenuManager.default.menuPushStyle = .defaultBehavior
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuWidth = view.frame.width * 0.8
+        if let sideMenu = storyboard?.instantiateViewController(withIdentifier: "leftSideMenu") {
+            SideMenuManager.default.menuLeftNavigationController = sideMenu as? UISideMenuNavigationController
+            
+            SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+            SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
 //        let rightButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: showEditing(sender: editBarButton))
@@ -68,7 +81,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillDisappear(_ animated: Bool) {
         print("View will disappear")
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,6 +94,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             // when labelList is empty, make a test case
             if self.labelList.count == 0 {
+                
+                /* first time to use the app: initialize empty label
+                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "New Label", ColorID: 0))
+                 
+                */
+                
                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Homework", ColorID: 0))
                 let id1 = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Project", ColorID: 0))
                 let id2 = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 3", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1, isDone: false, isDeleted: false))
@@ -127,6 +145,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidDisappear(_ animated: Bool) {
         print("View did disappear")
+        
+        stopAvoidingKeyboard()  // Stop changing the view size when keyboard disappear/appear
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int{
@@ -136,51 +156,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if labelList == nil { return 0 }
         
-        return openedLabelIndex == nil ? labelList.count : (labelList.count + labelList[openedLabelIndex!.row].taskList.count)
+        return labelList[labelIndex].taskList.count
     }
     
-//    public func createLabelCell(index: Int) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelTableViewCell") as! LabelTableViewCell
-//        cell.titleLabel.text = labelList[index].Title
-//        cell.openImageView.image = UIImage(named: labelList[index].isOpened ? "LabelOpenIcon" : "LabelCloseIcon")
-//        cell.labelItem = labelList[index]
-//        return cell
-//    }
-    
-//    public func createTaskCell(index: Int) -> UITableViewCell {
-//        let labelItem = labelList[labelIndex]
-//
-//        // count the list completed and save it
-//        var numListCompleted = 0
-//        for list in labelList[labelIndex].taskList[index].listList {
-//            if list.isDone { numListCompleted = numListCompleted + 1 }
-//        }
-//        labelList[labelIndex].taskList[index].listCompleted = numListCompleted
-//
-//
-//    }
-    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var labelIndex: Int = 0
-//        var taskIndex: Int = -1
-//
-//        if let openIndex = openedLabelIndex {
-//            let count = labelList[openIndex.row].taskList.count
-//            if openIndex.row >= indexPath.row { labelIndex = indexPath.row }
-//            else if openIndex.row + count < indexPath.row { labelIndex = indexPath.row - count }
-//            else {
-//                labelIndex = openIndex.row
-//                taskIndex = indexPath.row - openIndex.row - 1
-//            }
-//        } else {
-//            labelIndex = indexPath.row
-//        }
-//
-//        if taskIndex >= 0 {
-//            return createTaskCell(labelIndex: labelIndex, index: taskIndex)
-//        }
-//
-//        return createLabelCell(index: labelIndex)
         
         // count the list completed and save it
         var numListCompleted = 0
@@ -190,51 +169,61 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell") as! TaskTableViewCell
         cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
-        cell.dueLabel.text = labelList[labelIndex].taskList[indexPath.row].Due.toString(dateformat: "MM-DD-YY")
+        cell.dueLabel.text = labelList[0].taskList[indexPath.row].Due.toString(dateformat: "MM-DD-YY")
         
         let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(numListCompleted / labelList[labelIndex].taskList[indexPath.row].listList.count)
         cell.taskProgressBar.progress = progressFloat
-        cell.taskProgressPercentageLabel.text = NSString(format: "%.2f", progressFloat * 100) as String + " %"
+        cell.taskProgressPercentageLabel.text = String(format: "%.2f", progressFloat * 100) + " %"
         
         return cell
         
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
-//            return 50.0
-//        }
-        
         return 60.0
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
-            if let openedIndexPath = openedLabelIndex {
-                labelList[openedIndexPath.row].isOpened = false
-                openedLabelIndex = nil
-                if openedIndexPath == indexPath {
-                    tableView.reloadData()
-                    return
-                }
-            }
-            
-            if labelList[indexPath.row].taskList.count > 0 {
-                labelList[indexPath.row].isOpened = true
-                openedLabelIndex = indexPath
-            }
-            tableView.reloadData()
-        }
-        else if let _ = tableView.cellForRow(at: indexPath) as? TaskTableViewCell {
-            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskTableViewController")
-            self.navigationController?.pushViewController(viewController, animated: true)
+//        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
+//            if let openedIndexPath = openedLabelIndex {
+//                labelList[openedIndexPath.row].isOpened = false
+//                openedLabelIndex = nil
+//                if openedIndexPath == indexPath {
+//                    tableView.reloadData()
+//                    return
+//                }
+//            }
+//
+//            if labelList[indexPath.row].taskList.count > 0 {
+//                labelList[indexPath.row].isOpened = true
+//                openedLabelIndex = indexPath
+//            }
+//            tableView.reloadData()
+//        }
+        let viewController = TaskTableViewController()
+        viewController.taskTitle = taskList[indexPath.row].Title
+        viewController.taskIndex = indexPath.row
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    // Edit Bar Button: Change into Editing mode
+    @IBAction func tableEditing(_ sender: Any) {
+        if self.tableView.isEditing {
+            self.tableView.isEditing = false
+            self.navigationItem.rightBarButtonItem?.title = "Edit"
+        } else {
+            self.tableView.isEditing = true
+            self.navigationItem.rightBarButtonItem?.title = "Done"
         }
     }
     
-    @IBAction func tableEditing(_ sender: Any) {
-        self.tableView.isEditing = !self.tableView.isEditing
-        
+    // Label Bar Button: Modally present side menu for labels
+    @IBAction func labelSideMenu(_ sender: Any) {
+        if let left = SideMenuManager.default.menuLeftNavigationController {
+            present(left, animated: true, completion: nil)
+        }
     }
+    
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -242,24 +231,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.configureDropShadow()
             
             view.yesAction = {
-                let labelID: Int64 = self.labelList[indexPath.row].ID
-                let taskArray: Array<Task> = self.labelList[indexPath.row].taskList
-                if !taskArray.isEmpty{
-                    let maxIndex: Int = taskArray.count - 1
-
-                    // loops through task array in label and delete all tasks in DB
-                    for index in 0...maxIndex {
-                        if (self.labelList[indexPath.row].isOpened) {
-                            self.tableView.deleteRows(at: [IndexPath(row: indexPath.row + maxIndex - index, section: 0)], with: .automatic)
-                        }
-
-                        let id: Int64 = taskArray[index].ID
-                        _ = MainViewController.Database.DeleteTask(id: id)
-                    }
-                }
-
-                self.openedLabelIndex = nil
-                _ = MainViewController.Database.DeleteLabel(labID: labelID)
+                let id: Int64 = self.taskList[indexPath.row].ID
+                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .automatic)
+                _ = MainViewController.Database.DeleteTask(id: id)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 SwiftMessages.hide()
                 tableView.reloadData()
@@ -269,7 +243,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 SwiftMessages.hide()
             }
             
-            view.cancelAction = { SwiftMessages.hide() }
             var config = SwiftMessages.defaultConfig
             config.presentationContext = .window(windowLevel: UIWindow.Level.normal)
             config.duration = .forever
@@ -279,5 +252,4 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             SwiftMessages.show(config: config, view: view)
         }
     }
-    
 }

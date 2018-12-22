@@ -1,5 +1,5 @@
 //
-//  ListTableViewCell.swift
+//  addTableViewCell.swift
 //  Styx
 //
 //  Created by HwangSeungmin on 12/13/18.
@@ -8,12 +8,9 @@
 
 import UIKit
 
-class taskTableViewCell: UITableViewCell {
+class AddTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dueLabel: UILabel!
-    @IBOutlet weak var taskProgressBar: UIProgressView!
-    @IBOutlet weak var taskProgressPercentageLabel: UILabel!
+    @IBOutlet weak var addLabelButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +22,4 @@ class taskTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

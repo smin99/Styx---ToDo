@@ -1,16 +1,14 @@
 //
-//  TaskTableViewController.swift
+//  AddTaskTableViewController.swift
 //  Styx
 //
-//  Created by HwangSeungmin on 12/13/18.
+//  Created by HwangSeungmin on 12/21/18.
 //  Copyright © 2018 Min. All rights reserved.
 //
 
 import UIKit
 
-class TaskTableViewController: UITableViewController {
-    
-    
+class AddTaskTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

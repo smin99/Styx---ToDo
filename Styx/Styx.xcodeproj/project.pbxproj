@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0E565F3FC95F5CEA6E556C06 /* Pods_Styx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F159ED3098E5E162570D4F /* Pods_Styx.framework */; };
+		560A5CDA21CD625B0092B0C5 /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */; };
+		560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */; };
 		561C541F21C4065A00A880BE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C541E21C4065A00A880BE /* Label.swift */; };
 		561C542121C4067E00A880BE /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542021C4067E00A880BE /* Image.swift */; };
 		561C542321C4161500A880BE /* TaskDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542221C4161500A880BE /* TaskDB.swift */; };
@@ -16,11 +18,11 @@
 		561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542B21C8A4BB00A880BE /* StringExtension.swift */; };
 		561C543021C8A61A00A880BE /* ConfirmDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */; };
 		561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */; };
-		561C543521CAC68000A880BE /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543421CAC68000A880BE /* SideMenuViewController.swift */; };
 		561C543721CAD6A800A880BE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543621CAD6A800A880BE /* ListTableViewCell.swift */; };
 		561C543921CAD6BD00A880BE /* CompletedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */; };
 		561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */; };
 		561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543C21CAFA3F00A880BE /* ListRadioButton.swift */; };
+		561C543F21CB440E00A880BE /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */; };
 		56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C7621C17D5700D31172 /* AppDelegate.swift */; };
 		56435C7C21C17D5700D31172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7A21C17D5700D31172 /* Main.storyboard */; };
 		56435C7E21C17D5900D31172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7D21C17D5900D31172 /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		47F159ED3098E5E162570D4F /* Pods_Styx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Styx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
+		560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		561C541E21C4065A00A880BE /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		561C542021C4067E00A880BE /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		561C542221C4161500A880BE /* TaskDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDB.swift; sourceTree = "<group>"; };
@@ -46,11 +50,11 @@
 		561C542B21C8A4BB00A880BE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmDialogView.xib; sourceTree = "<group>"; };
 		561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDialogView.swift; sourceTree = "<group>"; };
-		561C543421CAC68000A880BE /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		561C543621CAD6A800A880BE /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedListTableViewCell.swift; sourceTree = "<group>"; };
 		561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCompletedListTableViewCell.swift; sourceTree = "<group>"; };
 		561C543C21CAFA3F00A880BE /* ListRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRadioButton.swift; sourceTree = "<group>"; };
+		561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		56435C7321C17D5700D31172 /* Styx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Styx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56435C7621C17D5700D31172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56435C7B21C17D5700D31172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,10 +95,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		560A5CD821CD58E80092B0C5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				56435C9F21C2036000D31172 /* MainViewController.swift */,
+				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
+				561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */,
+				560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		561C542A21C8A49F00A880BE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				561C542B21C8A4BB00A880BE /* StringExtension.swift */,
+				560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -158,9 +174,6 @@
 		56435C8921C17F9500D31172 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				561C542D21C8A56000A880BE /* DialogView */,
-				56435CA421C3066C00D31172 /* TableViewCell */,
-				561C543C21CAFA3F00A880BE /* ListRadioButton.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -168,9 +181,10 @@
 		56435C8A21C17FA100D31172 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				56435C9F21C2036000D31172 /* MainViewController.swift */,
-				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
-				561C543421CAC68000A880BE /* SideMenuViewController.swift */,
+				561C543C21CAFA3F00A880BE /* ListRadioButton.swift */,
+				561C542D21C8A56000A880BE /* DialogView */,
+				56435CA421C3066C00D31172 /* TableViewCell */,
+				560A5CD821CD58E80092B0C5 /* ViewController */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -371,9 +385,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */,
-				561C543521CAC68000A880BE /* SideMenuViewController.swift in Sources */,
 				56435CA021C2036000D31172 /* MainViewController.swift in Sources */,
 				56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */,
+				560A5CDA21CD625B0092B0C5 /* AddTaskTableViewController.swift in Sources */,
 				56435CAE21C3276000D31172 /* Date.swift in Sources */,
 				561C542721C6F63B00A880BE /* LabelTableViewCell.swift in Sources */,
 				561C543721CAD6A800A880BE /* ListTableViewCell.swift in Sources */,
@@ -390,6 +404,8 @@
 				561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */,
 				561C542121C4067E00A880BE /* Image.swift in Sources */,
 				568F803721C36B5F00D8F652 /* List.swift in Sources */,
+				560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */,
+				561C543F21CB440E00A880BE /* SideMenuTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
