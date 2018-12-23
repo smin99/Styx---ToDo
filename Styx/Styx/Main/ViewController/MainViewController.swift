@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // Add two bar buttons at right side of navigation bar
-        editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(tableEditing(barButton:)))
+        editButton = UIBarButtonItem(title: "Edit".localized, style: .plain, target: self, action: #selector(tableEditing(barButton:)))
         settingButton = UIBarButtonItem(title: "S", style: .plain, target: self, action: #selector(settingView))
 //        settingButton = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .plain, target: self, action: #selector(settingView))
         self.navigationItem.rightBarButtonItems = [settingButton, editButton]
@@ -95,7 +95,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        EZLoadingActivity.show("Loading...", disableUI: true)
+        EZLoadingActivity.show("Loading...".localized, disableUI: true)
         DispatchQueue.global().async {
             
             self.labelList = MainViewController.Database.GetLabelList()
@@ -195,36 +195,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let _ = tableView.cellForRow(at: indexPath) as? LabelTableViewCell {
-//            if let openedIndexPath = openedLabelIndex {
-//                labelList[openedIndexPath.row].isOpened = false
-//                openedLabelIndex = nil
-//                if openedIndexPath == indexPath {
-//                    tableView.reloadData()
-//                    return
-//                }
-//            }
-//
-//            if labelList[indexPath.row].taskList.count > 0 {
-//                labelList[indexPath.row].isOpened = true
-//                openedLabelIndex = indexPath
-//            }
-//            tableView.reloadData()
-//        }
-        let viewController = TaskTableViewController()
-        viewController.taskTitle = taskList[indexPath.row].Title
-        viewController.taskIndex = indexPath.row
-        self.navigationController?.pushViewController(viewController, animated: true)
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskTableViewController") as? TaskTableViewController {
+            viewController.taskTitle = taskList[indexPath.row].Title
+            viewController.taskIndex = indexPath.row
+            viewController.listForTask = taskList[indexPath.row].listList
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     // Edit Bar Button: Change into Editing mode
     @objc public func tableEditing(barButton: UIBarButtonItem) {
         if self.tableView.isEditing {
             self.tableView.isEditing = false
-            barButton.title = "Edit"
+            barButton.title = "Edit".localized
         } else {
             self.tableView.isEditing = true
-            barButton.title = "Done"
+            barButton.title = "Done".localized
         }
     }
     

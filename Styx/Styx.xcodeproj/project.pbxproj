@@ -20,7 +20,6 @@
 		561C543021C8A61A00A880BE /* ConfirmDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */; };
 		561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */; };
 		561C543721CAD6A800A880BE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543621CAD6A800A880BE /* ListTableViewCell.swift */; };
-		561C543921CAD6BD00A880BE /* CompletedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */; };
 		561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */; };
 		561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543C21CAFA3F00A880BE /* ListRadioButton.swift */; };
 		561C543F21CB440E00A880BE /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */; };
@@ -53,7 +52,6 @@
 		561C542E21C8A61A00A880BE /* ConfirmDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmDialogView.xib; sourceTree = "<group>"; };
 		561C542F21C8A61A00A880BE /* ConfirmDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDialogView.swift; sourceTree = "<group>"; };
 		561C543621CAD6A800A880BE /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedListTableViewCell.swift; sourceTree = "<group>"; };
 		561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCompletedListTableViewCell.swift; sourceTree = "<group>"; };
 		561C543C21CAFA3F00A880BE /* ListRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRadioButton.swift; sourceTree = "<group>"; };
 		561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 				56435CA921C308C200D31172 /* AddTableViewCell.swift */,
 				561C542621C6F63B00A880BE /* LabelTableViewCell.swift */,
 				561C543621CAD6A800A880BE /* ListTableViewCell.swift */,
-				561C543821CAD6BD00A880BE /* CompletedListTableViewCell.swift */,
 				561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */,
 			);
 			path = TableViewCell;
@@ -394,7 +391,6 @@
 				56435CAE21C3276000D31172 /* Date.swift in Sources */,
 				561C542721C6F63B00A880BE /* LabelTableViewCell.swift in Sources */,
 				561C543721CAD6A800A880BE /* ListTableViewCell.swift in Sources */,
-				561C543921CAD6BD00A880BE /* CompletedListTableViewCell.swift in Sources */,
 				56435CAA21C308C200D31172 /* AddTableViewCell.swift in Sources */,
 				56435CA221C2DC5F00D31172 /* Task.swift in Sources */,
 				56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */,
