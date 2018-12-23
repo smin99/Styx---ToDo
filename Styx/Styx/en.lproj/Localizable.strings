@@ -24,3 +24,12 @@
 "Delete Task"="Delete Task";
 "Do you want to delete this task? It will delete all included list items."="Do you want to delete this task? It will delete all included list items.";
 
+// Setting View strings
+"Screen Lock"="Screen Lock"
+"Delete Trash"="Delete Trash"
+"Notification"="Notification"
+"Add review"="Add review"
+"Recommended Apps"="Recommended Apps"
+"Recommend to Friends"="Recommend to Friends"
+"Open Source License"="Open Source License"
+"Version"="Version"

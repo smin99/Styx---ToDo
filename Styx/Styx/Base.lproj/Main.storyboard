@@ -169,6 +169,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2Wl-7B-EZE"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="u9d-ZN-yun" id="0d1-cO-j1m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XB-CH-IwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,7 +283,7 @@
                                             <rect key="frame" x="287" y="8" width="80" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="oGg-gz-CkI"/>
-                                                <constraint firstAttribute="width" constant="80" placeholder="YES" id="sdQ-FP-Vou"/>
+                                                <constraint firstAttribute="width" constant="80" id="sdQ-FP-Vou"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
@@ -289,7 +292,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCP-Xl-A3L">
                                             <rect key="frame" x="287" y="34" width="80" height="14.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" placeholder="YES" id="tBI-n5-bx0"/>
+                                                <constraint firstAttribute="width" constant="80" id="tBI-n5-bx0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -359,14 +362,6 @@
                                 <action selector="labelSideMenu:" destination="25I-nv-poX" id="5Ca-wy-MwA"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="S" id="Lgp-KN-cDS"/>
-                            <barButtonItem title="Edit" id="Ud0-Q1-eM6">
-                                <connections>
-                                    <action selector="tableEditing:" destination="25I-nv-poX" id="gVw-9i-dfE"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="GvB-Un-mR9" id="DhH-p0-Ucy"/>

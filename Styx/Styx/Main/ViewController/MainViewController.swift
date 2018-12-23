@@ -39,6 +39,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // passed from side menu: if not given, set it to 0
     var labelIndex: Int = 0
     
+    // two navigation bar buttons: Edit and Setting
+    var editButton: UIBarButtonItem!
+    var settingButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +73,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
             SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         }
+        
+        // Add two bar buttons at right side of navigation bar
+        editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(tableEditing(barButton:)))
+        settingButton = UIBarButtonItem(title: "S", style: .plain, target: self, action: #selector(settingView))
+//        settingButton = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .plain, target: self, action: #selector(settingView))
+        self.navigationItem.rightBarButtonItems = [settingButton, editButton]
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -207,14 +218,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // Edit Bar Button: Change into Editing mode
-    @IBAction func tableEditing(_ sender: Any) {
+    @objc public func tableEditing(barButton: UIBarButtonItem) {
         if self.tableView.isEditing {
             self.tableView.isEditing = false
-            self.navigationItem.rightBarButtonItem?.title = "Edit"
+            barButton.title = "Edit"
         } else {
             self.tableView.isEditing = true
-            self.navigationItem.rightBarButtonItem?.title = "Done"
+            barButton.title = "Done"
         }
+    }
+    
+    // Call Setting View Controller
+    @objc func settingView(_ sender: Any) {
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController")
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     // Label Bar Button: Modally present side menu for labels
