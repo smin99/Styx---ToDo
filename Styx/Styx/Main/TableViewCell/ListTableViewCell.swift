@@ -12,7 +12,7 @@ class ListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var CompleteRadiobutton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var DeleteListButton: UIButton!
     
     
     override func awakeFromNib() {

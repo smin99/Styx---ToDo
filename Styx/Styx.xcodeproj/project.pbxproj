@@ -10,6 +10,7 @@
 		0E565F3FC95F5CEA6E556C06 /* Pods_Styx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F159ED3098E5E162570D4F /* Pods_Styx.framework */; };
 		560A5CDA21CD625B0092B0C5 /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */; };
 		560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */; };
+		560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */; };
 		561C541F21C4065A00A880BE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C541E21C4065A00A880BE /* Label.swift */; };
 		561C542121C4067E00A880BE /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542021C4067E00A880BE /* Image.swift */; };
 		561C542321C4161500A880BE /* TaskDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C542221C4161500A880BE /* TaskDB.swift */; };
@@ -42,6 +43,7 @@
 		47F159ED3098E5E162570D4F /* Pods_Styx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Styx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
 		560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		561C541E21C4065A00A880BE /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		561C542021C4067E00A880BE /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		561C542221C4161500A880BE /* TaskDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDB.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
 				561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */,
 				560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */,
+				560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				561C541F21C4065A00A880BE /* Label.swift in Sources */,
 				561C542521C5A81700A880BE /* FileUtil.swift in Sources */,
 				561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */,
+				560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */,
 				561C542121C4067E00A880BE /* Image.swift in Sources */,
 				568F803721C36B5F00D8F652 /* List.swift in Sources */,
 				560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */,
