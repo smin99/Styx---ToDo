@@ -177,8 +177,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen Lock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMP-8X-2Aq">
-                                                    <rect key="frame" x="23" y="11.5" width="95" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMP-8X-2Aq">
+                                                    <rect key="frame" x="23" y="22" width="344" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -187,6 +187,7 @@
                                             <constraints>
                                                 <constraint firstItem="EMP-8X-2Aq" firstAttribute="centerY" secondItem="Qht-E3-6ew" secondAttribute="centerY" id="qux-1j-vew"/>
                                                 <constraint firstItem="EMP-8X-2Aq" firstAttribute="leading" secondItem="Qht-E3-6ew" secondAttribute="leadingMargin" constant="8" id="sme-uA-z6E"/>
+                                                <constraint firstAttribute="trailing" secondItem="EMP-8X-2Aq" secondAttribute="trailing" constant="8" id="wJ5-4C-qQE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

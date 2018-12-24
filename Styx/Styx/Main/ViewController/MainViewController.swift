@@ -76,8 +76,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Add two bar buttons at right side of navigation bar
         editButton = UIBarButtonItem(title: "Edit".localized, style: .plain, target: self, action: #selector(tableEditing(barButton:)))
-        settingButton = UIBarButtonItem(title: "S", style: .plain, target: self, action: #selector(settingView))
-//        settingButton = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .plain, target: self, action: #selector(settingView))
+        settingButton = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .plain, target: self, action: #selector(settingView))
         self.navigationItem.rightBarButtonItems = [settingButton, editButton]
         
         
