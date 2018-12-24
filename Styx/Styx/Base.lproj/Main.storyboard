@@ -271,7 +271,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-Ww-IPa">
-                                                    <rect key="frame" x="8" y="11.5" width="42" height="21"/>
+                                                    <rect key="frame" x="8" y="11.5" width="302" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -285,6 +285,7 @@
                                                 <constraint firstItem="jWj-Ww-IPa" firstAttribute="leading" secondItem="9da-Eb-o4t" secondAttribute="leading" constant="8" id="G5w-oh-7M1"/>
                                                 <constraint firstItem="jWj-Ww-IPa" firstAttribute="centerY" secondItem="9da-Eb-o4t" secondAttribute="centerY" id="NTl-zy-AHo"/>
                                                 <constraint firstAttribute="trailing" secondItem="iqv-nU-SHR" secondAttribute="trailing" constant="8" id="sq5-0m-8pp"/>
+                                                <constraint firstItem="iqv-nU-SHR" firstAttribute="leading" secondItem="jWj-Ww-IPa" secondAttribute="trailing" constant="8" id="xW5-dr-rIi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -552,7 +553,7 @@
                         <segue destination="XEB-Q5-ZTd" kind="show" identifier="addTaskSegue" id="jMX-Kt-XdV"/>
                         <segue destination="mhI-uQ-QJq" kind="presentation" identifier="SideMenuSegue" id="BbY-AO-Z1O"/>
                         <segue destination="6Bl-Zq-kcB" kind="show" identifier="SettingSegue" id="fDW-TD-bW0"/>
-                        <segue destination="THp-Sp-j8n" kind="show" id="oNo-9n-KYb"/>
+                        <segue destination="THp-Sp-j8n" kind="show" identifier="TaskTableSegue" id="oNo-9n-KYb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RK8-RJ-FGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
