@@ -10,7 +10,7 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let version: String = "1.0"
+    let version: String = " 1.0"
     
     let sections = [["Screen Lock".localized, "Delete Trash".localized, "Notification".localized],
                     ["Add review".localized, "Recommended Apps".localized, "Recommend to Friends".localized],
@@ -94,14 +94,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Recommend to Friends:
         else if indexPath.section == 1 && indexPath.row == 2 {
             
-//            let url = URL(string: ConstsCommon.iTunesAppUrl)!
-//            let title = "\n\n" + "친구에게 추천 문구".localized
-//            let textToShare = [ url, title ] as [Any]
-//            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-//            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-//            
-//            // present the view controller
-//            self.present(activityViewController, animated: true, completion: nil)
+            let url = URL(string: ConstsCommon.iTunesAppUrl)!
+            let title = "\n\n" + "Recommendation".localized
+            let textToShare = [ url, title ] as [Any]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            
+            // present the view controller
+            self.present(activityViewController, animated: true, completion: nil)
             
         }
         // Open Source License
@@ -110,9 +110,5 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
-        // Version
-//        else if indexPath.section == 2 && indexPath.row == 1 {
-//
-//        }
     }
 }
