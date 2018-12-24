@@ -35,6 +35,10 @@
 		56435CAA21C308C200D31172 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA921C308C200D31172 /* AddTableViewCell.swift */; };
 		56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */; };
 		56435CAE21C3276000D31172 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAD21C3275F00D31172 /* Date.swift */; };
+		5678526121D096F300BD6192 /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526021D096F300BD6192 /* NotificationSettingViewController.swift */; };
+		5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526221D0970900BD6192 /* LockSettingViewController.swift */; };
+		5678526521D0971700BD6192 /* TrashSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526421D0971700BD6192 /* TrashSettingViewController.swift */; };
+		5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526621D0973700BD6192 /* LicenseSettingViewController.swift */; };
 		568F803721C36B5F00D8F652 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F803621C36B5F00D8F652 /* List.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +82,10 @@
 		56435CA921C308C200D31172 /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
 		56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		56435CAD21C3275F00D31172 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		5678526021D096F300BD6192 /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
+		5678526221D0970900BD6192 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
+		5678526421D0971700BD6192 /* TrashSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingViewController.swift; sourceTree = "<group>"; };
+		5678526621D0973700BD6192 /* LicenseSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseSettingViewController.swift; sourceTree = "<group>"; };
 		568F803621C36B5F00D8F652 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		A07E8C5BEDFD7638C623837F /* Pods-Styx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.release.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.release.xcconfig"; sourceTree = "<group>"; };
 		BB9F35C68141377B8E513CDB /* Pods-Styx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +110,6 @@
 				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
 				561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */,
 				560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */,
-				560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -175,6 +182,8 @@
 		56435C8921C17F9500D31172 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5678525F21D096D800BD6192 /* TableViewCell */,
+				5678525E21D096CF00BD6192 /* ViewController */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -217,6 +226,25 @@
 				561C542621C6F63B00A880BE /* LabelTableViewCell.swift */,
 				561C543621CAD6A800A880BE /* ListTableViewCell.swift */,
 				561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		5678525E21D096CF00BD6192 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */,
+				5678526021D096F300BD6192 /* NotificationSettingViewController.swift */,
+				5678526221D0970900BD6192 /* LockSettingViewController.swift */,
+				5678526421D0971700BD6192 /* TrashSettingViewController.swift */,
+				5678526621D0973700BD6192 /* LicenseSettingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5678525F21D096D800BD6192 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -386,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */,
 				561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */,
 				56435CA021C2036000D31172 /* MainViewController.swift in Sources */,
 				56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */,
@@ -396,13 +425,16 @@
 				56435CAA21C308C200D31172 /* AddTableViewCell.swift in Sources */,
 				56435CA221C2DC5F00D31172 /* Task.swift in Sources */,
 				56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */,
+				5678526121D096F300BD6192 /* NotificationSettingViewController.swift in Sources */,
 				561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */,
+				5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
 				561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */,
 				561C542321C4161500A880BE /* TaskDB.swift in Sources */,
 				561C541F21C4065A00A880BE /* Label.swift in Sources */,
 				561C542521C5A81700A880BE /* FileUtil.swift in Sources */,
 				561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */,
+				5678526521D0971700BD6192 /* TrashSettingViewController.swift in Sources */,
 				560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */,
 				561C542121C4067E00A880BE /* Image.swift in Sources */,
 				568F803721C36B5F00D8F652 /* List.swift in Sources */,

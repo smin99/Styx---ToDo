@@ -15,14 +15,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet var tableView: UITableView!
     
-//    // Test case
-//    let label1 = Label(ID: 1, Title: "", ColorID: 1)//  (ID: 1, Title: "homework", ColorID: 1)
-//    let label2 = Label(ID: 2, Title: "project", ColorID: 4)
-//    let task1 = Task(Title: "Review hw3", Due: Date(timeIntervalSinceNow: 30000000), Notif: 1, LabelID: 1)  // case 1: task not due
-//    let task2 = Task(Title: "Work on project", Due: Date(timeIntervalSinceNow: 2000000), LabelID: 2)    // case 2: task not due
-//    let task3 = Task(Title: "Read chapter 3", Due: Date(timeIntervalSinceNow: -3000), LabelID: 1)   // case 3: task due
-//    let task4 = Task(Title: "Write journal", Due: Date(timeIntervalSinceNow: -1000), LabelID: 1)    // case 4: task due
-//    lazy var tasks: [Task] = [task1, task2, task3, task4]
     
     var names = [ "AAA", "BBB", "CC" ]
     
@@ -82,7 +74,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
-//        let rightButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItem.Style.plain, target: self, action: showEditing(sender: editBarButton))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,7 +137,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             DispatchQueue.main.sync {
                 EZLoadingActivity.hide()
-                
                 self.isInitData = true
                 self.tableView.reloadData()
             }
@@ -155,7 +145,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidDisappear(_ animated: Bool) {
         print("View did disappear")
-        
         stopAvoidingKeyboard()  // Stop changing the view size when keyboard disappear/appear
     }
     
@@ -165,12 +154,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if labelList == nil { return 0 }
-        
         return labelList[labelIndex].taskList.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // count the list completed and save it
         var numListCompleted = 0
         for list in labelList[labelIndex].taskList[indexPath.row].listList {

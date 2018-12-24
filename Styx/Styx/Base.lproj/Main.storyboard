@@ -199,11 +199,45 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="u9d-ZN-yun" id="0d1-cO-j1m"/>
+                        <segue destination="WbI-wZ-R5f" kind="show" identifier="ScreenLockSegue" id="R38-Hr-GGD"/>
+                        <segue destination="feU-dU-Fbr" kind="show" identifier="DeleteTrashSegue" id="5cX-BC-mj7"/>
+                        <segue destination="G05-2N-wTw" kind="show" identifier="NotificationSegue" id="kjY-EV-KxO"/>
+                        <segue destination="eG2-fB-Ha4" kind="show" identifier="OpenSourceLicenseSegue" id="WBb-oA-ejP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XB-CH-IwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3416.8000000000002" y="246.9265367316342"/>
+        </scene>
+        <!--Trash Setting View Controller-->
+        <scene sceneID="DKM-6T-sYQ">
+            <objects>
+                <viewController storyboardIdentifier="TrashSettingViewController" id="feU-dU-Fbr" customClass="TrashSettingViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BLZ-qc-XIb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="vvr-KG-555"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cvk-12-VMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4262" y="-440"/>
+        </scene>
+        <!--Lock Setting View Controller-->
+        <scene sceneID="sGr-Gy-cmN">
+            <objects>
+                <viewController storyboardIdentifier="LockSettingViewController" id="WbI-wZ-R5f" customClass="LockSettingViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n3A-Ph-Wji">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rbp-8g-hKY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lqe-Bg-gOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4262" y="247"/>
         </scene>
         <!--Label-->
         <scene sceneID="Glu-4Z-unb">
@@ -265,6 +299,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZP-1f-hmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2508" y="1011.544227886057"/>
+        </scene>
+        <!--Notification Setting View Controller-->
+        <scene sceneID="617-XX-kmw">
+            <objects>
+                <viewController storyboardIdentifier="NotificationSettingViewController" id="G05-2N-wTw" customClass="NotificationSettingViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hHT-As-Ie1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="57r-Pb-8Td"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lha-Rf-DF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3417" y="1012"/>
+        </scene>
+        <!--License Setting View Controller-->
+        <scene sceneID="MPA-nZ-wcH">
+            <objects>
+                <viewController storyboardIdentifier="LicenseSettingViewController" id="eG2-fB-Ha4" customClass="LicenseSettingViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bKj-1M-Zbf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Z55-Yu-2Yn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2qe-d2-hhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4262" y="1012"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="ZXJ-zo-Vyn">
