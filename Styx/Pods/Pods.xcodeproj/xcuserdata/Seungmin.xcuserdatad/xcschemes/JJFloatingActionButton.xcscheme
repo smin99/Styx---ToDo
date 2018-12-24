@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3CC60D4D22276CEAD6659F7F164EE483"
-               BlueprintName = "SwiftMessages"
+               BlueprintIdentifier = "F437DF4A7F22FDECCDF603E76D5454DF"
+               BlueprintName = "JJFloatingActionButton"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SwiftMessages.framework">
+               BuildableName = "JJFloatingActionButton.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

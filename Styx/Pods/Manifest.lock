@@ -56,6 +56,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
+  - JJFloatingActionButton (1.0.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - EZLoadingActivity
   - Firebase/Core
   - Firebase/Messaging
+  - JJFloatingActionButton
   - SCLAlertView
   - SideMenu
   - SQLite.swift (~> 0.11.5)
@@ -93,6 +95,7 @@ SPEC REPOS:
     - FirebaseMessaging
     - GoogleAppMeasurement
     - GoogleUtilities
+    - JJFloatingActionButton
     - nanopb
     - Protobuf
     - SCLAlertView
@@ -111,6 +114,7 @@ SPEC CHECKSUMS:
   FirebaseMessaging: b412996f6a09337d232bb3a6676ce4d1f353d024
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
+  JJFloatingActionButton: 3d79b8c2c6b7250264db44ef2cb654691941f107
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
@@ -118,6 +122,6 @@ SPEC CHECKSUMS:
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SwiftMessages: 42ed7b6e1f2f1ead9ee667dc61a0ae87e4f49570
 
-PODFILE CHECKSUM: a2a2a62eef16915d16b1ce5ea9bd7112b0cc3313
+PODFILE CHECKSUM: 23f049bda7aafe589e39cff8a7c993b33fdd8ce6
 
 COCOAPODS: 1.5.3
