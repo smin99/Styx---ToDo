@@ -52,13 +52,13 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         deleteButton.isHidden = !isSelected
     }
     
-    // Row 삭제 버튼 클릭 -
+    // Delete Button clicked at row
     @IBAction func deleteButtonClick(_ sender: Any) {
         taskTableViewController?.deleteCheckItem(item: checkItem)
     }
     
     @IBAction func checkButtonClick(_ sender: DLRadioButton) {
-        // 빈 문자열이면 완료 표시를 할 수 없게 설정 한다.
+        // Disable to complete empty list
         if checkItem.isDone == false && checkItem.Title.isEmpty {
             checkButton.isSelected = false
             return
@@ -66,6 +66,8 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         checkButton.isSelected = !checkItem.isDone
         checkItem.isDone = checkButton.isSelected
+        _ = MainViewController.Database.UpsertList(list: checkItem)
+        
         if !checkItem.Title.isEmpty {
             if checkItem.isDone {
                 titleTextField.attributedText = checkItem.Title.strikeThrough()

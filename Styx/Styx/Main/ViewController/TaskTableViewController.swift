@@ -13,7 +13,6 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     var taskIndex: Int = 0
     var taskTitle: String = ""
-    var taskListForLabel: Array<Task>!
     var listForTask: Array<List>!
     var listNotDone: Array<List>!
     var listDone: Array<List>!
@@ -38,11 +37,6 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        taskListForLabel = MainViewController.mainView.labelList[MainViewController.mainView.labelIndex].taskList
-//        listForTask = taskListForLabel[taskIndex].listList
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,25 +66,6 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShowCompletedListTableViewCell", for: indexPath) as! ShowCompletedListTableViewCell
             return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row < listForTask.count {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("source=\(sourceIndexPath), dest=\(destinationIndexPath)")
-        if destinationIndexPath.row < listForTask.count {
-            let movedObject = listForTask[sourceIndexPath.row]
-            listForTask.remove(at: sourceIndexPath.row)
-            listForTask.insert(movedObject, at: destinationIndexPath.row)
-        } else {
-            tableView.reloadData()
         }
     }
     
@@ -127,12 +102,42 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    // Delete Button Clicked - Delete current item
+    // Delete Button Clicked - Delete current item (Both DB and data)
     public func deleteCheckItem(item: List) {
         
         if let index = listForTask.firstIndex(where: { $0.ID == item.ID }) {
             listForTask.remove(at: index)
+            _ = MainViewController.Database.DeleteList(ID: item.ID)
             tableView.reloadData()
         }
     }
+    
+    // Move the row - Both DB and data
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row < listForTask.count {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("source=\(sourceIndexPath), dest=\(destinationIndexPath)")
+        if destinationIndexPath.row < listForTask.count {
+            let movedObject = listForTask[sourceIndexPath.row]
+            listForTask.remove(at: sourceIndexPath.row)
+            listForTask.insert(movedObject, at: destinationIndexPath.row)
+        } else {
+            tableView.reloadData()
+        }
+    }
+    
 }

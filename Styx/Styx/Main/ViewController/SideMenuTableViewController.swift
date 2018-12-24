@@ -41,6 +41,8 @@ class SideMenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         MainViewController.mainView.labelIndex = indexPath.row
+        MainViewController.mainView.tableView.reloadData()
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func editMode(_ sender: Any) {
@@ -56,6 +58,7 @@ class SideMenuTableViewController: UITableViewController {
                 let labelID: Int64 = self.labelList[indexPath.row].ID
                 _ = MainViewController.Database.DeleteLabel(labID: labelID)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                MainViewController.mainView.labelIndex = 0
                 SwiftMessages.hide()
                 tableView.reloadData()
             }

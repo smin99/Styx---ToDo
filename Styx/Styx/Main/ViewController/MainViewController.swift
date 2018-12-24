@@ -16,9 +16,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet var tableView: UITableView!
     
-    
-    var names = [ "AAA", "BBB", "CC" ]
-    
     static var Database: TaskDBProtocol!
     static var mainView: MainViewController!
     
@@ -112,7 +109,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 5", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
                 _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 6", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Shopping List", ColorID: 0))
-                self.tableView.reloadData()
             }
             
             // Map Task Object to the Label Object
@@ -154,7 +150,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if labelList == nil { return 0 }
+        if labelList == nil || labelList.count == 0 { return 0 }
         return labelList[labelIndex].taskList.count
     }
     
@@ -167,7 +163,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell") as! TaskTableViewCell
         cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
-        cell.dueLabel.text = labelList[0].taskList[indexPath.row].Due.toString(dateformat: "MM-DD-YY")
+        cell.dueLabel.text = labelList[labelIndex].taskList[indexPath.row].Due.toString(dateformat: "MM-DD-YY")
         
         let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(numListCompleted / labelList[labelIndex].taskList[indexPath.row].listList.count)
         cell.taskProgressBar.progress = progressFloat
