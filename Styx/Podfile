@@ -15,5 +15,6 @@ target 'Styx' do
   pod 'EZLoadingActivity'
   pod 'SideMenu'
   pod 'DLRadioButton', '~> 1.4'
+  pod 'JJFloatingActionButton'
   
 end

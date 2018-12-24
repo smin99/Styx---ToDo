@@ -10,6 +10,7 @@ import UIKit
 import EZLoadingActivity
 import SwiftMessages
 import SideMenu
+import JJFloatingActionButton
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
