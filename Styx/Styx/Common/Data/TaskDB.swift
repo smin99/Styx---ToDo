@@ -29,6 +29,7 @@ protocol TaskDBProtocol {
     func GetList(listID: Int64) -> List?
     func GetListList() -> Array<List>
     func UpsertList(list: List) -> Int64
+    func UpsertList(list1: List, list2: List) -> Bool
     func DeleteList(ID: Int64) -> Bool
     func DeleteList(taskID: Int64) -> Bool
     
@@ -64,6 +65,7 @@ class TaskDB : TaskDBProtocol {
     private let listTaskID = Expression<Int64>("TaskID")
     private let listTitle = Expression<String>("Title")
     private let listIsDone = Expression<Bool>("isDone")
+    private let listIndex = Expression<Int>("index")
     
     private let imageTable = Table("Image")
     private let imageID = Expression<Int64>("ID")
@@ -116,6 +118,7 @@ class TaskDB : TaskDBProtocol {
                 t.column(listTaskID)
                 t.column(listTitle)
                 t.column(listIsDone)
+                t.column(listIndex)
             })
             
             try db?.run(imageTable.create(ifNotExists: true) { t in
@@ -333,8 +336,7 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 for list in try db.prepare(listTable.filter(listTaskID == taskID)) {
-                    return List(ID: list[self.listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone])
-                             //(ID: list.  [listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone])
+                    return List(ID: list[self.listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone], index: list[listIndex])
                 }
             } catch let error {
                 lastErrorMessage = error.localizedDescription
@@ -348,8 +350,8 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 for list in try db.prepare(listTable) {
-                    let element = List(ID: list[listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone])
-                    listList.append(element)
+                    let item = List(ID: list[listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone], index: list[listIndex])
+                    listList.append(item)
                 }
             } catch let error {
                 lastErrorMessage = error.localizedDescription
@@ -364,15 +366,34 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 if list.ID == 0 {
-                    let insert = listTable.insert(listID <- list.ID, listTaskID <- list.TaskID, listTitle <- list.Title, listIsDone <- list.isDone)
+                    let insert = listTable.insert(listTaskID <- list.TaskID, listTitle <- list.Title, listIsDone <- list.isDone, listIndex <- list.index)
                     retVal = try db.run(insert)
                 } else {
                     let row = listTable.filter(listID == list.ID)
-                    try db.run(row.update(listID <- list.ID, listTaskID <- list.TaskID, listTitle <- list.Title, listIsDone <- list.isDone))
+                    try db.run(row.update(listID <- list.ID, listTaskID <- list.TaskID, listTitle <- list.Title, listIsDone <- list.isDone, listIndex <- list.index))
                     retVal = list.ID
                 }
             } catch let error {
                 retVal = 0
+                lastErrorMessage = error.localizedDescription
+            }
+        }
+        return retVal
+    }
+    
+    func UpsertList(list1: List, list2: List) -> Bool {
+        
+        var retVal: Bool = false
+        if let db = self.db {
+            do {
+                let index = list1.index
+                let row1 = listTable.filter(listID == list1.ID)
+                let row2 = listTable.filter(listID == list2.ID)
+                
+                try db.run(row1.update(listIndex <- list2.index))
+                try db.run(row2.update(listIndex <- index))
+            } catch let error {
+                retVal = false
                 lastErrorMessage = error.localizedDescription
             }
         }

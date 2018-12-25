@@ -15,10 +15,13 @@ class List {
     var Title: String
     var isDone: Bool
     
-    init(ID: Int64 = 0, TaskID: Int64 = 0, Title: String = "", isDone: Bool = false) {
+    var index: Int
+    
+    init(ID: Int64 = 0, TaskID: Int64 = 0, Title: String = "", isDone: Bool = false, index: Int = 0) {
         self.ID = ID
         self.TaskID = TaskID
         self.Title = Title
         self.isDone = isDone
+        self.index = index
     }
 }
