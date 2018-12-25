@@ -16,7 +16,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     var listForTask: Array<List>!
     var listNotDone: Array<List>!
     var listDone: Array<List>!
-    var showComplete: Bool = false
+    var showComplete: Bool!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,6 +27,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         // initialize listDone / listNotDone arrays
         listDone = []
         listNotDone = []
+        showComplete = false
         
         for list in listForTask {
             if list.isDone {
@@ -51,7 +52,11 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
             return listNotDone.count
         }
         else if section == 1 {
-            return listDone.count
+            if showComplete {
+                return listDone.count
+            } else {
+                return 0
+            }
         }
         else {
             return 1
@@ -85,15 +90,26 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShowCompletedListTableViewCell", for: indexPath) as! ShowCompletedListTableViewCell
-            if showComplete {
-                cell.showCompleteButton.titleLabel?.text = "Hide Complete".localized
-            } else {
-                cell.showCompleteButton.titleLabel?.text = "Show Complete".localized
-            }
+            cell.showCompleteButton.titleLabel?.text = isCompleteShow()
             
             return cell
         }
     }
+    
+    @IBAction func showCompleteButtonAction(_ sender: Any) {
+        showComplete = !showComplete
+        tableView.reloadData()
+    }
+    
+    func isCompleteShow() -> String {
+        if showComplete {
+            return "Hide Complete".localized
+        }
+        else {
+            return "Show Complete".localized
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
@@ -105,7 +121,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     // New Check Item add
     func addCheckItem() {
         listNotDone.append(List(Title: "", isDone: false))
-        let appendIndex = IndexPath(row: listForTask.count - 1, section: 0)
+        let appendIndex = IndexPath(row: listNotDone.count - 1, section: 0)
         tableView.insertRows(at: [appendIndex], with: .automatic)
         tableView.scrollToRow(at: appendIndex, at: .none, animated: true)
         
@@ -180,6 +196,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
                     let movedObject = listNotDone[sourceIndexPath.row]
                     listNotDone.remove(at: sourceIndexPath.row)
                     listNotDone.insert(movedObject, at: destinationIndexPath.row)
+                    
                 } else {
                     tableView.reloadData()
                 }

@@ -71,6 +71,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         if !checkItem.Title.isEmpty {
             if checkItem.isDone {
                 titleTextField.attributedText = checkItem.Title.strikeThrough()
+                titleTextField.textColor = UIColor.gray
             } else {
                 titleTextField.attributedText = checkItem.Title.normalAttribute()
                 if let index = titleTextField.defaultTextAttributes.index(forKey: NSAttributedString.Key.strikethroughStyle) {

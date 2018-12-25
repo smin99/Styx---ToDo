@@ -76,6 +76,10 @@
                                                         <constraint firstAttribute="width" constant="30" id="51G-ul-MhQ"/>
                                                         <constraint firstAttribute="height" constant="30" id="ZPg-ir-lvT"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="icon" value="RadioButtonIncomplete"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="iconSelected" value="RadioButtonComplete"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="checkButtonClick:" destination="miN-DR-6Lv" eventType="touchUpInside" id="Wem-dI-LYH"/>
                                                     </connections>
@@ -129,6 +133,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJC-xo-dyg">
                                                     <rect key="frame" x="129" y="7" width="117" height="30"/>
                                                     <state key="normal" title="Show Completed"/>
+                                                    <connections>
+                                                        <action selector="showCompleteButtonAction:" destination="THp-Sp-j8n" eventType="touchUpInside" id="Uqq-mc-Ano"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -584,6 +591,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="RadioButtonComplete" width="18" height="18"/>
+        <image name="RadioButtonIncomplete" width="18" height="18"/>
         <image name="SideMenuIcon" width="18" height="18"/>
     </resources>
 </document>
