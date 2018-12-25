@@ -136,6 +136,9 @@
                                                 <constraint firstItem="wJC-xo-dyg" firstAttribute="centerX" secondItem="3Nb-Er-emX" secondAttribute="centerX" id="m1n-vQ-oIk"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="showCompleteButton" destination="wJC-xo-dyg" id="V8Y-wb-LDe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

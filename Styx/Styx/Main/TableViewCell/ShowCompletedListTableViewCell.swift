@@ -9,6 +9,9 @@
 import UIKit
 
 class ShowCompletedListTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var showCompleteButton: UIButton!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
