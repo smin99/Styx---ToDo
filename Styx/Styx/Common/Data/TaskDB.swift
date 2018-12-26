@@ -349,7 +349,7 @@ class TaskDB : TaskDBProtocol {
         var listList: Array<List> = Array<List>()
         if let db = self.db {
             do {
-                for list in try db.prepare(listTable) {
+                for list in try db.prepare(listTable.order(listIndex.desc)) {
                     let item = List(ID: list[listID], TaskID: list[listTaskID], Title: list[listTitle], isDone: list[listIsDone], index: list[listIndex])
                     listList.append(item)
                 }

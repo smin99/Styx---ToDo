@@ -68,10 +68,11 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-            cell.checkButton.setImage(UIImage(named: "RadioButtonIncomplete"), for: .normal)
             cell.titleTextField.text = listNotDone[indexPath.row].Title
             cell.taskTableViewController = self
             cell.checkItem = listNotDone[indexPath.row]
+            cell.checkIndex = indexPath.row
+            cell.displayTitle()
             
             return cell
         }
@@ -79,10 +80,11 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         else if indexPath.section == 1 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-            cell.checkButton.setImage(UIImage(named: "RadioButtonComplete"), for: .normal)
             cell.titleTextField.text = listDone[indexPath.row].Title
             cell.taskTableViewController = self
             cell.checkItem = listDone[indexPath.row]
+            cell.checkIndex = indexPath.row
+            cell.displayTitle()
             
             return cell
         }

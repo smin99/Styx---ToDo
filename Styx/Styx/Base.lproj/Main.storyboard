@@ -76,6 +76,10 @@
                                                         <constraint firstAttribute="width" constant="30" id="51G-ul-MhQ"/>
                                                         <constraint firstAttribute="height" constant="30" id="ZPg-ir-lvT"/>
                                                     </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="icon" value="RadioButtonIncomplete"/>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="iconSelected" value="RadioButtonComplete"/>

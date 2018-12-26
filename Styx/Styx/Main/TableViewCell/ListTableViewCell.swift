@@ -13,6 +13,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var taskTableViewController: TaskTableViewController?
     var checkItem: List!
+    var checkIndex: Int!
 
     @IBOutlet weak var checkButton: DLRadioButton!
     @IBOutlet weak var titleTextField: UITextField!
@@ -29,7 +30,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.setSelected(selected, animated: animated)
     }
     
-    func displayTitle() {
+    func displayTitle() {        
         if let index = titleTextField.defaultTextAttributes.index(forKey: NSAttributedString.Key.strikethroughStyle) {
             titleTextField.defaultTextAttributes.remove(at: index)
         }
@@ -38,8 +39,10 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
         if !checkItem.Title.isEmpty {
             if checkItem.isDone {
                 titleTextField.attributedText = checkItem.Title.strikeThrough()
+                titleTextField.textColor = UIColor.gray
             } else {
                 titleTextField.attributedText = checkItem.Title.normalAttribute()
+                titleTextField.textColor = UIColor.black
             }
         } else {
             if checkItem.isDone {
@@ -72,12 +75,18 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
             if checkItem.isDone {
                 titleTextField.attributedText = checkItem.Title.strikeThrough()
                 titleTextField.textColor = UIColor.gray
+                taskTableViewController?.listNotDone.remove(at: checkIndex)
+                taskTableViewController?.listDone.append(checkItem)
             } else {
                 titleTextField.attributedText = checkItem.Title.normalAttribute()
+                titleTextField.textColor = UIColor.black
                 if let index = titleTextField.defaultTextAttributes.index(forKey: NSAttributedString.Key.strikethroughStyle) {
                     titleTextField.defaultTextAttributes.remove(at: index)
                 }
+                taskTableViewController?.listDone.remove(at: checkIndex)
+                taskTableViewController?.listNotDone.append(checkItem)
             }
+            taskTableViewController?.tableView.reloadData()
         } else {
             if checkItem.isDone {
                 titleTextField.attributedText = "".strikeThrough()
