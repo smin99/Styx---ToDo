@@ -58,6 +58,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     // Delete Button clicked at row
     @IBAction func deleteButtonClick(_ sender: Any) {
         taskTableViewController?.deleteCheckItem(item: checkItem)
+        _ = MainViewController.Database.DeleteList(ID: checkItem.ID)
     }
     
     @IBAction func checkButtonClick(_ sender: DLRadioButton) {
@@ -118,6 +119,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         taskTableViewController?.nextCheckItem(item: checkItem)
+        _ = MainViewController.Database.UpsertList(list: checkItem)
         return true
     }
 

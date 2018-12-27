@@ -33,6 +33,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var editButton: UIBarButtonItem!
     var settingButton: UIBarButtonItem!
     
+    // add button
+    var actionButton: JJFloatingActionButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,9 +68,30 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // Add two bar buttons at right side of navigation bar
-        editButton = UIBarButtonItem(title: "Edit".localized, style: .plain, target: self, action: #selector(tableEditing(barButton:)))
+        editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(tableEditing))
         settingButton = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .plain, target: self, action: #selector(settingView))
         self.navigationItem.rightBarButtonItems = [settingButton, editButton]
+        
+        // JJFloatingActionButton for Adding Task
+        actionButton = JJFloatingActionButton()
+        
+        actionButton.addItem(title: "item 1", image: UIImage(named: "Add")?.withRenderingMode(.alwaysTemplate)) { item in
+            // do something
+        }
+        
+        actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
+            // do something
+        }
+        
+        actionButton.addItem(title: "item 3", image: nil) { item in
+            // do something
+        }
+        
+        view.addSubview(actionButton)
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+
         
         
         tableView.delegate = self
@@ -182,19 +206,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             viewController.taskTitle = taskList[indexPath.row].Title
             viewController.taskIndex = indexPath.row
             viewController.listForTask = taskList[indexPath.row].listList
+            viewController.taskID = taskList[indexPath.row].ID
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
     // Edit Bar Button: Change into Editing mode
-    @objc public func tableEditing(barButton: UIBarButtonItem) {
-        if self.tableView.isEditing {
-            self.tableView.isEditing = false
-            barButton.title = "Edit".localized
-        } else {
-            self.tableView.isEditing = true
-            barButton.title = "Done".localized
-        }
+    @objc public func tableEditing(_ sender: Any) {
+        self.tableView.isEditing = !self.tableView.isEditing
     }
     
     // Call Setting View Controller
@@ -209,7 +228,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             present(left, animated: true, completion: nil)
         }
     }
-    
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

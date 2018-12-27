@@ -14,9 +14,13 @@ class SideMenuTableViewController: UITableViewController {
     
     var labelList: Array<Label>!
     
+    var editButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(editMode))
+        self.navigationItem.rightBarButtonItem = editButton
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -13,6 +13,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     var taskIndex: Int = 0
     var taskTitle: String = ""
+    var taskID: Int64 = 0
     var listForTask: Array<List>!
     var listNotDone: Array<List>!
     var listDone: Array<List>!
@@ -37,10 +38,10 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
         
-        self.tableView.isEditing = true
-        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.tableView.isEditing = true
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,7 +50,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return listNotDone.count
+            return listNotDone.count < 1 ? 1 : listNotDone.count + 1
         }
         else if section == 1 {
             if showComplete {
@@ -68,11 +69,21 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-            cell.titleTextField.text = listNotDone[indexPath.row].Title
-            cell.taskTableViewController = self
-            cell.checkItem = listNotDone[indexPath.row]
-            cell.checkIndex = indexPath.row
-            cell.displayTitle()
+
+            if indexPath.row < listNotDone.count {
+                cell.titleTextField.text = listNotDone[indexPath.row].Title
+                cell.taskTableViewController = self
+                cell.checkItem = listNotDone[indexPath.row]
+                cell.checkIndex = indexPath.row
+                cell.displayTitle()
+            } else {
+                cell.titleTextField.text = ""
+                cell.titleTextField.placeholder = "Type new list".localized
+                cell.taskTableViewController = self
+                cell.checkItem = List(ID: 0, TaskID: taskID, Title: "", isDone: false, index: indexPath.row)
+                cell.checkIndex = indexPath.row
+                cell.displayTitle()
+            }
             
             return cell
         }
@@ -93,7 +104,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShowCompletedListTableViewCell", for: indexPath) as! ShowCompletedListTableViewCell
             cell.showCompleteButton.titleLabel?.text = isCompleteShow()
-            
+
             return cell
         }
     }
@@ -113,17 +124,17 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
-            showComplete = true
-            tableView.reloadData()
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+////        if indexPath.section == 2 {
+////            showComplete = true
+////            tableView.reloadData()
+////        }
+//    }
     
     // New Check Item add
     func addCheckItem() {
         listNotDone.append(List(Title: "", isDone: false))
-        let appendIndex = IndexPath(row: listNotDone.count - 1, section: 0)
+        let appendIndex = IndexPath(row: listNotDone.count + 1, section: 0)
         tableView.insertRows(at: [appendIndex], with: .automatic)
         tableView.scrollToRow(at: appendIndex, at: .none, animated: true)
         
@@ -138,9 +149,10 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     // Enter key for new item input - move to next item, if last add new
     func nextCheckItem(item: List) {
         if let index = listNotDone.firstIndex(where: { $0.ID == item.ID }) {
-            if index == listNotDone.count - 1 {   // 마지막 아이템이면 추가
+            if index == listNotDone.count {   // if last item, add new row
                 addCheckItem()
-            } else {                            // 다음 아이템으로 이동
+                tableView.reloadData()
+            } else {                            // move to next item
                 let indexPath = IndexPath(row: index + 1, section: 0)
                 tableView.scrollToRow(at: indexPath, at: .none, animated: true)
                 
@@ -178,12 +190,30 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row < listNotDone.count && indexPath.section == 0 {
-            return true
-        } else if indexPath.row < listDone.count && indexPath.section == 1 {
+        if indexPath.section == 2  {
+            return false
+        } else if indexPath.row < listNotDone.count {
             return true
         } else {
             return false
+        }
+    }
+    
+    func increaseIndexByOne(index1: Int, index2: Int) {
+        // when the row moves up, increases the index of the range.
+        // when the row moves down, decreases the index of the range.
+        // exclude the row that is moving
+        let smallerIndex = index1 < index2 ? index1 + 1 : index2
+        let greaterIndex = index1 < index2 ? index2 : index1 - 1
+        
+        var listRange: Array<List>! = []
+        for i in smallerIndex...greaterIndex {
+            listRange.append(listNotDone[i])
+        }
+        
+        for listItem in listRange {
+            listItem.index = index1 < index2 ? listItem.index - 1 : listItem.index + 1
+            _ = MainViewController.Database.UpsertList(list: listItem)
         }
     }
     
@@ -194,8 +224,17 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
             
             print("source=\(sourceIndexPath), dest=\(destinationIndexPath)")
             if sourceIndexPath.section == 0 && destinationIndexPath.section == 0 {
-                if destinationIndexPath.row < listNotDone.count {
+                if sourceIndexPath.row == destinationIndexPath.row {
+                    //return
+                }
+                else if destinationIndexPath.row < listNotDone.count {
                     let movedObject = listNotDone[sourceIndexPath.row]
+                    
+                    // Interchange the index and update DB
+                    movedObject.index = listNotDone[destinationIndexPath.row].index
+                    _ = MainViewController.Database.UpsertList(list: movedObject)
+                    increaseIndexByOne(index1: sourceIndexPath.row, index2: destinationIndexPath.row)
+                
                     listNotDone.remove(at: sourceIndexPath.row)
                     listNotDone.insert(movedObject, at: destinationIndexPath.row)
                     
@@ -203,16 +242,6 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
                     tableView.reloadData()
                 }
             }
-            else if sourceIndexPath.section == 1 && destinationIndexPath.section == 1 {
-                if destinationIndexPath.row < listDone.count {
-                    let movedObject = listDone[sourceIndexPath.row]
-                    listDone.remove(at: sourceIndexPath.row)
-                    listDone.insert(movedObject, at: destinationIndexPath.row)
-                } else {
-                    tableView.reloadData()
-                }
-            }
-            
         }
     }
     

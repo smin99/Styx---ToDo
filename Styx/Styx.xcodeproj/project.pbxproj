@@ -12,6 +12,7 @@
 		5608DAC221D164CA00219D32 /* LockSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */; };
 		5608DAC421D164DA00219D32 /* NotificationSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */; };
 		5608DAC621D1650000219D32 /* TrashSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */; };
+		5608DAC821D55BBE00219D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5608DAC721D55BBD00219D32 /* Assets.xcassets */; };
 		560A5CDA21CD625B0092B0C5 /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */; };
 		560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */; };
 		560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */; };
@@ -29,7 +30,6 @@
 		561C543F21CB440E00A880BE /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */; };
 		56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C7621C17D5700D31172 /* AppDelegate.swift */; };
 		56435C7C21C17D5700D31172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7A21C17D5700D31172 /* Main.storyboard */; };
-		56435C7E21C17D5900D31172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7D21C17D5900D31172 /* Assets.xcassets */; };
 		56435C8121C17D5900D31172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56435C7F21C17D5900D31172 /* LaunchScreen.storyboard */; };
 		56435C8E21C1818F00D31172 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56435C8D21C1818F00D31172 /* GoogleService-Info.plist */; };
 		56435C9121C1839900D31172 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56435C9321C1839900D31172 /* Localizable.strings */; };
@@ -52,6 +52,7 @@
 		5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingTableViewCell.swift; sourceTree = "<group>"; };
+		5608DAC721D55BBD00219D32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
 		560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		56435C7321C17D5700D31172 /* Styx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Styx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56435C7621C17D5700D31172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56435C7B21C17D5700D31172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		56435C7D21C17D5900D31172 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56435C8021C17D5900D31172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56435C8221C17D5900D31172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56435C8D21C1818F00D31172 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				56435C8B21C17FB700D31172 /* Etc */,
 				56435C7621C17D5700D31172 /* AppDelegate.swift */,
 				56435C7A21C17D5700D31172 /* Main.storyboard */,
-				56435C7D21C17D5900D31172 /* Assets.xcassets */,
+				5608DAC721D55BBD00219D32 /* Assets.xcassets */,
 				56435C7F21C17D5900D31172 /* LaunchScreen.storyboard */,
 				56435C8D21C1818F00D31172 /* GoogleService-Info.plist */,
 				56435C8221C17D5900D31172 /* Info.plist */,
@@ -350,8 +350,8 @@
 				56435C9121C1839900D31172 /* Localizable.strings in Resources */,
 				561C543021C8A61A00A880BE /* ConfirmDialogView.xib in Resources */,
 				56435C8121C17D5900D31172 /* LaunchScreen.storyboard in Resources */,
-				56435C7E21C17D5900D31172 /* Assets.xcassets in Resources */,
 				56435C8E21C1818F00D31172 /* GoogleService-Info.plist in Resources */,
+				5608DAC821D55BBE00219D32 /* Assets.xcassets in Resources */,
 				56435C7C21C17D5700D31172 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -616,7 +616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
