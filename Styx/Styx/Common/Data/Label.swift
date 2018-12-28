@@ -15,7 +15,6 @@ class Label {
     var ColorID: Int    // 0 if no color
     
     var taskList: Array<Task>!
-    var isOpened: Bool = false
     
     init(ID: Int64 = 0, Title: String = "", ColorID: Int = 0) {
         self.ID = ID
@@ -23,6 +22,5 @@ class Label {
         self.ColorID = ColorID
         
         taskList = Array<Task>()
-        isOpened = false
     }
 }

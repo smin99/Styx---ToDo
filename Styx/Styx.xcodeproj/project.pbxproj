@@ -13,7 +13,6 @@
 		5608DAC421D164DA00219D32 /* NotificationSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */; };
 		5608DAC621D1650000219D32 /* TrashSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */; };
 		5608DAC821D55BBE00219D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5608DAC721D55BBD00219D32 /* Assets.xcassets */; };
-		560A5CDA21CD625B0092B0C5 /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */; };
 		560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */; };
 		560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */; };
 		561C541F21C4065A00A880BE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C541E21C4065A00A880BE /* Label.swift */; };
@@ -36,9 +35,13 @@
 		56435CA021C2036000D31172 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C9F21C2036000D31172 /* MainViewController.swift */; };
 		56435CA221C2DC5F00D31172 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA121C2DC5F00D31172 /* Task.swift */; };
 		56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA521C306EF00D31172 /* TaskTableViewCell.swift */; };
-		56435CAA21C308C200D31172 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CA921C308C200D31172 /* AddTableViewCell.swift */; };
 		56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */; };
 		56435CAE21C3276000D31172 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435CAD21C3275F00D31172 /* Date.swift */; };
+		5665355021D5C2B800D9FF92 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665354F21D5C2B800D9FF92 /* ColorExtension.swift */; };
+		5665355421D5C6DC00D9FF92 /* AddLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665355321D5C6DC00D9FF92 /* AddLabelTableViewCell.swift */; };
+		5665355621D6B16600D9FF92 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665355521D6B16600D9FF92 /* AddTaskViewController.swift */; };
+		5665355821D6B17700D9FF92 /* AddLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665355721D6B17700D9FF92 /* AddLabelViewController.swift */; };
+		5665355A21D6B2FA00D9FF92 /* AddTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */; };
 		5678526121D096F300BD6192 /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526021D096F300BD6192 /* NotificationSettingViewController.swift */; };
 		5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526221D0970900BD6192 /* LockSettingViewController.swift */; };
 		5678526521D0971700BD6192 /* TrashSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526421D0971700BD6192 /* TrashSettingViewController.swift */; };
@@ -53,7 +56,6 @@
 		5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC721D55BBD00219D32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
 		560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		561C541E21C4065A00A880BE /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -87,9 +89,13 @@
 		56435C9F21C2036000D31172 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		56435CA121C2DC5F00D31172 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		56435CA521C306EF00D31172 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		56435CA921C308C200D31172 /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
 		56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		56435CAD21C3275F00D31172 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		5665354F21D5C2B800D9FF92 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		5665355321D5C6DC00D9FF92 /* AddLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLabelTableViewCell.swift; sourceTree = "<group>"; };
+		5665355521D6B16600D9FF92 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		5665355721D6B17700D9FF92 /* AddLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLabelViewController.swift; sourceTree = "<group>"; };
+		5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewCell.swift; sourceTree = "<group>"; };
 		5678526021D096F300BD6192 /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
 		5678526221D0970900BD6192 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
 		5678526421D0971700BD6192 /* TrashSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +123,8 @@
 				56435C9F21C2036000D31172 /* MainViewController.swift */,
 				56435CAB21C31AAD00D31172 /* TaskTableViewController.swift */,
 				561C543E21CB440E00A880BE /* SideMenuTableViewController.swift */,
-				560A5CD921CD625B0092B0C5 /* AddTaskTableViewController.swift */,
+				5665355521D6B16600D9FF92 /* AddTaskViewController.swift */,
+				5665355721D6B17700D9FF92 /* AddLabelViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 			children = (
 				561C542B21C8A4BB00A880BE /* StringExtension.swift */,
 				560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */,
+				5665354F21D5C2B800D9FF92 /* ColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -231,10 +239,11 @@
 			isa = PBXGroup;
 			children = (
 				56435CA521C306EF00D31172 /* TaskTableViewCell.swift */,
-				56435CA921C308C200D31172 /* AddTableViewCell.swift */,
 				561C542621C6F63B00A880BE /* LabelTableViewCell.swift */,
 				561C543621CAD6A800A880BE /* ListTableViewCell.swift */,
 				561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */,
+				5665355321D5C6DC00D9FF92 /* AddLabelTableViewCell.swift */,
+				5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -432,32 +441,35 @@
 				561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */,
 				56435CA021C2036000D31172 /* MainViewController.swift in Sources */,
 				56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */,
-				560A5CDA21CD625B0092B0C5 /* AddTaskTableViewController.swift in Sources */,
 				56435CAE21C3276000D31172 /* Date.swift in Sources */,
 				561C542721C6F63B00A880BE /* LabelTableViewCell.swift in Sources */,
 				5608DAC021D154DC00219D32 /* GlobalConsts.swift in Sources */,
 				561C543721CAD6A800A880BE /* ListTableViewCell.swift in Sources */,
-				56435CAA21C308C200D31172 /* AddTableViewCell.swift in Sources */,
 				56435CA221C2DC5F00D31172 /* Task.swift in Sources */,
 				56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */,
 				5608DAC421D164DA00219D32 /* NotificationSettingTableViewCell.swift in Sources */,
 				5678526121D096F300BD6192 /* NotificationSettingViewController.swift in Sources */,
+				5665355421D5C6DC00D9FF92 /* AddLabelTableViewCell.swift in Sources */,
 				561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */,
 				5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */,
 				5608DAC221D164CA00219D32 /* LockSettingTableViewCell.swift in Sources */,
+				5665355621D6B16600D9FF92 /* AddTaskViewController.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
 				561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */,
 				561C542321C4161500A880BE /* TaskDB.swift in Sources */,
 				561C541F21C4065A00A880BE /* Label.swift in Sources */,
 				561C542521C5A81700A880BE /* FileUtil.swift in Sources */,
 				561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */,
+				5665355A21D6B2FA00D9FF92 /* AddTaskTableViewCell.swift in Sources */,
 				5678526521D0971700BD6192 /* TrashSettingViewController.swift in Sources */,
+				5665355021D5C2B800D9FF92 /* ColorExtension.swift in Sources */,
 				560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */,
 				5608DAC621D1650000219D32 /* TrashSettingTableViewCell.swift in Sources */,
 				561C542121C4067E00A880BE /* Image.swift in Sources */,
 				568F803721C36B5F00D8F652 /* List.swift in Sources */,
 				560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */,
 				561C543F21CB440E00A880BE /* SideMenuTableViewController.swift in Sources */,
+				5665355821D6B17700D9FF92 /* AddLabelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
