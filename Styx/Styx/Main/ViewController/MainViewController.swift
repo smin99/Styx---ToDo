@@ -75,24 +75,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // JJFloatingActionButton for Adding Task
         actionButton = JJFloatingActionButton()
         
-        actionButton.addItem(title: "item 1", image: UIImage(named: "Add")?.withRenderingMode(.alwaysTemplate)) { item in
-            // do something
-        }
-        
-        actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
-            // do something
-        }
-        
-        actionButton.addItem(title: "item 3", image: nil) { item in
-            // do something
-        }
-        
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
-
         
+        actionButton.addItem(title: "", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AddTaskViewController") as? AddTaskViewController {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+        // Designs
+        tableView.separatorStyle = .none
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -159,6 +153,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.sync {
                 EZLoadingActivity.hide()
                 self.isInitData = true
+                self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: self.labelList[self.labelIndex].ColorID)
+                self.navigationController?.navigationBar.tintColor = UIColor.white
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
                 self.tableView.reloadData()
             }
         }
