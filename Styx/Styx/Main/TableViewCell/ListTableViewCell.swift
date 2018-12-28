@@ -120,6 +120,7 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         taskTableViewController?.nextCheckItem(item: checkItem)
         _ = MainViewController.Database.UpsertList(list: checkItem)
+        taskTableViewController?.addCheckItem()
         return true
     }
 

@@ -41,6 +41,9 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
+        // tableview design
+        tableView.separatorStyle = .singleLine
+        
         self.tableView.isEditing = true
     }
 
@@ -72,6 +75,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
 
             if indexPath.row < listNotDone.count {
                 cell.titleTextField.text = listNotDone[indexPath.row].Title
+                cell.titleTextField.borderStyle = .none
                 cell.taskTableViewController = self
                 cell.checkItem = listNotDone[indexPath.row]
                 cell.checkIndex = indexPath.row
@@ -79,6 +83,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
             } else {
                 cell.titleTextField.text = ""
                 cell.titleTextField.placeholder = "Type new list".localized
+                cell.titleTextField.borderStyle = .none
                 cell.taskTableViewController = self
                 cell.checkItem = List(ID: 0, TaskID: taskID, Title: "", isDone: false, index: indexPath.row)
                 cell.checkIndex = indexPath.row

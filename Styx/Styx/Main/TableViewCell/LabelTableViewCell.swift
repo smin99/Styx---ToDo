@@ -26,4 +26,8 @@ class LabelTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setColor() {
+        openImageView.tintColor = UIColorForLabel.UIColorFromRGB(colorid: labelItem.ColorID)
+        print(openImageView.tintColor)
+    }
 }

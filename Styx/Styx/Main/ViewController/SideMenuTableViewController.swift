@@ -21,6 +21,8 @@ class SideMenuTableViewController: UITableViewController {
         
         editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(editMode))
         self.navigationItem.rightBarButtonItem = editButton
+        
+        tableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +41,10 @@ class SideMenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelTableViewCell", for: indexPath) as! LabelTableViewCell
         cell.titleLabel.text = labelList[indexPath.row].Title
-        cell.openImageView.image = UIImage(named: labelList[indexPath.row].isOpened ? "LabelOpenIcon" : "LabelCloseIcon")
+        cell.openImageView.image = UIImage(named: "LabelIcon")
+        cell.labelItem = labelList[indexPath.row]
+        cell.openImageView.tintColor = UIColorForLabel.UIColorFromRGB(colorid: labelList[indexPath.row].ColorID)
+//        cell.setColor()
         return cell
     }
     
