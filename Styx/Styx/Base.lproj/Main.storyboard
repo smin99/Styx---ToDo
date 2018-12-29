@@ -71,6 +71,10 @@
                                                 <constraint firstItem="4sb-2Q-D2F" firstAttribute="leading" secondItem="rkw-j9-rlq" secondAttribute="leading" constant="8" id="qLx-hX-Y69"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notifLabel" destination="4sb-2Q-D2F" id="9bs-0f-b84"/>
+                                            <outlet property="notifSwitch" destination="6S4-Dr-mGz" id="Njp-OR-McO"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddTaskDateTableViewCell" rowHeight="160" id="vgX-Aa-iuW" customClass="AddTaskDateTableViewCell" customModule="Styx" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="160"/>
@@ -88,6 +92,9 @@
                                                 </datePicker>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notifDatePicker" destination="CRP-z5-aBT" id="2gN-Yy-CSE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

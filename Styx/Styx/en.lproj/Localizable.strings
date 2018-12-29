@@ -37,6 +37,7 @@
 // Add Task View Controller
 "Type Title"="Type Title";
 "Type Details"="Type Details";
+"Remind me at "="Remind me at ";
 
 // Setting View strings
 "Setting"="Setting";

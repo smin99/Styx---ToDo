@@ -10,6 +10,8 @@ import UIKit
 
 class AddTaskDateTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var notifDatePicker: UIDatePicker!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

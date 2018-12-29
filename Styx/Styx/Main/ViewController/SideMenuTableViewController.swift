@@ -21,9 +21,11 @@ class SideMenuTableViewController: UITableViewController {
         super.viewDidLoad()
         
         editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(editMode))
+        editButton.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem = editButton
         
         addButton = UIBarButtonItem(image: UIImage(named: "AddIcon"), style: .plain, target: self, action: #selector(addLabel))
+        addButton.tintColor = UIColor.black
         self.navigationItem.leftBarButtonItem = addButton
         
         tableView.separatorStyle = .none
