@@ -12,7 +12,6 @@
 		5608DAC221D164CA00219D32 /* LockSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */; };
 		5608DAC421D164DA00219D32 /* NotificationSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */; };
 		5608DAC621D1650000219D32 /* TrashSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */; };
-		5608DAC821D55BBE00219D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5608DAC721D55BBD00219D32 /* Assets.xcassets */; };
 		560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */; };
 		560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */; };
 		561C541F21C4065A00A880BE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C541E21C4065A00A880BE /* Label.swift */; };
@@ -46,6 +45,9 @@
 		5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526221D0970900BD6192 /* LockSettingViewController.swift */; };
 		5678526521D0971700BD6192 /* TrashSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526421D0971700BD6192 /* TrashSettingViewController.swift */; };
 		5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526621D0973700BD6192 /* LicenseSettingViewController.swift */; };
+		568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */; };
+		568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */; };
+		568EC45721D6C0FD004C8E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568EC45621D6C0FC004C8E33 /* Assets.xcassets */; };
 		568F803721C36B5F00D8F652 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F803621C36B5F00D8F652 /* List.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +57,6 @@
 		5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingTableViewCell.swift; sourceTree = "<group>"; };
-		5608DAC721D55BBD00219D32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		561C541E21C4065A00A880BE /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -100,6 +101,9 @@
 		5678526221D0970900BD6192 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
 		5678526421D0971700BD6192 /* TrashSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingViewController.swift; sourceTree = "<group>"; };
 		5678526621D0973700BD6192 /* LicenseSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseSettingViewController.swift; sourceTree = "<group>"; };
+		568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotifTableViewCell.swift; sourceTree = "<group>"; };
+		568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDateTableViewCell.swift; sourceTree = "<group>"; };
+		568EC45621D6C0FC004C8E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		568F803621C36B5F00D8F652 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		A07E8C5BEDFD7638C623837F /* Pods-Styx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.release.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.release.xcconfig"; sourceTree = "<group>"; };
 		BB9F35C68141377B8E513CDB /* Pods-Styx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,7 +179,7 @@
 				56435C8B21C17FB700D31172 /* Etc */,
 				56435C7621C17D5700D31172 /* AppDelegate.swift */,
 				56435C7A21C17D5700D31172 /* Main.storyboard */,
-				5608DAC721D55BBD00219D32 /* Assets.xcassets */,
+				568EC45621D6C0FC004C8E33 /* Assets.xcassets */,
 				56435C7F21C17D5900D31172 /* LaunchScreen.storyboard */,
 				56435C8D21C1818F00D31172 /* GoogleService-Info.plist */,
 				56435C8221C17D5900D31172 /* Info.plist */,
@@ -244,6 +248,8 @@
 				561C543A21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift */,
 				5665355321D5C6DC00D9FF92 /* AddLabelTableViewCell.swift */,
 				5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */,
+				568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */,
+				568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -360,7 +366,7 @@
 				561C543021C8A61A00A880BE /* ConfirmDialogView.xib in Resources */,
 				56435C8121C17D5900D31172 /* LaunchScreen.storyboard in Resources */,
 				56435C8E21C1818F00D31172 /* GoogleService-Info.plist in Resources */,
-				5608DAC821D55BBE00219D32 /* Assets.xcassets in Resources */,
+				568EC45721D6C0FD004C8E33 /* Assets.xcassets in Resources */,
 				56435C7C21C17D5700D31172 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */,
+				568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */,
 				561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */,
 				56435CA021C2036000D31172 /* MainViewController.swift in Sources */,
 				56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */,
@@ -455,6 +462,7 @@
 				5608DAC221D164CA00219D32 /* LockSettingTableViewCell.swift in Sources */,
 				5665355621D6B16600D9FF92 /* AddTaskViewController.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
+				568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */,
 				561C542C21C8A4BB00A880BE /* StringExtension.swift in Sources */,
 				561C542321C4161500A880BE /* TaskDB.swift in Sources */,
 				561C541F21C4065A00A880BE /* Label.swift in Sources */,

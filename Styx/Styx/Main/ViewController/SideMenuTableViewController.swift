@@ -15,6 +15,7 @@ class SideMenuTableViewController: UITableViewController {
     var labelList: Array<Label>!
     
     var editButton: UIBarButtonItem!
+    var addButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,12 @@ class SideMenuTableViewController: UITableViewController {
         editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(editMode))
         self.navigationItem.rightBarButtonItem = editButton
         
+        addButton = UIBarButtonItem(image: UIImage(named: "AddIcon"), style: .plain, target: self, action: #selector(addLabel))
+        self.navigationItem.leftBarButtonItem = addButton
+        
         tableView.separatorStyle = .none
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +62,11 @@ class SideMenuTableViewController: UITableViewController {
     
     @IBAction func editMode(_ sender: Any) {
         self.tableView.isEditing = !self.tableView.isEditing
+    }
+    
+    @IBAction func addLabel(_ sender: Any) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AddLabelViewController") as! AddLabelViewController
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

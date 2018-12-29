@@ -14,25 +14,30 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var isNotif: Bool!
     
-    let placeholders: Array<String> = ["Type Title".localized, "Write Down the Details".localized]
+    let placeholders: Array<String> = ["Type Title".localized, "Type Details".localized]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.separatorStyle = .none
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskTableViewCell") as! AddTaskTableViewCell
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskTableViewCell") as! AddTaskTableViewCell
             cell.textField.borderStyle = .none
             cell.textField.placeholder = placeholders[indexPath.row]
             return cell
         } else if indexPath.section == 1 {
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskNotifTableViewCell") as! TaskNotifTableViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDateTableViewCell") as! AddTaskDateTableViewCell
+            return cell
         }
-        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

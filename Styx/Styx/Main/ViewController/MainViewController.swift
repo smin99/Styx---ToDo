@@ -119,14 +119,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Homework", ColorID: 0))
                 let id1 = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Project", ColorID: 0))
-                let id2 = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 3", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1, isDone: false, isDeleted: false))
+                let id2 = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: id1, Title: "Chapter 3", Due: Date(), Detail: "", Notif: 0, isNotif: false, isDone: false, isDeleted: false))
                 _ = MainViewController.Database.UpsertList(list: List(ID: 0, TaskID: id2, Title: "34", isDone: false))
                 _ = MainViewController.Database.UpsertList(list: List(ID: 0, TaskID: id2, Title: "35", isDone: true))
                 _ = MainViewController.Database.UpsertList(list: List(ID: 0, TaskID: id2, Title: "36", isDone: false))
                 _ = MainViewController.Database.UpsertList(list: List(ID: 0, TaskID: id2, Title: "37", isDone: false))
-                _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 5", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
-                _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, Title: "Chapter 6", Due: Date(), Detail: "", Notif: 0, isNotif: false, LabelID: id1))
+                _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: id1, Title: "Chapter 5", Due: Date(), Detail: "", Notif: 0, isNotif: false))
+                _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: id1, Title: "Chapter 6", Due: Date(), Detail: "", Notif: 0, isNotif: false))
                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Shopping List", ColorID: 0))
+                self.tableView.reloadData()
             }
             
             // Map Task Object to the Label Object

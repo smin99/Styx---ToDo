@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--AddTaskViewController-->
+        <!--Create Task-->
         <scene sceneID="MCo-Y1-bX7">
             <objects>
-                <viewController title="AddTaskViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XEB-Q5-ZTd" customClass="AddTaskViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTaskViewController" title="Create Task" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XEB-Q5-ZTd" customClass="AddTaskViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DiZ-oH-OZH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,8 +30,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-NO-ojc">
-                                                    <rect key="frame" x="8" y="7" width="359" height="30"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-NO-ojc">
+                                                    <rect key="frame" x="8" y="6" width="359" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -46,6 +46,48 @@
                                         <connections>
                                             <outlet property="textField" destination="5Zh-NO-ojc" id="68h-VR-Uws"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskNotifTableViewCell" id="Nco-JY-krR" customClass="TaskNotifTableViewCell" customModule="Styx" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nco-JY-krR" id="rkw-j9-rlq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sb-2Q-D2F">
+                                                    <rect key="frame" x="8" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6S4-Dr-mGz">
+                                                    <rect key="frame" x="318" y="6.5" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6S4-Dr-mGz" firstAttribute="centerY" secondItem="rkw-j9-rlq" secondAttribute="centerY" id="G8o-d0-g5T"/>
+                                                <constraint firstItem="4sb-2Q-D2F" firstAttribute="centerY" secondItem="rkw-j9-rlq" secondAttribute="centerY" id="hcM-bA-sHK"/>
+                                                <constraint firstAttribute="trailing" secondItem="6S4-Dr-mGz" secondAttribute="trailing" constant="8" id="iAw-mv-5pH"/>
+                                                <constraint firstItem="4sb-2Q-D2F" firstAttribute="leading" secondItem="rkw-j9-rlq" secondAttribute="leading" constant="8" id="qLx-hX-Y69"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddTaskDateTableViewCell" rowHeight="160" id="vgX-Aa-iuW" customClass="AddTaskDateTableViewCell" customModule="Styx" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="116" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vgX-Aa-iuW" id="Rgt-ZP-IS7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="CRP-z5-aBT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="567721538.96873796">
+                                                        <!--2018-12-28 20:25:38 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -334,7 +376,7 @@
             </objects>
             <point key="canvasLocation" x="4261.6000000000004" y="246.9265367316342"/>
         </scene>
-        <!--Label-->
+        <!--Labels-->
         <scene sceneID="Glu-4Z-unb">
             <objects>
                 <tableViewController storyboardIdentifier="SideMenuTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YdQ-Ht-FbD" customClass="SideMenuTableViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
@@ -383,7 +425,12 @@
                             <outlet property="delegate" destination="YdQ-Ht-FbD" id="vWS-Ir-AqI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Label" id="1xo-O1-XU5">
+                    <navigationItem key="navigationItem" title="Labels" id="1xo-O1-XU5">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="dUn-hv-0TB">
+                            <connections>
+                                <action selector="addLabel:" destination="YdQ-Ht-FbD" id="lEo-DP-yC6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="IgT-ne-MGV">
                             <connections>
                                 <action selector="editMode:" destination="YdQ-Ht-FbD" id="Oi8-4Z-FBZ"/>
@@ -398,10 +445,10 @@
             </objects>
             <point key="canvasLocation" x="2508" y="1011.544227886057"/>
         </scene>
-        <!--AddLabelViewController-->
+        <!--Create Label-->
         <scene sceneID="LtO-r3-P8H">
             <objects>
-                <viewController title="AddLabelViewController" id="nA1-xE-id5" customClass="AddLabelViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLabelViewController" title="Create Label" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nA1-xE-id5" customClass="AddLabelViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a0M-OE-0qe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

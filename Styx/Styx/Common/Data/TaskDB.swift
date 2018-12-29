@@ -22,7 +22,6 @@ protocol TaskDBProtocol {
     func GetTaskIDList() -> Array<Int64>
     func GetTaskList() -> Array<Task>
     func GetDoneTaskList() -> Array<Task>
-    func GetDeletedTaskList() -> Array<Task>
     func UpsertTask(task: Task) -> Int64
     func DeleteTask(id: Int64) -> Bool
     
@@ -50,15 +49,17 @@ class TaskDB : TaskDBProtocol {
     private let labelColorID = Expression<Int>("ColorID")
     
     private let taskTable = Table("Task")
+    private let taskLabelID = Expression<Int64>("LabelID")
     private let taskID = Expression<Int64>("ID")
     private let taskTitle = Expression<String>("Title")
     private let taskDetail = Expression<String>("Detail")
     private let taskDue = Expression<Date>("Due")
-    private let taskLabelID = Expression<Int64>("LabelID")
     private let taskNotif = Expression<Int>("Notif")
     private let taskIsNotif = Expression<Bool>("isNotif")
     private let taskIsDone = Expression<Bool>("isDone")
     private let taskIsDeleted = Expression<Bool>("isDeleted")
+    private let taskIsRepeat = Expression<Bool>("isRepeat")
+    private let taskDateToRepeat = Expression<Int>("dateToRepeat")
     
     private let listTable = Table("List")
     private let listID = Expression<Int64>("ID")
@@ -103,14 +104,16 @@ class TaskDB : TaskDBProtocol {
             
             try db?.run(taskTable.create(ifNotExists: true) { t in
                 t.column(taskID, primaryKey: true)
+                t.column(taskLabelID)
                 t.column(taskTitle)
                 t.column(taskDetail)
                 t.column(taskDue)
-                t.column(taskLabelID)
                 t.column(taskNotif)
                 t.column(taskIsNotif)
                 t.column(taskIsDone)
                 t.column(taskIsDeleted)
+                t.column(taskIsRepeat)
+                t.column(taskDateToRepeat)
             })
             
             try db?.run(listTable.create(ifNotExists: true) { t in
@@ -225,17 +228,11 @@ class TaskDB : TaskDBProtocol {
         
         var list: Array<Task> = Array<Task>()
         if let db = self.db {
-//            let labelList = GetLabelList();
             do {
                 for task in try db.prepare(taskTable) {
-//                    var labelTitle: String = ""
-//                    if task[taskLabelID] > 0 {
-//                        if let label = labelList.first(where: { $0.ID == task[taskLabelID] }) {
-//                            labelTitle = label.Title
-//                        }
-//                    }
-                    let item = Task(ID: task[taskID], Title: task[taskTitle], Due: task[taskDue], Detail: task[taskDetail],
-                                    Notif: task[taskNotif], isNotif: task[taskIsNotif], LabelID: task[taskLabelID], isDone: task[taskIsDone], isDeleted: task[taskIsDeleted])
+                    let item = Task(ID: task[taskID], LabelID: task[taskLabelID], Title: task[taskTitle], Due: task[taskDue], Detail: task[taskDetail],
+                                    Notif: task[taskNotif], isNotif: task[taskIsNotif], isDone: task[taskIsDone],
+                                    isRepeat: task[taskIsRepeat], dateToRepeat: task[taskDateToRepeat])
                     list.append(item)
                 }
             } catch let error {
@@ -251,31 +248,9 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 for task in try db.prepare(taskTable) {
-                    let item = Task(ID: task[taskID], Title: task[taskTitle], Due: task[taskDue], Detail: task[taskDetail],
-                                    Notif: task[taskNotif], isNotif: task[taskIsNotif], LabelID: task[taskLabelID], isDone: task[taskIsDone], isDeleted: task[taskIsDeleted])
-                    list.append(item)
-                }
-            } catch let error {
-                lastErrorMessage = error.localizedDescription
-            }
-        }
-        return list
-    }
-    
-    // 특정날짜 이전 부터 존재하는 휴지통 메모 객체를 반환
-    func GetDeletedTaskList() -> Array<Task> {
-        
-        var list: Array<Task> = Array<Task>()
-        if let db = self.db {
-            //let categoryList = GetCategoryList();
-            do {
-                for task in try db.prepare(taskTable.filter(taskIsDeleted == true)) {
-                    //var categoryName: String = ""
-                    //if let category = categoryList.first(where: { $0.ID == memo[memoCategoryID] }) {
-                    //    categoryName = category.Name
-                    //}
-                    let item = Task(ID: task[taskID], Title: task[taskTitle], Due: task[taskDue], Detail: task[taskDetail],
-                                    Notif: task[taskNotif], isNotif: task[taskIsNotif], LabelID: task[taskLabelID], isDone: task[taskIsDone], isDeleted: task[taskIsDeleted])
+                    let item = Task(ID: task[taskID], LabelID: task[taskLabelID], Title: task[taskTitle], Due: task[taskDue], Detail: task[taskDetail],
+                                    Notif: task[taskNotif], isNotif: task[taskIsNotif], isDone: task[taskIsDone], isDeleted: task[taskIsDeleted],
+                                    isRepeat: task[taskIsRepeat], dateToRepeat: task[taskDateToRepeat])
                     list.append(item)
                 }
             } catch let error {
@@ -291,15 +266,17 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 if task.ID == 0 {
-                    let insert = taskTable.insert(taskTitle <- task.Title, taskDue <- task.Due, taskDetail <- task.Detail,
-                                                  taskNotif <- task.Notif, taskIsNotif <- task.isNotif, taskLabelID <- task.LabelID,
-                                                  taskIsDone <- task.isDone, taskIsDeleted <- task.isDeleted)
+                    let insert = taskTable.insert(taskTitle <- task.Title,  taskLabelID <- task.LabelID, taskDue <- task.Due,
+                                                  taskDetail <- task.Detail, taskNotif <- task.Notif, taskIsNotif <- task.isNotif,
+                                                  taskIsDone <- task.isDone, taskIsDeleted <- task.isDeleted, taskIsRepeat <- task.isRepeat,
+                                                  taskDateToRepeat <- task.dateToRepeat)
                     retVal = try db.run(insert)
                 } else {
                     let row = taskTable.filter(taskID == task.ID)
-                    try db.run(row.update(taskTitle <- task.Title, taskDue <- task.Due, taskDetail <- task.Detail,
-                                          taskNotif <- task.Notif, taskIsNotif <- task.isNotif, taskLabelID <- task.LabelID,
-                                          taskIsDone <- task.isDone, taskIsDeleted <- task.isDeleted))
+                    try db.run(row.update(taskTitle <- task.Title,  taskLabelID <- task.LabelID, taskDue <- task.Due,
+                                          taskDetail <- task.Detail, taskNotif <- task.Notif, taskIsNotif <- task.isNotif,
+                                          taskIsDone <- task.isDone, taskIsDeleted <- task.isDeleted, taskIsRepeat <- task.isRepeat,
+                                          taskDateToRepeat <- task.dateToRepeat))
                     retVal = task.ID
                 }
             } catch let error {

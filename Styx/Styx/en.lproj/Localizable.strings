@@ -34,6 +34,10 @@
 "Hide Complete"="Hide Complete";
 "Type new list"="Type new list";
 
+// Add Task View Controller
+"Type Title"="Type Title";
+"Type Details"="Type Details";
+
 // Setting View strings
 "Setting"="Setting";
 "Screen Lock"="Screen Lock";
