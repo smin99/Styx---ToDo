@@ -54,7 +54,7 @@ class TaskDB : TaskDBProtocol {
     private let taskTitle = Expression<String>("Title")
     private let taskDetail = Expression<String>("Detail")
     private let taskDue = Expression<Date>("Due")
-    private let taskNotif = Expression<Int>("Notif")
+    private let taskNotifDate = Expression<Date>("NotifDate")
     private let taskIsNotif = Expression<Bool>("isNotif")
     private let taskIsDone = Expression<Bool>("isDone")
     private let taskIsDeleted = Expression<Bool>("isDeleted")
@@ -108,7 +108,7 @@ class TaskDB : TaskDBProtocol {
                 t.column(taskTitle)
                 t.column(taskDetail)
                 t.column(taskDue)
-                t.column(taskNotif)
+                t.column(taskNotifDate)
                 t.column(taskIsNotif)
                 t.column(taskIsDone)
                 t.column(taskIsDeleted)
@@ -231,7 +231,7 @@ class TaskDB : TaskDBProtocol {
             do {
                 for task in try db.prepare(taskTable) {
                     let item = Task(ID: task[taskID], LabelID: task[taskLabelID], Title: task[taskTitle], Due: task[taskDue], Detail: task[taskDetail],
-                                    Notif: task[taskNotif], isNotif: task[taskIsNotif], isDone: task[taskIsDone],
+                                    NotifDate: task[taskNotifDate], isNotif: task[taskIsNotif], isDone: task[taskIsDone],
                                     isRepeat: task[taskIsRepeat], dateToRepeat: task[taskDateToRepeat])
                     list.append(item)
                 }
@@ -249,7 +249,7 @@ class TaskDB : TaskDBProtocol {
             do {
                 for task in try db.prepare(taskTable) {
                     let item = Task(ID: task[taskID], LabelID: task[taskLabelID], Title: task[taskTitle], Due: task[taskDue], Detail: task[taskDetail],
-                                    Notif: task[taskNotif], isNotif: task[taskIsNotif], isDone: task[taskIsDone], isDeleted: task[taskIsDeleted],
+                                    NotifDate: task[taskNotifDate], isNotif: task[taskIsNotif], isDone: task[taskIsDone], isDeleted: task[taskIsDeleted],
                                     isRepeat: task[taskIsRepeat], dateToRepeat: task[taskDateToRepeat])
                     list.append(item)
                 }
@@ -267,14 +267,14 @@ class TaskDB : TaskDBProtocol {
             do {
                 if task.ID == 0 {
                     let insert = taskTable.insert(taskTitle <- task.Title,  taskLabelID <- task.LabelID, taskDue <- task.Due,
-                                                  taskDetail <- task.Detail, taskNotif <- task.Notif, taskIsNotif <- task.isNotif,
+                                                  taskDetail <- task.Detail, taskNotifDate <- task.NotifDate, taskIsNotif <- task.isNotif,
                                                   taskIsDone <- task.isDone, taskIsDeleted <- task.isDeleted, taskIsRepeat <- task.isRepeat,
                                                   taskDateToRepeat <- task.dateToRepeat)
                     retVal = try db.run(insert)
                 } else {
                     let row = taskTable.filter(taskID == task.ID)
                     try db.run(row.update(taskTitle <- task.Title,  taskLabelID <- task.LabelID, taskDue <- task.Due,
-                                          taskDetail <- task.Detail, taskNotif <- task.Notif, taskIsNotif <- task.isNotif,
+                                          taskDetail <- task.Detail, taskNotifDate <- task.NotifDate, taskIsNotif <- task.isNotif,
                                           taskIsDone <- task.isDone, taskIsDeleted <- task.isDeleted, taskIsRepeat <- task.isRepeat,
                                           taskDateToRepeat <- task.dateToRepeat))
                     retVal = task.ID

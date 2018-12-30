@@ -48,6 +48,7 @@
 		568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */; };
 		568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */; };
 		568EC45721D6C0FD004C8E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568EC45621D6C0FC004C8E33 /* Assets.xcassets */; };
+		568EC45921D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45821D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift */; };
 		568F803721C36B5F00D8F652 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F803621C36B5F00D8F652 /* List.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotifTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45621D6C0FC004C8E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		568EC45821D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskRepeatTableViewCell.swift; sourceTree = "<group>"; };
 		568F803621C36B5F00D8F652 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		A07E8C5BEDFD7638C623837F /* Pods-Styx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.release.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.release.xcconfig"; sourceTree = "<group>"; };
 		BB9F35C68141377B8E513CDB /* Pods-Styx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.debug.xcconfig"; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */,
 				568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */,
 				568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */,
+				568EC45821D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			files = (
 				5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */,
 				568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */,
+				568EC45921D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift in Sources */,
 				561C543B21CAD6CA00A880BE /* ShowCompletedListTableViewCell.swift in Sources */,
 				56435CA021C2036000D31172 /* MainViewController.swift in Sources */,
 				56435CA621C306EF00D31172 /* TaskTableViewCell.swift in Sources */,

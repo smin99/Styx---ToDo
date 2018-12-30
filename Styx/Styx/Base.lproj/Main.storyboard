@@ -23,24 +23,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AddTaskTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddTaskTableViewCell" id="G9n-Xb-JhA" customClass="AddTaskTableViewCell" customModule="Styx" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AddTaskTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddTaskTableViewCell" rowHeight="44" id="G9n-Xb-JhA" customClass="AddTaskTableViewCell" customModule="Styx" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G9n-Xb-JhA" id="10H-cP-VE9">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-NO-ojc">
-                                                    <rect key="frame" x="8" y="6" width="359" height="30"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Zh-NO-ojc">
+                                                    <rect key="frame" x="23" y="7" width="329" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="5Zh-NO-ojc" firstAttribute="leading" secondItem="10H-cP-VE9" secondAttribute="leading" constant="8" id="7H3-69-5Nc"/>
-                                                <constraint firstAttribute="trailing" secondItem="5Zh-NO-ojc" secondAttribute="trailing" constant="8" id="KXV-rd-5oX"/>
+                                                <constraint firstItem="5Zh-NO-ojc" firstAttribute="leading" secondItem="10H-cP-VE9" secondAttribute="leadingMargin" constant="8" id="8SK-BD-hHz"/>
                                                 <constraint firstItem="5Zh-NO-ojc" firstAttribute="centerY" secondItem="10H-cP-VE9" secondAttribute="centerY" id="eqw-vr-Nq3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5Zh-NO-ojc" secondAttribute="trailing" constant="8" id="kui-Vs-PEp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -55,20 +55,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sb-2Q-D2F">
-                                                    <rect key="frame" x="8" y="11.5" width="42" height="21"/>
+                                                    <rect key="frame" x="23" y="11.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6S4-Dr-mGz">
-                                                    <rect key="frame" x="318" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="303" y="6.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6S4-Dr-mGz" firstAttribute="centerY" secondItem="rkw-j9-rlq" secondAttribute="centerY" id="G8o-d0-g5T"/>
                                                 <constraint firstItem="4sb-2Q-D2F" firstAttribute="centerY" secondItem="rkw-j9-rlq" secondAttribute="centerY" id="hcM-bA-sHK"/>
-                                                <constraint firstAttribute="trailing" secondItem="6S4-Dr-mGz" secondAttribute="trailing" constant="8" id="iAw-mv-5pH"/>
-                                                <constraint firstItem="4sb-2Q-D2F" firstAttribute="leading" secondItem="rkw-j9-rlq" secondAttribute="leading" constant="8" id="qLx-hX-Y69"/>
+                                                <constraint firstItem="4sb-2Q-D2F" firstAttribute="leading" secondItem="rkw-j9-rlq" secondAttribute="leadingMargin" constant="8" id="pdj-CF-eSV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6S4-Dr-mGz" secondAttribute="trailing" constant="8" id="rL3-mY-0z0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -94,6 +94,29 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="notifDatePicker" destination="CRP-z5-aBT" id="2gN-Yy-CSE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddTaskRepeatTableViewCell" id="Ci8-Le-Nba" customClass="AddTaskRepeatTableViewCell" customModule="Styx" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="276" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ci8-Le-Nba" id="SME-or-nMD">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0y-EF-gOx">
+                                                    <rect key="frame" x="23" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P0y-EF-gOx" firstAttribute="leading" secondItem="SME-or-nMD" secondAttribute="leadingMargin" constant="8" id="STf-kW-xp6"/>
+                                                <constraint firstItem="P0y-EF-gOx" firstAttribute="centerY" secondItem="SME-or-nMD" secondAttribute="centerY" id="tI1-zW-MO4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="repeatLabel" destination="P0y-EF-gOx" id="Wqz-vk-450"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
