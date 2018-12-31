@@ -43,8 +43,6 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var stringPlaceholder = " "
-        
         // First section: Title and Details Text fields
         if indexPath.section == 0 {
             
@@ -59,11 +57,15 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-                cell.repeatLabel.text = "Due Date is".localized + "\(dateDue.toString(dateformat: <#T##String#>) ?? stringPlaceholder)"
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .short
+                cell.repeatLabel.text = "Due Date is".localized + "\(dateFormatter.string(from: dateDue))"
                 cell.selectionStyle = .none
                 return cell
             } else if indexPath.row == 1 && isDueShow {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDateTableViewCell") as! AddTaskDateTableViewCell
+                
                 return cell
             } else {    // unnecessary code
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
@@ -76,9 +78,9 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if indexPath.section == 2 && (!isNotifShow || indexPath.row != 1){
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TaskNotifTableViewCell") as! TaskNotifTableViewCell
-            cell.notifLabel.text = "Remind me at ".localized + "\(notif ?? stringPlaceholder)"
             cell.notifSwitch.isOn = false
             cell.notifSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
+            cell.notifLabel.text = "Remind me at ".localized
             cell.selectionStyle = .none
             return cell
             
@@ -86,6 +88,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if datePickerIndexPath == indexPath && isNotifShow{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDateTableViewCell") as! AddTaskDateTableViewCell
+            cell.notifDatePicker.addTarget(self, action: #selector(datePickerChanged), for: UIControl.Event.valueChanged)
             return cell
             
         // Fifth section: Set the Repetition of the Task
@@ -199,6 +202,15 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func doneAdding (_ sender: Any) {
         _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isDone: false, isDeleted: false, isRepeat: true, dateToRepeat: repeatInt))
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func datePickerChanged(picker: UIDatePicker) {
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! TaskNotifTableViewCell
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        cell.notifLabel.text = "Remind me at ".localized + "\(dateFormatter.string(from: notif))"
     }
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
