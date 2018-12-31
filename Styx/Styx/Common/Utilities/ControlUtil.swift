@@ -42,4 +42,12 @@ class ControlUtil {
         textField.lineHeight = 1.0 // bottom line height in points
         textField.selectedLineHeight = 2.0
     }
+    
+    static func dateToString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale.current
+        return "\(dateFormatter.string(from: date))"
+    }
 }

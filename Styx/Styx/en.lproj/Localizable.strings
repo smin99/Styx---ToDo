@@ -42,6 +42,11 @@
 "Due Date is "="Due Date is ";
 "Remind me on "="Remind me on ";
 "Repeat the Task"="Repeat the Task";
+"Daily"="Daily";
+"Weekly"="Weekly";
+"Monthly"="Monthly";
+"Yearly"="Yearly";
+"Custom"="Custom";
 
 // Setting View strings
 "Setting"="Setting";

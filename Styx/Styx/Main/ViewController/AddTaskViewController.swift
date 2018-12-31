@@ -49,12 +49,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskTableViewCell") as! AddTaskTableViewCell
-            
             ControlUtil.setSkyFloatingTextFieldColor(textField: cell.textField, placeholder: placeholders[indexPath.row], title: titles[indexPath.row])
-            
-//            cell.textField.borderStyle = .none
-//            cell.textField.placeholder = placeholders[indexPath.row]
-//            cell.selectionStyle = .none
             return cell
             
         // Second section: Set Due Date
@@ -152,26 +147,27 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Repetition Setting: Show up the SCL Alert View with buttons
         if indexPath.section == 3 && indexPath.row == 0 {
+            let cell = tableView.cellForRow(at: indexPath) as! AddTaskRepeatTableViewCell
             let repeatDetails: SCLAlertView = SCLAlertView()
             
             repeatDetails.addButton("Daily".localized) {
                 self.repeatInt = 0
-                
+                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Daily".localized
             }
             
             repeatDetails.addButton("Weekly".localized) {
                 self.repeatInt = 1
-                
+                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Weekly".localized
             }
             
             repeatDetails.addButton("Monthly".localized) {
                 self.repeatInt = 2
-                
+                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Monthly".localized
             }
             
             repeatDetails.addButton("Yearly".localized) {
                 self.repeatInt = 3
-                
+                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Yearly".localized
             }
             
             repeatDetails.addButton("Custom".localized) {
@@ -179,6 +175,11 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
             
+            repeatDetails.showTitle(
+                "Repeat Task",
+                subTitle: "Select when to repeat your task",
+                style: .info
+            )
             
         } else {
             
@@ -190,16 +191,18 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Due date saved
         if indexPath.section == 1 && indexPath.row == 0 {
             isDueShow = false
-            let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
-            dateDue = cell.notifDatePicker.date
-            tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .none)
-            let dateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
-            dateCell.repeatLabel.text = "Due Date is ".localized + "\(dateToString(date: dateDue))"
+            if tableView.cellForRow(at: IndexPath(row: 1, section: 1)) != nil {
+                let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
+                dateDue = cell.notifDatePicker.date
+                tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .none)
+                let dateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
+                dateCell.repeatLabel.text = "Due Date is ".localized + "\(ControlUtil.dateToString(date: dateDue))"
+            }
         }
         // Notification saved
         else if indexPath.section == 2 && indexPath.row == 0 {
-            let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! AddTaskDateTableViewCell
-            notif = cell.notifDatePicker.date
+//            let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! AddTaskDateTableViewCell
+//            notif = cell.notifDatePicker.date
         }
     }
     
@@ -223,7 +226,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! TaskNotifTableViewCell
         
-        let dateString = dateToString(date: notif)
+        let dateString = ControlUtil.dateToString(date: notif)
         cell.notifLabel.text = "Remind me on ".localized + "\(dateString)"
     }
     
@@ -232,15 +235,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
         
-        let dateString = dateToString(date: dateDue)
+        let dateString = ControlUtil.dateToString(date: dateDue)
         cell.repeatLabel.text = "Due Date is ".localized + "\(dateString)"
-    }
-    
-    func dateToString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        return "\(dateFormatter.string(from: date))"
     }
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
