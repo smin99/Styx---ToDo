@@ -16,5 +16,6 @@ target 'Styx' do
   pod 'SideMenu'
   pod 'DLRadioButton', '~> 1.4'
   pod 'JJFloatingActionButton'
+  pod 'SkyFloatingLabelTextField'
   
 end

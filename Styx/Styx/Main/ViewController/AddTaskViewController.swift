@@ -60,7 +60,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .medium
                 dateFormatter.timeStyle = .short
-                cell.repeatLabel.text = "Due Date is".localized + "\(dateFormatter.string(from: dateDue))"
+                cell.repeatLabel.text = "Due Date is".localized
                 cell.selectionStyle = .none
                 return cell
             } else if indexPath.row == 1 && isDueShow {
@@ -69,7 +69,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return cell
             } else {    // unnecessary code
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-                cell.repeatLabel.text = "Due Date".localized
+                cell.repeatLabel.text = "Due Date is".localized
                 cell.selectionStyle = .none
                 return cell
             }
@@ -80,7 +80,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "TaskNotifTableViewCell") as! TaskNotifTableViewCell
             cell.notifSwitch.isOn = false
             cell.notifSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
-            cell.notifLabel.text = "Remind me at ".localized
+            cell.notifLabel.text = "Remind me on ".localized
             cell.selectionStyle = .none
             return cell
             
@@ -133,10 +133,14 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.section == 1 && indexPath.row == 0 {
             if isDueShow {
                 isDueShow = false
-                tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .none)
+                tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .automatic)
+                return
             }
+            
             isDueShow = true
             tableView.insertRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .automatic)
+            let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
+            cell.notifDatePicker.addTarget(self, action: #selector(dueDatePickerChanged), for: UIControl.Event.valueChanged)
         }
         
         // Repetition Setting: Show up the SCL Alert View with buttons
@@ -181,6 +185,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
             dateDue = cell.notifDatePicker.date
             tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .none)
+            let dateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
+            dateCell.repeatLabel.text = "Due Date is ".localized + "\(dateToString(date: dateDue))"
         }
         // Notification saved
         else if indexPath.section == 2 && indexPath.row == 0 {
@@ -205,12 +211,28 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func datePickerChanged(picker: UIDatePicker) {
+        notif = picker.date
+        
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! TaskNotifTableViewCell
         
+        let dateString = dateToString(date: notif)
+        cell.notifLabel.text = "Remind me on ".localized + "\(dateString)"
+    }
+    
+    @objc func dueDatePickerChanged(picker: UIDatePicker) {
+        dateDue = picker.date
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
+        
+        let dateString = dateToString(date: dateDue)
+        cell.repeatLabel.text = "Due Date is ".localized + "\(dateString)"
+    }
+    
+    func dateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
-        cell.notifLabel.text = "Remind me at ".localized + "\(dateFormatter.string(from: notif))"
+        return "\(dateFormatter.string(from: date))"
     }
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {

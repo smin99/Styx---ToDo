@@ -61,14 +61,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6S4-Dr-mGz">
-                                                    <rect key="frame" x="303" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="318" y="6.5" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6S4-Dr-mGz" firstAttribute="centerY" secondItem="rkw-j9-rlq" secondAttribute="centerY" id="G8o-d0-g5T"/>
+                                                <constraint firstAttribute="trailing" secondItem="6S4-Dr-mGz" secondAttribute="trailing" constant="8" id="UPE-Q5-4sq"/>
                                                 <constraint firstItem="4sb-2Q-D2F" firstAttribute="centerY" secondItem="rkw-j9-rlq" secondAttribute="centerY" id="hcM-bA-sHK"/>
                                                 <constraint firstItem="4sb-2Q-D2F" firstAttribute="leading" secondItem="rkw-j9-rlq" secondAttribute="leadingMargin" constant="8" id="pdj-CF-eSV"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="6S4-Dr-mGz" secondAttribute="trailing" constant="8" id="rL3-mY-0z0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
