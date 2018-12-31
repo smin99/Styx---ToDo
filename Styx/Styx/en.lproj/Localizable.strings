@@ -37,6 +37,7 @@
 // Add Task View Controller
 "Type Title"="Type Title";
 "Type Details"="Type Details";
+"Due Date is "="Due Date is ";
 "Remind me at "="Remind me at ";
 "Repeat the Task"="Repeat the Task";
 
