@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class AddTaskTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: SkyFloatingLabelTextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

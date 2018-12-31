@@ -35,8 +35,10 @@
 "Type new list"="Type new list";
 
 // Add Task View Controller
-"Type Title"="Type Title";
-"Type Details"="Type Details";
+"Please type the title"="Please type the title";
+"Please type the details"="Please type the details";
+"Title"="Title";
+"Details"="Details";
 "Due Date is "="Due Date is ";
 "Remind me on "="Remind me on ";
 "Repeat the Task"="Repeat the Task";

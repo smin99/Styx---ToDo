@@ -49,6 +49,7 @@
 		568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */; };
 		568EC45721D6C0FD004C8E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568EC45621D6C0FC004C8E33 /* Assets.xcassets */; };
 		568EC45921D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45821D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift */; };
+		568EC45B21DAA4A4004C8E33 /* ControlUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45A21DAA4A4004C8E33 /* ControlUtil.swift */; };
 		568F803721C36B5F00D8F652 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F803621C36B5F00D8F652 /* List.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45621D6C0FC004C8E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		568EC45821D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskRepeatTableViewCell.swift; sourceTree = "<group>"; };
+		568EC45A21DAA4A4004C8E33 /* ControlUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlUtil.swift; sourceTree = "<group>"; };
 		568F803621C36B5F00D8F652 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		A07E8C5BEDFD7638C623837F /* Pods-Styx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.release.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.release.xcconfig"; sourceTree = "<group>"; };
 		BB9F35C68141377B8E513CDB /* Pods-Styx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,9 +197,9 @@
 			children = (
 				561C542A21C8A49F00A880BE /* Extension */,
 				56435C8C21C17FEC00D31172 /* Data */,
-				56435CAD21C3275F00D31172 /* Date.swift */,
-				561C542421C5A81700A880BE /* FileUtil.swift */,
+				568EC45C21DAA674004C8E33 /* Utilities */,
 				5608DABE21D154DC00219D32 /* GlobalConsts.swift */,
+				56435CAD21C3275F00D31172 /* Date.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -277,6 +279,15 @@
 				5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		568EC45C21DAA674004C8E33 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				568EC45A21DAA4A4004C8E33 /* ControlUtil.swift */,
+				561C542421C5A81700A880BE /* FileUtil.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		8B4D119B0519E1DD78D52431 /* Frameworks */ = {
@@ -461,6 +472,7 @@
 				56435CA221C2DC5F00D31172 /* Task.swift in Sources */,
 				56435CAC21C31AAD00D31172 /* TaskTableViewController.swift in Sources */,
 				5608DAC421D164DA00219D32 /* NotificationSettingTableViewCell.swift in Sources */,
+				568EC45B21DAA4A4004C8E33 /* ControlUtil.swift in Sources */,
 				5678526121D096F300BD6192 /* NotificationSettingViewController.swift in Sources */,
 				5665355421D5C6DC00D9FF92 /* AddLabelTableViewCell.swift in Sources */,
 				561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */,

@@ -128,7 +128,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: id1, Title: "Chapter 5", Due: Date(), Detail: "", NotifDate: Date(), isNotif: false))
                 _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: id1, Title: "Chapter 6", Due: Date(), Detail: "", NotifDate: Date(), isNotif: false))
                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Shopping List", ColorID: 0))
-                self.tableView.reloadData()
             }
             
             // Map Task Object to the Label Object
@@ -155,6 +154,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.sync {
                 EZLoadingActivity.hide()
                 self.isInitData = true
+                if self.labelList == nil {
+                    self.tableView.reloadData()
+                }
                 self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: self.labelList[self.labelIndex].ColorID)
                 self.navigationController?.navigationBar.tintColor = UIColor.white
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

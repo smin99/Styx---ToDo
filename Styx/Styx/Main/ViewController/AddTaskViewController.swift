@@ -8,6 +8,7 @@
 
 import UIKit
 import SCLAlertView
+import SkyFloatingLabelTextField
 
 class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -27,7 +28,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var doneButton: UIBarButtonItem!
     
-    let placeholders: Array<String> = ["Type Title".localized, "Type Details".localized]
+    let placeholders: Array<String> = ["Please type the title".localized, "Please type the details".localized]
+    let titles: Array<String> = ["Title".localized, "Details".localized]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +49,12 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskTableViewCell") as! AddTaskTableViewCell
-            cell.textField.borderStyle = .none
-            cell.textField.placeholder = placeholders[indexPath.row]
-            cell.selectionStyle = .none
+            
+            ControlUtil.setSkyFloatingTextFieldColor(textField: cell.textField, placeholder: placeholders[indexPath.row], title: titles[indexPath.row])
+            
+//            cell.textField.borderStyle = .none
+//            cell.textField.placeholder = placeholders[indexPath.row]
+//            cell.selectionStyle = .none
             return cell
             
         // Second section: Set Due Date
@@ -105,6 +110,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == 2 && isNotifShow && indexPath.row == 1) || (indexPath.section == 1 && isDueShow && indexPath.row == 1) {
             return 160.0
+        } else if indexPath.section == 1 {
+            return 60
         } else {
             return 50
         }
@@ -171,6 +178,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.repeatInt = 4
                 
             }
+            
             
         } else {
             
