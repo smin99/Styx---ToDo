@@ -65,12 +65,13 @@ PODS:
   - Protobuf (3.6.1)
   - SCLAlertView (0.8)
   - SideMenu (5.0.3)
+  - SkyFloatingLabelTextField (3.6.0)
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
-  - SwiftMessages (6.0.1):
-    - SwiftMessages/App (= 6.0.1)
-  - SwiftMessages/App (6.0.1)
+  - SwiftMessages (6.0.2):
+    - SwiftMessages/App (= 6.0.2)
+  - SwiftMessages/App (6.0.2)
 
 DEPENDENCIES:
   - DLRadioButton (~> 1.4)
@@ -80,6 +81,7 @@ DEPENDENCIES:
   - JJFloatingActionButton
   - SCLAlertView
   - SideMenu
+  - SkyFloatingLabelTextField
   - SQLite.swift (~> 0.11.5)
   - SwiftMessages
 
@@ -100,6 +102,7 @@ SPEC REPOS:
     - Protobuf
     - SCLAlertView
     - SideMenu
+    - SkyFloatingLabelTextField
     - SQLite.swift
     - SwiftMessages
 
@@ -119,9 +122,10 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
+  SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftMessages: 42ed7b6e1f2f1ead9ee667dc61a0ae87e4f49570
+  SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
 
-PODFILE CHECKSUM: 23f049bda7aafe589e39cff8a7c993b33fdd8ce6
+PODFILE CHECKSUM: 0fb62513cd5c36c8077cdcfac4383df87f8a4088
 
 COCOAPODS: 1.5.3
