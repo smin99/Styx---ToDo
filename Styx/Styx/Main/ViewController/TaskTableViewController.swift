@@ -11,7 +11,6 @@ import DLRadioButton
 
 class TaskTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var taskIndex: Int = 0
     var taskTitle: String = ""
     var taskID: Int64 = 0
     var listForTask: Array<List>!

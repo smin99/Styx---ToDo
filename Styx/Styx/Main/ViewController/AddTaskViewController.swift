@@ -16,12 +16,13 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var isNotifShow: Bool! = false
     var isDueShow: Bool! = false
+    var isRepeat: Bool! = false
     var notif: Date! = Date()
     var labelID: Int64!
     var taskTitle: String! = ""
     var taskDetail: String! = ""
     var dateDue: Date! = Date()
-    var repeatInt: Int!
+    var repeatInt: Int! = 0
     
     var dueDatePickerIndexPath: IndexPath? = IndexPath(row: 1, section: 1)
     var datePickerIndexPath: IndexPath? = IndexPath(row: 1, section: 2)
@@ -50,6 +51,13 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskTableViewCell") as! AddTaskTableViewCell
             ControlUtil.setSkyFloatingTextFieldColor(textField: cell.textField, placeholder: placeholders[indexPath.row], title: titles[indexPath.row])
+            
+            if indexPath.row == 0 {
+                cell.textField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingDidEnd)
+            } else if indexPath.row == 1 {
+                cell.textField.addTarget(self, action: #selector(detailsChanged(_:)), for: UIControl.Event.editingDidEnd)
+            }
+            cell.selectionStyle = .none
             return cell
             
         // Second section: Set Due Date
@@ -217,8 +225,17 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func doneAdding (_ sender: Any) {
-        _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isDone: false, isDeleted: false, isRepeat: true, dateToRepeat: repeatInt))
+        let retVal = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatInt))
+        MainViewController.mainView.tableView.reloadData()
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func titleChanged(_ textfield: UITextField) {
+        taskTitle = textfield.text
+    }
+    
+    @objc func detailsChanged(_ textfield: UITextField) {
+        taskDetail = textfield.text
     }
     
     @objc func datePickerChanged(picker: UIDatePicker) {

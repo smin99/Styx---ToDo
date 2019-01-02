@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Styx/Common/Data/TaskDB.swift"
-            timestampString = "567928548.021512"
+            timestampString = "567998430.751708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "316"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Styx/Main/ViewController/TaskTableViewController.swift"
-            timestampString = "567914482.996958"
+            timestampString = "568164057.308515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "tableView(_:canMoveRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Styx/Main/ViewController/TaskTableViewController.swift"
-            timestampString = "567914482.997105"
+            timestampString = "568164057.3095011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "increaseIndexByOne(index1:index2:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Styx/Main/ViewController/TaskTableViewController.swift"
-            timestampString = "567914482.997203"
+            timestampString = "568164057.309595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "nextCheckItem(item:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Styx/Common/Data/TaskDB.swift"
-            timestampString = "567928548.021857"
+            timestampString = "567998430.752477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "269"
@@ -138,12 +138,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Styx/Common/Data/TaskDB.swift"
-            timestampString = "567928548.021926"
+            timestampString = "567998430.752656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "233"
             endingLineNumber = "233"
             landmarkName = "GetTaskList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Styx/Main/ViewController/MainViewController.swift"
+            timestampString = "568164057.309808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Styx/Main/ViewController/MainViewController.swift"
+            timestampString = "568164057.310776"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "tableView(_:commit:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

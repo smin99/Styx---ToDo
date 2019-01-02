@@ -68,7 +68,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // Add two bar buttons at right side of navigation bar
-        editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(tableEditing))
+        if tableView.isEditing {
+            editButton = UIBarButtonItem(image: UIImage(named: "CancelIcon"), style: .plain, target: self, action: #selector(tableEditing))
+        } else {
+            editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(tableEditing))
+        }
         settingButton = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .plain, target: self, action: #selector(settingView))
         self.navigationItem.rightBarButtonItems = [settingButton, editButton]
         
@@ -188,7 +192,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell") as! TaskTableViewCell
         cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
-        cell.dueLabel.text = labelList[labelIndex].taskList[indexPath.row].Due.toString(dateformat: "MM-DD-YY")
+        cell.dueLabel.text = ControlUtil.dateToString(date: labelList[labelIndex].taskList[indexPath.row].Due)
         
         let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(numListCompleted / labelList[labelIndex].taskList[indexPath.row].listList.count)
         cell.taskProgressBar.progress = progressFloat
@@ -204,10 +208,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TaskTableViewController") as? TaskTableViewController {
-            viewController.taskTitle = taskList[indexPath.row].Title
-            viewController.taskIndex = indexPath.row
-            viewController.listForTask = taskList[indexPath.row].listList
-            viewController.taskID = taskList[indexPath.row].ID
+            viewController.taskTitle = labelList[labelIndex].taskList[indexPath.row].Title
+            viewController.listForTask = labelList[labelIndex].taskList[indexPath.row].listList
+            viewController.taskID = labelList[labelIndex].taskList[indexPath.row].ID
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -236,12 +239,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.configureDropShadow()
             
             view.yesAction = {
-                let id: Int64 = self.taskList[indexPath.row].ID
-                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .automatic)
+                let id: Int64 = self.labelList[self.labelIndex].taskList[indexPath.row].ID
                 _ = MainViewController.Database.DeleteTask(id: id)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                SwiftMessages.hide()
+                self.labelList[self.labelIndex].taskList.remove(at: indexPath.row)
                 tableView.reloadData()
+//                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                SwiftMessages.hide()
             }
             
             view.cancelAction = {
