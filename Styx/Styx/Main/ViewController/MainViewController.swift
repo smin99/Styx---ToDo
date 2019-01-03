@@ -68,11 +68,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // Add two bar buttons at right side of navigation bar
-        if tableView.isEditing {
-            editButton = UIBarButtonItem(image: UIImage(named: "CancelIcon"), style: .plain, target: self, action: #selector(tableEditing))
-        } else {
-            editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(tableEditing))
-        }
+        editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(tableEditing))
         settingButton = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .plain, target: self, action: #selector(settingView))
         self.navigationItem.rightBarButtonItems = [settingButton, editButton]
         
@@ -217,6 +213,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Edit Bar Button: Change into Editing mode
     @objc public func tableEditing(_ sender: Any) {
+        if self.tableView.isEditing {
+            editButton.image = UIImage(named: "TrashIcon")
+        } else {
+            editButton.image = UIImage(named: "CancelIcon")
+        }
         self.tableView.isEditing = !self.tableView.isEditing
     }
     
@@ -240,7 +241,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             view.yesAction = {
                 let id: Int64 = self.labelList[self.labelIndex].taskList[indexPath.row].ID
+                
+                var listIndex = self.listList.lastIndex(where: {$0.TaskID == id})
+                while listIndex != nil {
+                    self.listList.remove(at: listIndex!)
+                    listIndex = self.listList.lastIndex(where: {$0.TaskID == id})
+                }
+                
                 _ = MainViewController.Database.DeleteTask(id: id)
+                self.taskList.remove(at: self.taskList.lastIndex(where: {$0.ID == id})!)
                 self.labelList[self.labelIndex].taskList.remove(at: indexPath.row)
                 tableView.reloadData()
 //                self.tableView.deleteRows(at: [indexPath], with: .automatic)

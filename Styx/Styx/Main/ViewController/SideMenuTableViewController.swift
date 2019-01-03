@@ -63,6 +63,11 @@ class SideMenuTableViewController: UITableViewController {
     }
     
     @IBAction func editMode(_ sender: Any) {
+        if self.tableView.isEditing {
+            editButton.image = UIImage(named: "TrashIcon")
+        } else {
+            editButton.image = UIImage(named: "CancelIcon")
+        }
         self.tableView.isEditing = !self.tableView.isEditing
     }
     
@@ -78,16 +83,34 @@ class SideMenuTableViewController: UITableViewController {
             
             view.yesAction = {
                 let labelID: Int64 = self.labelList[indexPath.row].ID
+                
+                for task in self.labelList[indexPath.row].taskList {
+                    
+                    for list in task.listList {
+                        _ = MainViewController.Database.DeleteList(ID: list.ID)
+                        MainViewController.mainView.listList.remove(at: MainViewController.mainView.listList.lastIndex(where: {$0.ID == list.ID})!)
+                    }
+                    _ = MainViewController.Database.DeleteTask(id: task.ID)
+                    MainViewController.mainView.taskList.remove(at: MainViewController.mainView.taskList.lastIndex(where: {$0.ID == task.ID})!)
+                }
+                
                 _ = MainViewController.Database.DeleteLabel(labID: labelID)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                MainViewController.mainView.labelIndex = 0
-                SwiftMessages.hide()
+                self.labelList.remove(at: indexPath.row)
+                MainViewController.mainView.labelList.remove(at: indexPath.row)
+                if MainViewController.mainView.labelIndex == indexPath.row {
+                    MainViewController.mainView.labelIndex = 0
+                }
                 tableView.reloadData()
+                MainViewController.mainView.tableView.reloadData()
+                SwiftMessages.hide()
             }
             
             view.cancelAction = {
                 SwiftMessages.hide()
             }
+            
+            view.titleLabel2.text = "Delete Label".localized
+            view.contentLabel2.text = "Do you really want to delete this label? It will delete all tasks and items belonged to it.".localized
             
             var config = SwiftMessages.defaultConfig
             config.presentationContext = .window(windowLevel: UIWindow.Level.normal)

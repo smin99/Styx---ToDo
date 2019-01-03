@@ -45,7 +45,7 @@ class ControlUtil {
     
     static func dateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale.current
         return "\(dateFormatter.string(from: date))"
