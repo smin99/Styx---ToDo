@@ -41,6 +41,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAdding))
         self.navigationItem.rightBarButtonItem = doneButton
+        
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -58,10 +59,12 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if indexPath.row == 0 {
                 txtFieldTitle = cell.textField
+                cell.textField.tag = 0
                 txtFieldTitle.delegate = self
                 cell.textField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingDidEnd)
             } else if indexPath.row == 1 {
                 txtFieldDetails = cell.textField
+                cell.textField.tag = 1
                 txtFieldDetails.delegate = self
                 cell.textField.addTarget(self, action: #selector(detailsChanged(_:)), for: UIControl.Event.editingDidEnd)
             }
@@ -272,12 +275,16 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    private func textFieldShouldReturn(_ textField: SkyFloatingLabelTextField) {
-        if textField == txtFieldTitle {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        if textField.tag == 0 {
             textField.resignFirstResponder()
-            txtFieldDetails.becomeFirstResponder()
-        } else {
+            if let nextResponder = tableView.viewWithTag(1) {
+                nextResponder.becomeFirstResponder()
+            }
+        } else if textField.tag == 1 {
             textField.resignFirstResponder()
         }
+        
+        return true
     }
 }

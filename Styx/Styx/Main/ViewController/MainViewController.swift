@@ -156,10 +156,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             DispatchQueue.main.sync {
                 EZLoadingActivity.hide()
                 self.isInitData = true
+                
                 if self.labelList == nil {
                     self.tableView.reloadData()
                 }
-                self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: self.labelList[self.labelIndex].ColorID)
+                
+                if self.labelList == nil {
+                    self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: 0)
+                } else {
+                    self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: self.labelList[self.labelIndex].ColorID)
+                }
+                
                 self.navigationController?.navigationBar.tintColor = UIColor.white
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
                 self.tableView.reloadData()

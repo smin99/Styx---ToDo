@@ -250,4 +250,17 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        let indexPath = IndexPath(row: tableView.numberOfRows(inSection: 0), section: 0)
+        tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            if let cell = self.tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                textField.resignFirstResponder()
+                cell.titleTextField.becomeFirstResponder()
+            }
+        })
+        return true
+    }
+    
 }
