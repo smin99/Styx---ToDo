@@ -315,7 +315,6 @@
                     <connections>
                         <outlet property="tableView" destination="u9d-ZN-yun" id="0d1-cO-j1m"/>
                         <segue destination="WbI-wZ-R5f" kind="show" identifier="ScreenLockSegue" id="R38-Hr-GGD"/>
-                        <segue destination="feU-dU-Fbr" kind="show" identifier="DeleteTrashSegue" id="5cX-BC-mj7"/>
                         <segue destination="G05-2N-wTw" kind="show" identifier="NotificationSegue" id="kjY-EV-KxO"/>
                         <segue destination="eG2-fB-Ha4" kind="show" identifier="OpenSourceLicenseSegue" id="WBb-oA-ejP"/>
                     </connections>
@@ -323,43 +322,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XB-CH-IwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3416.8000000000002" y="246.9265367316342"/>
-        </scene>
-        <!--Trash Setting View Controller-->
-        <scene sceneID="DKM-6T-sYQ">
-            <objects>
-                <viewController storyboardIdentifier="TrashSettingViewController" id="feU-dU-Fbr" customClass="TrashSettingViewController" customModule="Styx" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BLZ-qc-XIb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-Ch-rEH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrashSettingTableViewCell" id="Sub-QF-WH5" customClass="TrashSettingTableViewCell" customModule="Styx" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sub-QF-WH5" id="fyo-u0-rOn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Q51-Ch-rEH" firstAttribute="top" secondItem="vvr-KG-555" secondAttribute="top" id="LkP-Ak-rrc"/>
-                            <constraint firstItem="Q51-Ch-rEH" firstAttribute="leading" secondItem="vvr-KG-555" secondAttribute="leading" id="Myr-0O-acp"/>
-                            <constraint firstItem="Q51-Ch-rEH" firstAttribute="trailing" secondItem="vvr-KG-555" secondAttribute="trailing" id="gAo-7d-12m"/>
-                            <constraint firstItem="Q51-Ch-rEH" firstAttribute="bottom" secondItem="vvr-KG-555" secondAttribute="bottom" id="m0B-3C-dWH"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="vvr-KG-555"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cvk-12-VMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4261.6000000000004" y="-440.32983508245883"/>
         </scene>
         <!--Lock Setting View Controller-->
         <scene sceneID="sGr-Gy-cmN">

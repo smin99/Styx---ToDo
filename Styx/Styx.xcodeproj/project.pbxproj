@@ -11,7 +11,6 @@
 		5608DAC021D154DC00219D32 /* GlobalConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DABE21D154DC00219D32 /* GlobalConsts.swift */; };
 		5608DAC221D164CA00219D32 /* LockSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */; };
 		5608DAC421D164DA00219D32 /* NotificationSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */; };
-		5608DAC621D1650000219D32 /* TrashSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */; };
 		560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */; };
 		560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */; };
 		561C541F21C4065A00A880BE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C541E21C4065A00A880BE /* Label.swift */; };
@@ -43,7 +42,6 @@
 		5665355A21D6B2FA00D9FF92 /* AddTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */; };
 		5678526121D096F300BD6192 /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526021D096F300BD6192 /* NotificationSettingViewController.swift */; };
 		5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526221D0970900BD6192 /* LockSettingViewController.swift */; };
-		5678526521D0971700BD6192 /* TrashSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526421D0971700BD6192 /* TrashSettingViewController.swift */; };
 		5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526621D0973700BD6192 /* LicenseSettingViewController.swift */; };
 		568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */; };
 		568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */; };
@@ -59,7 +57,6 @@
 		5608DABF21D154DC00219D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Styx/Base.lproj/GlobalConsts.swift; sourceTree = SOURCE_ROOT; };
 		5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewCell.swift; sourceTree = "<group>"; };
-		5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingTableViewCell.swift; sourceTree = "<group>"; };
 		560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		561C541E21C4065A00A880BE /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -102,7 +99,6 @@
 		5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewCell.swift; sourceTree = "<group>"; };
 		5678526021D096F300BD6192 /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
 		5678526221D0970900BD6192 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
-		5678526421D0971700BD6192 /* TrashSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashSettingViewController.swift; sourceTree = "<group>"; };
 		5678526621D0973700BD6192 /* LicenseSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseSettingViewController.swift; sourceTree = "<group>"; };
 		568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotifTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDateTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,7 +264,6 @@
 				560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */,
 				5678526021D096F300BD6192 /* NotificationSettingViewController.swift */,
 				5678526221D0970900BD6192 /* LockSettingViewController.swift */,
-				5678526421D0971700BD6192 /* TrashSettingViewController.swift */,
 				5678526621D0973700BD6192 /* LicenseSettingViewController.swift */,
 			);
 			path = ViewController;
@@ -279,7 +274,6 @@
 			children = (
 				5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */,
 				5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */,
-				5608DAC521D1650000219D32 /* TrashSettingTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -491,10 +485,8 @@
 				561C542521C5A81700A880BE /* FileUtil.swift in Sources */,
 				561C543121C8A61A00A880BE /* ConfirmDialogView.swift in Sources */,
 				5665355A21D6B2FA00D9FF92 /* AddTaskTableViewCell.swift in Sources */,
-				5678526521D0971700BD6192 /* TrashSettingViewController.swift in Sources */,
 				5665355021D5C2B800D9FF92 /* ColorExtension.swift in Sources */,
 				560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */,
-				5608DAC621D1650000219D32 /* TrashSettingTableViewCell.swift in Sources */,
 				561C542121C4067E00A880BE /* Image.swift in Sources */,
 				568F803721C36B5F00D8F652 /* List.swift in Sources */,
 				560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */,

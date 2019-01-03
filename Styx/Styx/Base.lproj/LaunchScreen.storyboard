@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.29019607843137252" green="0.31764705882352939" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KId-6P-Gnr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="i8G-uG-m5X"/>
                             <constraint firstItem="KId-6P-Gnr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="lwh-F8-4z8"/>

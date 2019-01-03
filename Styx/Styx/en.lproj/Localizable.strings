@@ -49,6 +49,7 @@
 "Monthly"="Monthly";
 "Yearly"="Yearly";
 "Custom"="Custom";
+"Title should not be empty."="Title should not be empty.";
 
 // Setting View strings
 "Setting"="Setting";

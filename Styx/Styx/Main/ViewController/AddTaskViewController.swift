@@ -34,6 +34,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let placeholders: Array<String> = ["Please type the title".localized, "Please type the details".localized]
     let titles: Array<String> = ["Title".localized, "Details".localized]
+    let emptyTitleAlert: String = "Title should not be empty.".localized
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,6 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAdding))
         self.navigationItem.rightBarButtonItem = doneButton
-        
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -241,8 +241,13 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func titleChanged(_ textfield: UITextField) {
+    @objc func titleChanged(_ textfield: SkyFloatingLabelTextField) {
         taskTitle = textfield.text
+        if taskTitle.isEmpty {
+            textfield.lineColor = UIColor.red
+            textfield.errorColor = UIColor.red
+            textfield.errorMessage = emptyTitleAlert
+        }
     }
     
     @objc func detailsChanged(_ textfield: UITextField) {

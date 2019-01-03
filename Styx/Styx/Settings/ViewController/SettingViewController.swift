@@ -12,7 +12,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let version: String = " 1.0"
     
-    let sections = [["Screen Lock".localized, "Delete Trash".localized, "Notification".localized],
+    let sections = [["Screen Lock".localized, "Notification".localized],
                     ["Add review".localized, "Recommended Apps".localized, "Recommend to Friends".localized],
                     ["Open Source License".localized, "Version".localized]]
     
@@ -36,7 +36,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "  "
+        return " "
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,6 +47,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         else {
             cell.textLabel?.text = sections[indexPath.section][indexPath.row]
         }
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -59,16 +60,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
         }
-        // Trash setting view controller
-        else if indexPath.section == 0 && indexPath.row == 1 {
-            
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TrashSettingViewController") {
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
-            
-        }
         // Notification setting view controller
-        else if indexPath.section == 0 && indexPath.row == 2 {
+        else if indexPath.section == 0 && indexPath.row == 1 {
             
             if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "NotificationSettingViewController") {
                 self.navigationController?.pushViewController(viewController, animated: true)
@@ -78,17 +71,17 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Add review
         else if indexPath.section == 1 && indexPath.row == 0 {
             
-//            if let url = URL(string: ConstsCommon.iTunesReviewUrl), UIApplication.shared.canOpenURL(url) {
-//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//            }
+            if let url = URL(string: ConstsCommon.iTunesReviewUrl), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
             
         }
         // Recommended Apps
         else if indexPath.section == 1 && indexPath.row == 1 {
             
-//            if let url = URL(string: ConstsCommon.iTunesCompanyUrl), UIApplication.shared.canOpenURL(url) {
-//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//            }
+            if let url = URL(string: ConstsCommon.iTunesCompanyUrl), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
             
         }
         // Recommend to Friends:
