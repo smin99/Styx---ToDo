@@ -12,19 +12,19 @@ import UIKit
 // 키보드 관련 처리 추가 UIViewController 클래스
 extension UIViewController {
     
-    // 키보드 프레임에 변경이 생길시에 이벤트를 등록한다.
+    // Add the event when keyboard frame changes
     func startAvoidingKeyboard() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(_onKeyboardFrameWillChangeNotificationReceived(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    // 등록된 키보드 이벤트를 삭제 한다.
+    // Delete setted keyboard event
     func stopAvoidingKeyboard() {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    // 키보드 프레임에 변경이 생기면 - ViewController의 사이즈를 같이 변경 한다.
+    // When keyboard frame changes, change the size of viewcontroller as well
     @objc private func _onKeyboardFrameWillChangeNotificationReceived(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
             let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {

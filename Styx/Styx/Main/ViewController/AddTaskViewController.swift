@@ -10,7 +10,7 @@ import UIKit
 import SCLAlertView
 import SkyFloatingLabelTextField
 
-class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +29,9 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var doneButton: UIBarButtonItem!
     
+    var txtFieldTitle: SkyFloatingLabelTextField!
+    var txtFieldDetails: SkyFloatingLabelTextField!
+    
     let placeholders: Array<String> = ["Please type the title".localized, "Please type the details".localized]
     let titles: Array<String> = ["Title".localized, "Details".localized]
     
@@ -42,6 +45,9 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
+        txtFieldTitle.delegate = self
+        txtFieldDetails.delegate = self
+        
         tableView.separatorStyle = .none
     }
     
@@ -54,8 +60,10 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             ControlUtil.setSkyFloatingTextFieldColor(textField: cell.textField, placeholder: placeholders[indexPath.row], title: titles[indexPath.row])
             
             if indexPath.row == 0 {
+                cell.textField = txtFieldTitle
                 cell.textField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingDidEnd)
             } else if indexPath.row == 1 {
+                cell.textField = txtFieldDetails
                 cell.textField.addTarget(self, action: #selector(detailsChanged(_:)), for: UIControl.Event.editingDidEnd)
             }
             cell.selectionStyle = .none
@@ -264,5 +272,13 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             return IndexPath(row: indexPath.row + 1, section: indexPath.section)
         }
     }
-
+    
+    private func textFieldShouldReturn(_ textField: SkyFloatingLabelTextField) {
+        if textField == txtFieldTitle {
+            textField.resignFirstResponder()
+            txtFieldDetails.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+    }
 }
