@@ -80,6 +80,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        actionButton.buttonColor = UIColorForLabel.UIColorFromRGB(rgbValue: UInt(0x08BCB7))
         
         actionButton.addItem(title: "", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
             if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AddTaskViewController") as? AddTaskViewController {

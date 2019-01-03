@@ -45,9 +45,6 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
-        txtFieldTitle.delegate = self
-        txtFieldDetails.delegate = self
-        
         tableView.separatorStyle = .none
     }
     
@@ -60,10 +57,12 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             ControlUtil.setSkyFloatingTextFieldColor(textField: cell.textField, placeholder: placeholders[indexPath.row], title: titles[indexPath.row])
             
             if indexPath.row == 0 {
-                cell.textField = txtFieldTitle
+                txtFieldTitle = cell.textField
+                txtFieldTitle.delegate = self
                 cell.textField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingDidEnd)
             } else if indexPath.row == 1 {
-                cell.textField = txtFieldDetails
+                txtFieldDetails = cell.textField
+                txtFieldDetails.delegate = self
                 cell.textField.addTarget(self, action: #selector(detailsChanged(_:)), for: UIControl.Event.editingDidEnd)
             }
             cell.selectionStyle = .none
