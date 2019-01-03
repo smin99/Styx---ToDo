@@ -46,7 +46,7 @@ extension UIViewController {
         }, completion: nil)
     }
     
-    // ViewController 영역에 탭이 발생하면 키보드를 사라지게 한다.
+    // Dismiss keyboard when tab happens in ViewController 
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(recognizer:)))
         tap.cancelsTouchesInView = false

@@ -34,6 +34,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAdding))
         self.navigationItem.rightBarButtonItem = doneButton
@@ -65,15 +66,12 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateStyle = .medium
-                dateFormatter.timeStyle = .short
                 cell.repeatLabel.text = "Due Date is".localized
                 cell.selectionStyle = .none
                 return cell
             } else if indexPath.row == 1 && isDueShow {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDateTableViewCell") as! AddTaskDateTableViewCell
-                
+                cell.notifDatePicker.addTarget(self, action: #selector(dueDatePickerChanged), for: UIControl.Event.valueChanged)
                 return cell
             } else {    // unnecessary code
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
@@ -143,6 +141,9 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.section == 1 && indexPath.row == 0 {
             if isDueShow {
                 isDueShow = false
+                let cell = tableView.cellForRow(at: dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
+                cell.notifDatePicker.removeTarget(self, action: #selector(dueDatePickerChanged), for: UIControl.Event.valueChanged)
+                
                 tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .automatic)
                 return
             }
@@ -225,7 +226,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func doneAdding (_ sender: Any) {
-        let retVal = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatInt))
+        _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatInt))
         MainViewController.mainView.tableView.reloadData()
         self.navigationController?.popViewController(animated: true)
     }

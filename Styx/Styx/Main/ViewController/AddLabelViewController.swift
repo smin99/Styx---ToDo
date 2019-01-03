@@ -7,27 +7,53 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
-class AddLabelViewController: UIViewController {
+class AddLabelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    var labelTitle: String!
+    var labelColorID: Int!
     
+    var doneButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
-        // Do any additional setup after loading the view.
+        doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAdding))
+        self.navigationItem.rightBarButtonItem = doneButton
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.separatorStyle = .none
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddLabelTableViewCell") as! AddLabelTableViewCell
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddLabelColorIDTableViewCell") as! AddLabelColorIDTableViewCell
+            
+            return cell
+        }
+    }
+
+    @objc func doneAdding (_ sender: Any) {
+        _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: labelTitle, ColorID: labelColorID))
+        MainViewController.mainView.tableView.reloadData()
+        self.navigationController?.popViewController(animated: true)
+    }
 
 }

@@ -1,18 +1,15 @@
 //
-//  AddLabelTableViewCell.swift
+//  AddLabelColorIDTableViewCell.swift
 //  Styx
 //
-//  Created by HwangSeungmin on 12/27/18.
-//  Copyright © 2018 Min. All rights reserved.
+//  Created by HwangSeungmin on 1/3/19.
+//  Copyright © 2019 Min. All rights reserved.
 //
 
 import UIKit
-import SkyFloatingLabelTextField
 
-class AddLabelTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var labelTitleTextField: SkyFloatingLabelTextField!
-    
+class AddLabelColorIDTableViewCell: UITableViewCell {
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

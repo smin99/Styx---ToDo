@@ -22,6 +22,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         navigationItem.title =  taskTitle + " Details"
         
         // initialize listDone / listNotDone arrays
