@@ -236,6 +236,9 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func doneAdding (_ sender: Any) {
+        if self.taskTitle.isEmpty {
+            return 
+        }
         _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatInt))
         MainViewController.mainView.tableView.reloadData()
         self.navigationController?.popViewController(animated: true)

@@ -9,6 +9,8 @@
 import UIKit
 
 class AddLabelColorIDTableViewCell: UITableViewCell {
+    
+    @IBOutlet var colorButtons: [UIButton]!
 
     override func awakeFromNib() {
         super.awakeFromNib()
