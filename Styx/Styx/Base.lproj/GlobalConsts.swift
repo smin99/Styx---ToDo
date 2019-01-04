@@ -16,5 +16,5 @@ class ConstsCommon {
     
     static let iTunesAppUrl = "itms-apps://itunes.apple.com/app/id1447817705"
     
-    static let iTunesReviewUrl = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1441662677&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"
+    static let iTunesReviewUrl = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1447817705&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"
 }

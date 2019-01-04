@@ -18,10 +18,13 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     var listDone: Array<List>!
     var showComplete: Bool!
     
+    var aboutBarButton: UIBarButtonItem!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.startAvoidingKeyboard()
         self.hideKeyboardWhenTappedAround()
         navigationItem.title =  taskTitle + " Details"
         
@@ -37,6 +40,9 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
                 listNotDone.append(list)
             }
         }
+        
+        aboutBarButton = UIBarButtonItem(image: UIImage(named: "AboutIcon"), style: .plain, target: self, action: #selector(settingTask))
+        self.navigationItem.rightBarButtonItem = aboutBarButton
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -153,20 +159,22 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     // Enter key for new item input - move to next item, if last add new
     func nextCheckItem(item: List) {
-        if let index = listNotDone.firstIndex(where: { $0.ID == item.ID }) {
-            if index == listNotDone.count {   // if last item, add new row
-                addCheckItem()
-                tableView.reloadData()
-            } else {                            // move to next item
-                let indexPath = IndexPath(row: index + 1, section: 0)
-                tableView.scrollToRow(at: indexPath, at: .none, animated: true)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                    if let cell = self.tableView.cellForRow(at: indexPath) as? ListTableViewCell {
-                        cell.titleTextField.becomeFirstResponder()
-                    }
-                })
+        let index = listNotDone.firstIndex(where: { $0.ID == item.ID })
+        if index == nil {
+            listNotDone.append(item)
+            tableView.reloadData()
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: self.tableView.numberOfRows(inSection: 0)-1, section: 0)) as? ListTableViewCell {
+                cell.titleTextField.becomeFirstResponder()
             }
+        } else {                            // move to next item
+            let indexPath = IndexPath(row: index! + 1, section: 0)
+            tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                if let cell = self.tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                    cell.titleTextField.becomeFirstResponder()
+                }
+            })
         }
     }
     
@@ -195,7 +203,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 2  {
+        if indexPath.section > 0  {
             return false
         } else if indexPath.row < listNotDone.count {
             return true
@@ -261,6 +269,10 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
             }
         })
         return true
+    }
+    
+    @objc func settingTask(_ sender: Any) {
+        
     }
     
 }

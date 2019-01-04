@@ -118,9 +118,11 @@ class ListTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
-        taskTableViewController?.nextCheckItem(item: checkItem)
-        _ = MainViewController.Database.UpsertList(list: checkItem)
-        taskTableViewController?.addCheckItem()
+        if !textField.text!.isEmpty {
+            let id = MainViewController.Database.UpsertList(list: checkItem)
+            checkItem.ID = id
+            taskTableViewController?.nextCheckItem(item: checkItem)
+        }
         return true
     }
 
