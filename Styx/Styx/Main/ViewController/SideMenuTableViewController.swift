@@ -12,6 +12,8 @@ import SideMenu
 
 class SideMenuTableViewController: UITableViewController {
     
+    static var sideMenu: SideMenuTableViewController!
+    
     var labelList: Array<Label>!
     
     var editButton: UIBarButtonItem!
@@ -19,6 +21,8 @@ class SideMenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SideMenuTableViewController.sideMenu = self
         
         editButton = UIBarButtonItem(image: UIImage(named: "TrashIcon"), style: .plain, target: self, action: #selector(editMode))
         editButton.tintColor = UIColor.black
@@ -29,8 +33,6 @@ class SideMenuTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = addButton
         
         tableView.separatorStyle = .none
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +61,7 @@ class SideMenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         MainViewController.mainView.labelIndex = indexPath.row
         MainViewController.mainView.tableView.reloadData()
+        MainViewController.mainView.viewDidAppear(true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -109,15 +112,15 @@ class SideMenuTableViewController: UITableViewController {
                 SwiftMessages.hide()
             }
             
-            view.titleLabel2.text = "Delete Label".localized
-            view.contentLabel2.text = "Do you really want to delete this label? It will delete all tasks and items belonged to it.".localized
-            
             var config = SwiftMessages.defaultConfig
             config.presentationContext = .window(windowLevel: UIWindow.Level.normal)
             config.duration = .forever
             config.presentationStyle = .center
             config.dimMode = .gray(interactive: true)
             view.initControl()
+            
+            view.titleLabel2.text = "Delete Label".localized
+            view.contentLabel2.text = "Do you really want to delete this label? It will delete all tasks and items belonged to it.".localized
             SwiftMessages.show(config: config, view: view)
         }
     }

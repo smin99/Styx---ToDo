@@ -499,59 +499,59 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-2A-YYD">
                                                     <rect key="frame" x="34.5" y="16" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.2901960784" green="0.31764705879999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="AXO-DP-nSj"/>
                                                         <constraint firstAttribute="height" constant="30" id="Z3c-3Z-ngR"/>
                                                     </constraints>
-                                                    <state key="normal" title="C"/>
                                                 </button>
                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gif-XN-Vqf">
                                                     <rect key="frame" x="80.5" y="16" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.2901960784" green="0.31764705879999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="jtg-SL-4zf"/>
                                                         <constraint firstAttribute="width" constant="30" id="lvl-bh-LhV"/>
                                                     </constraints>
-                                                    <state key="normal" title="C"/>
                                                 </button>
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csd-aJ-PrL">
                                                     <rect key="frame" x="126.5" y="16" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.2901960784" green="0.31764705879999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="WGt-LG-OX6"/>
                                                         <constraint firstAttribute="width" constant="30" id="onh-Xx-u0Q"/>
                                                     </constraints>
-                                                    <state key="normal" title="C"/>
                                                 </button>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frm-qg-CtS">
                                                     <rect key="frame" x="172.5" y="16" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.2901960784" green="0.31764705879999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="kVx-DG-9o1"/>
                                                         <constraint firstAttribute="width" constant="30" id="mcc-mI-LXs"/>
                                                     </constraints>
-                                                    <state key="normal" title="C"/>
                                                 </button>
                                                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jG6-di-WV1">
                                                     <rect key="frame" x="218.5" y="16" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.2901960784" green="0.31764705879999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="eeL-sM-QVx"/>
                                                         <constraint firstAttribute="width" constant="30" id="mbb-pu-9Dt"/>
                                                     </constraints>
-                                                    <state key="normal" title="C"/>
                                                 </button>
                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frq-6B-MZ3">
                                                     <rect key="frame" x="264.5" y="16" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.2901960784" green="0.31764705879999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="NUi-js-b85"/>
                                                         <constraint firstAttribute="height" constant="30" id="gpd-es-qSn"/>
                                                     </constraints>
-                                                    <state key="normal" title="C"/>
                                                 </button>
                                                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvg-Op-Qfn">
                                                     <rect key="frame" x="310.5" y="16" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.2901960784" green="0.31764705879999999" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="1if-5F-MZB"/>
                                                         <constraint firstAttribute="width" constant="30" id="THT-CE-B6r"/>
                                                     </constraints>
-                                                    <state key="normal" title="C"/>
                                                 </button>
                                             </subviews>
                                             <constraints>

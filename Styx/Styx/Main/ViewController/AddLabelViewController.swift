@@ -16,6 +16,7 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
     var labelColorID: Int!
     
     var txtFieldTitle: SkyFloatingLabelTextField!
+    var buttonPressedBefore: UIButton!
     
     var doneButton: UIBarButtonItem!
     
@@ -51,14 +52,34 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
             txtFieldTitle = cell.labelTitleTextField
             cell.labelTitleTextField.tag = 0
             txtFieldTitle.delegate = self
-            cell.labelTitleTextField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingDidEnd)
+            cell.labelTitleTextField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingChanged)
             cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLabelColorIDTableViewCell") as! AddLabelColorIDTableViewCell
-            
+            cell.selectionStyle = .none
+            for button in cell.colorButtons {
+                button.backgroundColor = UIColorForLabel.UIColorFromRGB(colorid: button.tag)
+                button.layer.borderWidth = 1
+                button.layer.borderColor = UIColor.black.cgColor
+                button.frame = CGRect(x: 100, y: 100, width: 50, height: 50)
+                button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.clipsToBounds = true
+                button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+            }
             return cell
         }
+    }
+    
+    @objc func buttonPressed(_ colorButton: UIButton) {
+        if buttonPressedBefore != nil {
+            buttonPressedBefore.layer.borderColor = UIColor.black.cgColor
+            buttonPressedBefore.layer.borderWidth = 1
+        }
+        colorButton.layer.borderColor = UIColor.blue.cgColor
+        colorButton.layer.borderWidth = 2
+        buttonPressedBefore = colorButton
+        self.labelColorID = colorButton.tag
     }
     
     @objc func titleChanged(_ textfield: SkyFloatingLabelTextField) {
@@ -67,13 +88,29 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
             textfield.lineColor = UIColor.red
             textfield.errorColor = UIColor.red
             textfield.errorMessage = emptyTitleAlert
+        } else {
+            textfield.errorMessage = ""
         }
     }
 
     @objc func doneAdding (_ sender: Any) {
-        _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: labelTitle, ColorID: labelColorID))
-        MainViewController.mainView.tableView.reloadData()
-        self.navigationController?.popViewController(animated: true)
+        if labelTitle != nil {
+            if labelColorID == nil {
+                labelColorID = 0
+            }
+            let id = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: labelTitle, ColorID: labelColorID))
+            let label = Label(ID: id, Title: labelTitle, ColorID: labelColorID)
+            MainViewController.mainView.labelList.append(label)
+            SideMenuTableViewController.sideMenu.labelList.append(label)
+            MainViewController.mainView.tableView.reloadData()
+            SideMenuTableViewController.sideMenu.tableView.reloadData()
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddLabelTableViewCell
+            cell.labelTitleTextField.lineColor = UIColor.red
+            cell.labelTitleTextField.errorColor = UIColor.red
+            cell.labelTitleTextField.errorMessage = emptyTitleAlert
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method

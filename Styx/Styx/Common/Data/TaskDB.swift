@@ -152,7 +152,7 @@ class TaskDB : TaskDBProtocol {
         if let db = self.db {
             do {
                 for lab in try db.prepare(labelTable) {
-                    let label = Label(ID: lab[labelID], Title: lab[labelTitle])
+                    let label = Label(ID: lab[labelID], Title: lab[labelTitle], ColorID: lab[labelColorID])
                     labelList.append(label)
                 }
             } catch let error {

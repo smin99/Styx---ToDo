@@ -237,7 +237,11 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc func doneAdding (_ sender: Any) {
         if self.taskTitle.isEmpty {
-            return 
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddTaskTableViewCell
+            cell.textField.lineColor = UIColor.red
+            cell.textField.errorColor = UIColor.red
+            cell.textField.errorMessage = emptyTitleAlert
+            return
         }
         _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatInt))
         MainViewController.mainView.tableView.reloadData()

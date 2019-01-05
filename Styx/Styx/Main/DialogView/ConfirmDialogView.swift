@@ -20,7 +20,7 @@ class ConfirmDialogView: MessageView {
     
     var yesAction: (() -> Void)?
     var cancelAction: (() -> Void)?
-    
+        
     @IBAction func yesButtonAction() {
         yesAction?()
     }
