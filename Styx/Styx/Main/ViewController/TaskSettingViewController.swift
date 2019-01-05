@@ -1,16 +1,16 @@
 //
-//  AddTaskViewController.swift
+//  TaskSettingViewController.swift
 //  Styx
 //
-//  Created by HwangSeungmin on 12/28/18.
-//  Copyright © 2018 Min. All rights reserved.
+//  Created by HwangSeungmin on 1/5/19.
+//  Copyright © 2019 Min. All rights reserved.
 //
 
 import UIKit
 import SkyFloatingLabelTextField
 
-class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    
+class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+
     @IBOutlet weak var tableView: UITableView!
     
     var isNotifShow: Bool! = false
@@ -41,7 +41,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAdding))
         self.navigationItem.rightBarButtonItem = doneButton
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -70,7 +70,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.selectionStyle = .none
             return cell
             
-        // Second section: Set Due Date
+            // Second section: Set Due Date
         } else if indexPath.section == 1 {
             
             if indexPath.row == 0 {
@@ -90,7 +90,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return cell
             }
             
-        // Third section: Turn on/off Notification
+            // Third section: Turn on/off Notification
         } else if indexPath.section == 2 && (!isNotifShow || indexPath.row != 1){
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TaskNotifTableViewCell") as! TaskNotifTableViewCell
@@ -100,14 +100,14 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.selectionStyle = .none
             return cell
             
-        // Fourth section: set the Notification Time
+            // Fourth section: set the Notification Time
         } else if datePickerIndexPath == indexPath && isNotifShow{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDateTableViewCell") as! AddTaskDateTableViewCell
             cell.notifDatePicker.addTarget(self, action: #selector(datePickerChanged), for: UIControl.Event.valueChanged)
             return cell
             
-        // Fifth section: Set the Repetition of the Task
+            // Fifth section: Set the Repetition of the Task
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
@@ -176,39 +176,6 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.cellForRow(at: indexPath) as! AddTaskRepeatTableViewCell
             
             
-//            let repeatDetails: SCLAlertView = SCLAlertView()
-//
-//            repeatDetails.addButton("Daily".localized) {
-//                self.repeatInt = 0
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Daily".localized
-//            }
-//
-//            repeatDetails.addButton("Weekly".localized) {
-//                self.repeatInt = 1
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Weekly".localized
-//            }
-//
-//            repeatDetails.addButton("Monthly".localized) {
-//                self.repeatInt = 2
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Monthly".localized
-//            }
-//
-//            repeatDetails.addButton("Yearly".localized) {
-//                self.repeatInt = 3
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Yearly".localized
-//            }
-//
-//            repeatDetails.addButton("Custom".localized) {
-//                self.repeatInt = 4
-//
-//            }
-//
-//            repeatDetails.showTitle(
-//                "Repeat Task",
-//                subTitle: "Select when to repeat your task",
-//                style: .info
-//            )
-            
         } else {
             
         }
@@ -227,10 +194,10 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 dateCell.repeatLabel.text = "Due Date is ".localized + "\(ControlUtil.dateToString(date: dateDue))"
             }
         }
-        // Notification saved
+            // Notification saved
         else if indexPath.section == 2 && indexPath.row == 0 {
-//            let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! AddTaskDateTableViewCell
-//            notif = cell.notifDatePicker.date
+            //            let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! AddTaskDateTableViewCell
+            //            notif = cell.notifDatePicker.date
         }
     }
     

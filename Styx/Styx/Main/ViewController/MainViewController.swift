@@ -33,6 +33,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var editButton: UIBarButtonItem!
     var settingButton: UIBarButtonItem!
     
+    var warningSign: UIImage!
+    
     // add button
     var actionButton: JJFloatingActionButton!
     
@@ -169,6 +171,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.navigationController?.navigationBar.tintColor = UIColor.white
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                self.navigationItem.title = self.labelList[self.labelIndex].Title
                 self.tableView.reloadData()
             }
         }
@@ -206,6 +209,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        print("\(Double(numListCompleted) / Double(labelList[labelIndex].taskList[indexPath.row].listList.count))")
         cell.taskProgressBar.progress = progressFloat
         cell.taskProgressPercentageLabel.text = String(format: "%.2f", progressFloat * 100) + " %"
+        
+        if !labelList[labelIndex].taskList[indexPath.row].isDone {
+            warningSign = UIImage(named: "WarningIcon")
+            cell.warningMark.titleLabel!.text = ""
+            cell.warningMark.setImage(warningSign, for: .normal)
+            cell.warningMark.tintColor = UIColorForLabel.UIColorFromRGB(rgbValue: UInt(0xF7CD4D))
+//            cell.warningMark.backgroundColor = UIColor.red
+        }
         
         return cell
         

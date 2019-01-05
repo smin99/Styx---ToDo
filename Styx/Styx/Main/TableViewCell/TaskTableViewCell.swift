@@ -14,6 +14,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var taskProgressBar: UIProgressView!
     @IBOutlet weak var taskProgressPercentageLabel: UILabel!
+    @IBOutlet weak var warningMark: UIButton!
     
     var isCompleted: Bool = false
     

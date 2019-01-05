@@ -74,7 +74,11 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        if indexPath.section == 1 {
+            return 108
+        } else {
+            return 60
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -119,6 +123,8 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
         colorButton.layer.borderWidth = 2
         buttonPressedBefore = colorButton
         self.labelColorID = colorButton.tag
+        
+        self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: colorButton.tag)
     }
     
     @objc func titleChanged(_ textfield: SkyFloatingLabelTextField) {
@@ -128,6 +134,7 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
             textfield.errorColor = UIColor.red
             textfield.errorMessage = emptyTitleAlert
         } else {
+            ControlUtil.setSkyFloatingTextFieldColor(textField: textfield)
             textfield.errorMessage = ""
         }
     }
@@ -141,6 +148,7 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
             let label = Label(ID: id, Title: labelTitle, ColorID: labelColorID)
             MainViewController.mainView.labelList.append(label)
             SideMenuTableViewController.sideMenu.labelList.append(label)
+            MainViewController.mainView.labelIndex = MainViewController.mainView.labelList.count - 1
             MainViewController.mainView.tableView.reloadData()
             SideMenuTableViewController.sideMenu.tableView.reloadData()
             self.navigationController?.popViewController(animated: true)
