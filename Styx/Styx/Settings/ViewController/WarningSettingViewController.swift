@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LockSettingViewController: UIViewController {
+class WarningSettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

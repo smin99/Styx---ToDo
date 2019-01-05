@@ -12,7 +12,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let version: String = " 1.0"
     
-    let sections = [["Screen Lock".localized, "Notification".localized],
+    var warningDue: Int!
+    
+    let sections = [["Warning Sign".localized, "Notification".localized],
                     ["Add review".localized, "Recommended Apps".localized, "Recommend to Friends".localized],
                     ["Open Source License".localized, "Version".localized]]
     
@@ -55,7 +57,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Screen lock setting view controller
         if indexPath.section == 0 && indexPath.row == 0 {
             
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LockSettingViewController") {
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WarningSettingViewController") {
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
             

@@ -45,6 +45,45 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        headerView.tintColor = UIColor.white
+        if section == 1 {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+            label.text = "Choose the color for label".localized
+            label.textAlignment = .left
+            headerView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8)
+            headerView.addSubview(label)
+        }
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        footerView.tintColor = UIColor.white
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "Choose the color for label".localized
+        }
+        return ""
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLabelTableViewCell") as! AddLabelTableViewCell

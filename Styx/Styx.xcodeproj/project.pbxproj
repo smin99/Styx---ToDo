@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E565F3FC95F5CEA6E556C06 /* Pods_Styx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F159ED3098E5E162570D4F /* Pods_Styx.framework */; };
 		5608DAC021D154DC00219D32 /* GlobalConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DABE21D154DC00219D32 /* GlobalConsts.swift */; };
-		5608DAC221D164CA00219D32 /* LockSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */; };
+		5608DAC221D164CA00219D32 /* WarningSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC121D164CA00219D32 /* WarningSettingTableViewCell.swift */; };
 		5608DAC421D164DA00219D32 /* NotificationSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */; };
 		560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */; };
 		560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */; };
@@ -41,7 +41,7 @@
 		5665355821D6B17700D9FF92 /* AddLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665355721D6B17700D9FF92 /* AddLabelViewController.swift */; };
 		5665355A21D6B2FA00D9FF92 /* AddTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */; };
 		5678526121D096F300BD6192 /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526021D096F300BD6192 /* NotificationSettingViewController.swift */; };
-		5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526221D0970900BD6192 /* LockSettingViewController.swift */; };
+		5678526321D0970900BD6192 /* WarningSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526221D0970900BD6192 /* WarningSettingViewController.swift */; };
 		5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526621D0973700BD6192 /* LicenseSettingViewController.swift */; };
 		568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */; };
 		568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */; };
@@ -55,7 +55,7 @@
 /* Begin PBXFileReference section */
 		47F159ED3098E5E162570D4F /* Pods_Styx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Styx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5608DABF21D154DC00219D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Styx/Base.lproj/GlobalConsts.swift; sourceTree = SOURCE_ROOT; };
-		5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingTableViewCell.swift; sourceTree = "<group>"; };
+		5608DAC121D164CA00219D32 /* WarningSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingTableViewCell.swift; sourceTree = "<group>"; };
 		5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewCell.swift; sourceTree = "<group>"; };
 		560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		5665355721D6B17700D9FF92 /* AddLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLabelViewController.swift; sourceTree = "<group>"; };
 		5665355921D6B2FA00D9FF92 /* AddTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewCell.swift; sourceTree = "<group>"; };
 		5678526021D096F300BD6192 /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
-		5678526221D0970900BD6192 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
+		5678526221D0970900BD6192 /* WarningSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingViewController.swift; sourceTree = "<group>"; };
 		5678526621D0973700BD6192 /* LicenseSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseSettingViewController.swift; sourceTree = "<group>"; };
 		568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotifTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDateTableViewCell.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 			children = (
 				560A5CDD21CF0C890092B0C5 /* SettingViewController.swift */,
 				5678526021D096F300BD6192 /* NotificationSettingViewController.swift */,
-				5678526221D0970900BD6192 /* LockSettingViewController.swift */,
+				5678526221D0970900BD6192 /* WarningSettingViewController.swift */,
 				5678526621D0973700BD6192 /* LicenseSettingViewController.swift */,
 			);
 			path = ViewController;
@@ -272,7 +272,7 @@
 		5678525F21D096D800BD6192 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				5608DAC121D164CA00219D32 /* LockSettingTableViewCell.swift */,
+				5608DAC121D164CA00219D32 /* WarningSettingTableViewCell.swift */,
 				5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */,
 			);
 			path = TableViewCell;
@@ -456,7 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5678526321D0970900BD6192 /* LockSettingViewController.swift in Sources */,
+				5678526321D0970900BD6192 /* WarningSettingViewController.swift in Sources */,
 				568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */,
 				568EC45921D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift in Sources */,
 				56C0CB3521DE6F8A0041864C /* AddLabelColorIDTableViewCell.swift in Sources */,
@@ -475,7 +475,7 @@
 				5665355421D5C6DC00D9FF92 /* AddLabelTableViewCell.swift in Sources */,
 				561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */,
 				5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */,
-				5608DAC221D164CA00219D32 /* LockSettingTableViewCell.swift in Sources */,
+				5608DAC221D164CA00219D32 /* WarningSettingTableViewCell.swift in Sources */,
 				5665355621D6B16600D9FF92 /* AddTaskViewController.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
 				568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */,

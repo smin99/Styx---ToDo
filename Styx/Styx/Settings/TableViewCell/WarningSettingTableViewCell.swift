@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LockSettingTableViewCell: UITableViewCell {
+class WarningTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var lockSwitch: UISwitch!

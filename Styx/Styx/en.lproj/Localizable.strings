@@ -51,6 +51,9 @@
 "Custom"="Custom";
 "Title should not be empty."="Title should not be empty.";
 
+// Add Label View Controller
+"Choose the color for label"="Choose the color for label";
+
 // Setting View strings
 "Setting"="Setting";
 "Screen Lock"="Screen Lock";
