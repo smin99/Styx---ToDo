@@ -189,6 +189,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         // count the list completed and save it
         var numListCompleted = 0
         for list in labelList[labelIndex].taskList[indexPath.row].listList {
@@ -196,6 +197,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell") as! TaskTableViewCell
+        
         cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
         cell.dueLabel.text = ControlUtil.dateToString(date: labelList[labelIndex].taskList[indexPath.row].Due)
         

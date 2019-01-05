@@ -82,6 +82,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else if indexPath.row == 1 && isDueShow {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDateTableViewCell") as! AddTaskDateTableViewCell
                 cell.notifDatePicker.addTarget(self, action: #selector(dueDatePickerChanged), for: UIControl.Event.valueChanged)
+                cell.notifDatePicker.locale = Locale.autoupdatingCurrent
                 return cell
             } else {    // unnecessary code
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
@@ -123,6 +124,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             return 160.0
         } else if indexPath.section == 1 {
             return 60
+        } else if indexPath.section == 2 && isNotifShow {
+            return 120
         } else {
             return 50
         }
@@ -146,6 +149,10 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Due Date Setting: Add the Date picker below the cell
         if indexPath.section == 1 && indexPath.row == 0 {
@@ -153,6 +160,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 isDueShow = false
                 let cell = tableView.cellForRow(at: dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
                 cell.notifDatePicker.removeTarget(self, action: #selector(dueDatePickerChanged), for: UIControl.Event.valueChanged)
+                cell.notifDatePicker.locale = Locale.autoupdatingCurrent
                 
                 tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .automatic)
                 return
@@ -232,6 +240,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             isNotifShow = false
             tableView.deleteRows(at: [datePickerIndexPath ?? IndexPath(row: 1, section: 2)], with: .automatic)
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! TaskNotifTableViewCell
+            cell.notifLabel.numberOfLines = 1
         }
     }
     
@@ -267,7 +277,17 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! TaskNotifTableViewCell
         
         let dateString = ControlUtil.dateToString(date: notif)
-        cell.notifLabel.text = "Remind me on ".localized + "\(dateString)"
+        let paragraphStyle = NSMutableParagraphStyle()
+        
+        paragraphStyle.lineSpacing = 10
+        
+        let attrString = NSMutableAttributedString(string: cell.notifLabel.text!)
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range:NSMakeRange(0, attrString.length))
+        
+        cell.notifLabel.numberOfLines = 2
+        cell.notifLabel.attributedText = attrString
+        cell.notifLabel.text = "Remind me on ".localized + "\n \(dateString)"
+        
     }
     
     @objc func dueDatePickerChanged(picker: UIDatePicker) {

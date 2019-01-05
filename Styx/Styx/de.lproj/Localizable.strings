@@ -13,3 +13,55 @@
 "No"="No";
 "Close"="Close";
 "Delete"="Delete";
+
+// View Controller strings
+"Task Details"="Task Details";
+"Edit Task"="Edit Task";
+"Edit List"="Edit List";
+
+// Main View Controller
+"Edit"="Edit";
+"Done"="Done";
+"Loading..."="Loading...";
+
+// Dialog View strings
+"Delete"="Delete";
+"Delete Task"="Delete Task";
+"Do you want to delete this task? It will delete all included list items."="Do you want to delete this task? It will delete all included list items.";
+"Delete Label"="Delete Label";
+"Do you really want to delete this label? It will delete all tasks and items belonged to it."="Do you really want to delete this label? It will delete all tasks and items belonged to it.";
+
+// Task Table View Controller
+"Show Complete"="Show Complete";
+"Hide Complete"="Hide Complete";
+"Type new list"="Type new list";
+
+// Add Task View Controller
+"Please type the title"="Please type the title";
+"Please type the details"="Please type the details";
+"Title"="Title";
+"Details"="Details";
+"Due Date is "="Due Date is ";
+"Remind me on "="Remind me on ";
+"Repeat the Task"="Repeat the Task";
+"Daily"="Daily";
+"Weekly"="Weekly";
+"Monthly"="Monthly";
+"Yearly"="Yearly";
+"Custom"="Custom";
+"Title should not be empty."="Title should not be empty.";
+
+// Add Label View Controller
+"Choose the color for label"="Choose the color for label";
+
+// Setting View strings
+"Setting"="Setting";
+"Screen Lock"="Screen Lock";
+"Delete Trash"="Delete Trash";
+"Notification"="Notification";
+"Add review"="Add review";
+"Recommended Apps"="Recommended Apps";
+"Recommend to Friends"="Recommend to Friends";
+"Open Source License"="Open Source License";
+"Version"="Version";
+"Recommendation"="Your friend recommended Styx-ToDo app to you! Try our app in App Store.";
