@@ -58,11 +58,11 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
         headerView.tintColor = UIColor.white
         if section == 1 {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+            let label = UILabel(frame: CGRect(x: 8, y: 0, width: 200, height: 30))
             label.text = "Choose the color for label".localized
             label.textAlignment = .left
-            headerView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8)
             headerView.addSubview(label)
+//            headerView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8).isActive = true
         }
         return headerView
     }
