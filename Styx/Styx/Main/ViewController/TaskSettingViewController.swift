@@ -21,7 +21,7 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
     var taskTitle: String! = ""
     var taskDetail: String! = ""
     var dateDue: Date! = Date()
-    var repeatInt: Int! = 0
+    var repeatString: String! = ""
     
     var dueDatePickerIndexPath: IndexPath? = IndexPath(row: 1, section: 1)
     var datePickerIndexPath: IndexPath? = IndexPath(row: 1, section: 2)
@@ -74,8 +74,8 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
         } else if indexPath.section == 1 {
             
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-                cell.repeatLabel.text = "Due Date is".localized
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDueTableViewCell") as! AddTaskDueTableViewCell
+                cell.dueLabel.text = "Due Date is".localized
                 cell.selectionStyle = .none
                 return cell
             } else if indexPath.row == 1 && isDueShow {
@@ -84,8 +84,8 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.notifDatePicker.locale = Locale.autoupdatingCurrent
                 return cell
             } else {    // unnecessary code
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-                cell.repeatLabel.text = "Due Date is".localized
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDueTableViewCell") as! AddTaskDueTableViewCell
+                cell.dueLabel.text = "Due Date is".localized
                 cell.selectionStyle = .none
                 return cell
             }
@@ -111,7 +111,6 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-            cell.repeatLabel.text = "Repeat the Task".localized
             cell.selectionStyle = .none
             return cell
             
@@ -169,13 +168,6 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.insertRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .automatic)
             let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
             cell.notifDatePicker.addTarget(self, action: #selector(dueDatePickerChanged), for: UIControl.Event.valueChanged)
-        }
-        
-        // Repetition Setting: Show up the SCL Alert View with buttons
-        if indexPath.section == 3 && indexPath.row == 0 {
-            let cell = tableView.cellForRow(at: indexPath) as! AddTaskRepeatTableViewCell
-            
-            
         } else {
             
         }
@@ -190,8 +182,8 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
                 let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
                 dateDue = cell.notifDatePicker.date
                 tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .none)
-                let dateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
-                dateCell.repeatLabel.text = "Due Date is ".localized + "\(ControlUtil.dateToString(date: dateDue))"
+                let dateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskDueTableViewCell
+                dateCell.dueLabel.text = "Due Date is ".localized + "\(ControlUtil.dateToString(date: dateDue))"
             }
         }
             // Notification saved
@@ -221,7 +213,7 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
             cell.textField.errorMessage = emptyTitleAlert
             return
         }
-        _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatInt))
+        _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatString))
         MainViewController.mainView.tableView.reloadData()
         self.navigationController?.popViewController(animated: true)
     }
@@ -264,10 +256,10 @@ class TaskSettingViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func dueDatePickerChanged(picker: UIDatePicker) {
         dateDue = picker.date
         
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskDueTableViewCell
         
         let dateString = ControlUtil.dateToString(date: dateDue)
-        cell.repeatLabel.text = "Due Date is ".localized + "\(dateString)"
+        cell.dueLabel.text = "Due Date is ".localized + "\(dateString)"
     }
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {

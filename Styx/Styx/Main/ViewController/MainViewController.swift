@@ -195,27 +195,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // count the list completed and save it
         var numListCompleted = 0
-        for list in labelList[labelIndex].taskList[indexPath.row].listList {
-            if list.isDone { numListCompleted = numListCompleted + 1 }
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell") as! TaskTableViewCell
+
+        if !labelList[labelIndex].taskList.isEmpty {
+            for list in labelList[labelIndex].taskList[indexPath.row].listList {
+                if list.isDone { numListCompleted = numListCompleted + 1 }
+            }
+            
+            cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
+            cell.dueLabel.text = ControlUtil.dateToString(date: labelList[labelIndex].taskList[indexPath.row].Due)
         
-        cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
-        cell.dueLabel.text = ControlUtil.dateToString(date: labelList[labelIndex].taskList[indexPath.row].Due)
-        
-        let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(Double(numListCompleted) / Double(labelList[labelIndex].taskList[indexPath.row].listList.count))
-//        print("\(numListCompleted)")
-//        print("\(Double(numListCompleted) / Double(labelList[labelIndex].taskList[indexPath.row].listList.count))")
-        cell.taskProgressBar.progress = progressFloat
-        cell.taskProgressPercentageLabel.text = String(format: "%.2f", progressFloat * 100) + " %"
-        
-        if !labelList[labelIndex].taskList[indexPath.row].isDone {
-            warningSign = UIImage(named: "WarningIcon")
-            cell.warningMark.titleLabel!.text = ""
-            cell.warningMark.setImage(warningSign, for: .normal)
-            cell.warningMark.tintColor = UIColorForLabel.UIColorFromRGB(rgbValue: UInt(0xF7CD4D))
-//            cell.warningMark.backgroundColor = UIColor.red
+            let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(Double(numListCompleted) / Double(labelList[labelIndex].taskList[indexPath.row].listList.count))
+    //        print("\(numListCompleted)")
+    //        print("\(Double(numListCompleted) / Double(labelList[labelIndex].taskList[indexPath.row].listList.count))")
+            cell.taskProgressBar.progress = progressFloat
+            cell.taskProgressPercentageLabel.text = String(format: "%.2f", progressFloat * 100) + " %"
+            
+            if !labelList[labelIndex].taskList[indexPath.row].isDone {
+                warningSign = UIImage(named: "WarningIcon")
+                cell.warningMark.titleLabel!.text = ""
+                cell.warningMark.setImage(warningSign, for: .normal)
+                cell.warningMark.tintColor = UIColorForLabel.UIColorFromRGB(rgbValue: UInt(0xF7CD4D))
+    //            cell.warningMark.backgroundColor = UIColor.red
+            }
         }
         
         return cell

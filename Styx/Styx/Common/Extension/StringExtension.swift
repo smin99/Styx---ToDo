@@ -35,4 +35,17 @@ extension String {
         let attributeString = NSAttributedString(string: self, attributes: fontAttribute)
         return attributeString
     }
+    
+    func dateStringToIntArray(dateString: String) -> [Int] {
+        var datesArray: [Int] = []
+        let str = dateString
+        
+        let stringArray = str.components(separatedBy: ",")
+        
+        for date in stringArray {
+            datesArray.append(Int(date)!)
+        }
+        
+        return datesArray
+    }
 }

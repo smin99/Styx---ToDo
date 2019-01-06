@@ -44,12 +44,19 @@
 "Due Date is "="Due Date is ";
 "Remind me on "="Remind me on ";
 "Repeat the Task"="Repeat the Task";
-"Daily"="Daily";
-"Weekly"="Weekly";
 "Monthly"="Monthly";
 "Yearly"="Yearly";
 "Custom"="Custom";
 "Title should not be empty."="Title should not be empty.";
+
+// Dates
+"M"="M";
+"T"="T";
+"W"="W";
+"Thu"="T";
+"F"="F";
+"Sat"="S";
+"Sun"="S";
 
 // Add Label View Controller
 "Choose the color for label"="Choose the color for label";

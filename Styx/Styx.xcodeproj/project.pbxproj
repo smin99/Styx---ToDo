@@ -44,6 +44,8 @@
 		5678526321D0970900BD6192 /* WarningSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526221D0970900BD6192 /* WarningSettingViewController.swift */; };
 		5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5678526621D0973700BD6192 /* LicenseSettingViewController.swift */; };
 		567A9D6921E13CBA00894D91 /* TaskSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567A9D6821E13CBA00894D91 /* TaskSettingViewController.swift */; };
+		567A9D6B21E1408100894D91 /* AddTaskDueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567A9D6A21E1408100894D91 /* AddTaskDueTableViewCell.swift */; };
+		567A9D6D21E1559B00894D91 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567A9D6C21E1559B00894D91 /* IntExtension.swift */; };
 		568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */; };
 		568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */; };
 		568EC45721D6C0FD004C8E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568EC45621D6C0FC004C8E33 /* Assets.xcassets */; };
@@ -102,6 +104,8 @@
 		5678526221D0970900BD6192 /* WarningSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSettingViewController.swift; sourceTree = "<group>"; };
 		5678526621D0973700BD6192 /* LicenseSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseSettingViewController.swift; sourceTree = "<group>"; };
 		567A9D6821E13CBA00894D91 /* TaskSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSettingViewController.swift; sourceTree = "<group>"; };
+		567A9D6A21E1408100894D91 /* AddTaskDueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDueTableViewCell.swift; sourceTree = "<group>"; };
+		567A9D6C21E1559B00894D91 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotifTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45621D6C0FC004C8E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				561C542B21C8A4BB00A880BE /* StringExtension.swift */,
 				560A5CDB21CD6C820092B0C5 /* UIViewControllerExtension.swift */,
 				5665354F21D5C2B800D9FF92 /* ColorExtension.swift */,
+				567A9D6C21E1559B00894D91 /* IntExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */,
 				568EC45821D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift */,
 				56C0CB3421DE6F8A0041864C /* AddLabelColorIDTableViewCell.swift */,
+				567A9D6A21E1408100894D91 /* AddTaskDueTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -477,7 +483,9 @@
 				5665355421D5C6DC00D9FF92 /* AddLabelTableViewCell.swift in Sources */,
 				561C543D21CAFA4200A880BE /* ListRadioButton.swift in Sources */,
 				5678526721D0973700BD6192 /* LicenseSettingViewController.swift in Sources */,
+				567A9D6D21E1559B00894D91 /* IntExtension.swift in Sources */,
 				5608DAC221D164CA00219D32 /* WarningSettingTableViewCell.swift in Sources */,
+				567A9D6B21E1408100894D91 /* AddTaskDueTableViewCell.swift in Sources */,
 				5665355621D6B16600D9FF92 /* AddTaskViewController.swift in Sources */,
 				56435C7721C17D5700D31172 /* AppDelegate.swift in Sources */,
 				568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */,

@@ -59,7 +59,7 @@ class TaskDB : TaskDBProtocol {
     private let taskIsDone = Expression<Bool>("isDone")
     private let taskIsDeleted = Expression<Bool>("isDeleted")
     private let taskIsRepeat = Expression<Bool>("isRepeat")
-    private let taskDateToRepeat = Expression<Int>("dateToRepeat")
+    private let taskDateToRepeat = Expression<String>("dateToRepeat")
     
     private let listTable = Table("List")
     private let listID = Expression<Int64>("ID")

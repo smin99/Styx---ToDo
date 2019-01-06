@@ -21,7 +21,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     var taskTitle: String! = ""
     var taskDetail: String! = ""
     var dateDue: Date! = Date()
-    var repeatInt: Int! = 0
+    var repeatString: String! = ""
     
     var dueDatePickerIndexPath: IndexPath? = IndexPath(row: 1, section: 1)
     var datePickerIndexPath: IndexPath? = IndexPath(row: 1, section: 2)
@@ -31,9 +31,15 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     var txtFieldTitle: SkyFloatingLabelTextField!
     var txtFieldDetails: SkyFloatingLabelTextField!
     
+    var dateButtonsSelected: [Bool]! = []
+    
     let placeholders: Array<String> = ["Please type the title".localized, "Please type the details".localized]
     let titles: Array<String> = ["Title".localized, "Details".localized]
     let emptyTitleAlert: String = "Title should not be empty.".localized
+    
+    let dateButtonColor: UIColor = UIColorForLabel.UIColorFromRGB(colorid: 0)
+    let highlightedColor: UIColor = UIColorForLabel.UIColorFromRGB(colorid: 9)
+    let clearColor: UIColor = UIColor.clear
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +80,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if indexPath.section == 1 {
             
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-                cell.repeatLabel.text = "Due Date is".localized
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDueTableViewCell") as! AddTaskDueTableViewCell
+                cell.dueLabel.text = "Due Date is".localized
                 cell.selectionStyle = .none
                 return cell
             } else if indexPath.row == 1 && isDueShow {
@@ -84,8 +90,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.notifDatePicker.locale = Locale.autoupdatingCurrent
                 return cell
             } else {    // unnecessary code
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-                cell.repeatLabel.text = "Due Date is".localized
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskDueTableViewCell") as! AddTaskDueTableViewCell
+                cell.dueLabel.text = "Due Date is".localized
                 cell.selectionStyle = .none
                 return cell
             }
@@ -110,8 +116,52 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Fifth section: Set the Repetition of the Task
         } else {
             
+            // cell with series of buttons: 0 for Sunday, 1 for Monday, 2 for Tuesday, 3 for Wednesday, 4 for Thursday, 5 for Friday,
+            // 6 for Saturday, 7 for all dates, 8 for Monthly, 9 for Yearly
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddTaskRepeatTableViewCell") as! AddTaskRepeatTableViewCell
-            cell.repeatLabel.text = "Repeat the Task".localized
+            
+            let dates: [String] = ["Sun".localized, "M".localized, "T".localized, "W".localized, "Thu".localized, "F".localized, "Sat".localized]
+            
+            // date buttons
+            for tag in 0 ..< cell.dateButtons.count {
+                cell.dateButtons[tag].setTitle(dates[tag], for: .normal)
+                cell.dateButtons[tag].setTitleColor(dateButtonColor, for: .normal)
+                cell.dateButtons[tag].showsTouchWhenHighlighted = true
+//                cell.dateButtons[tag].setTitleColor(highlightedColor, for: .normal)
+                cell.dateButtons[tag].layer.cornerRadius = 15
+                cell.dateButtons[tag].layer.borderColor = dateButtonColor.cgColor
+                cell.dateButtons[tag].layer.borderWidth = 1
+                cell.dateButtons[tag].addTarget(self, action: #selector(dateButtonPressed), for: .touchUpInside)
+                dateButtonsSelected.append(false)
+            }
+            
+            cell.allWeekButton.setImage(UIImage(named: "CheckIcon"), for: .normal)
+            cell.allWeekButton.tintColor = dateButtonColor
+            cell.allWeekButton.addTarget(self, action: #selector(dateButtonPressed), for: .touchUpInside)
+            cell.allWeekButton.setTitle("", for: .normal)
+            dateButtonsSelected.append(false)
+            
+            // Monthly & Yearly button
+            cell.monthlyButton.setTitle("Monthly".localized, for: .normal)
+            cell.monthlyButton.setTitleColor(dateButtonColor, for: .normal)
+            cell.monthlyButton.setTitleColor(highlightedColor, for: .highlighted)
+            cell.monthlyButton.showsTouchWhenHighlighted = true
+            cell.monthlyButton.layer.borderWidth = 1
+            cell.monthlyButton.layer.borderColor = dateButtonColor.cgColor
+            cell.monthlyButton.layer.cornerRadius = 15
+            cell.monthlyButton.addTarget(self, action: #selector(dateButtonPressed), for: .touchUpInside)
+            dateButtonsSelected.append(false)
+            
+            cell.yearlyButton.setTitle("Yearly".localized, for: .normal)
+            cell.yearlyButton.setTitleColor(dateButtonColor, for: .normal)
+            cell.yearlyButton.setTitleColor(highlightedColor, for: .highlighted)
+            cell.yearlyButton.showsTouchWhenHighlighted = true
+            cell.yearlyButton.layer.borderWidth = 1
+            cell.yearlyButton.layer.borderColor = dateButtonColor.cgColor
+            cell.yearlyButton.layer.cornerRadius = 15
+            cell.yearlyButton.addTarget(self, action: #selector(dateButtonPressed), for: .touchUpInside)
+            dateButtonsSelected.append(false)
+            
             cell.selectionStyle = .none
             return cell
             
@@ -124,6 +174,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if indexPath.section == 1 {
             return 60
         } else if indexPath.section == 2 && isNotifShow {
+            return 120
+        } else if indexPath.section == 3 {
             return 120
         } else {
             return 50
@@ -170,48 +222,6 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
             cell.notifDatePicker.addTarget(self, action: #selector(dueDatePickerChanged), for: UIControl.Event.valueChanged)
         }
-        
-        // Repetition Setting: Show up the SCL Alert View with buttons
-        if indexPath.section == 3 && indexPath.row == 0 {
-            let cell = tableView.cellForRow(at: indexPath) as! AddTaskRepeatTableViewCell
-            
-            
-//            let repeatDetails: SCLAlertView = SCLAlertView()
-//
-//            repeatDetails.addButton("Daily".localized) {
-//                self.repeatInt = 0
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Daily".localized
-//            }
-//
-//            repeatDetails.addButton("Weekly".localized) {
-//                self.repeatInt = 1
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Weekly".localized
-//            }
-//
-//            repeatDetails.addButton("Monthly".localized) {
-//                self.repeatInt = 2
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Monthly".localized
-//            }
-//
-//            repeatDetails.addButton("Yearly".localized) {
-//                self.repeatInt = 3
-//                cell.repeatLabel.text = "Repeat the Task".localized + ": " + "Yearly".localized
-//            }
-//
-//            repeatDetails.addButton("Custom".localized) {
-//                self.repeatInt = 4
-//
-//            }
-//
-//            repeatDetails.showTitle(
-//                "Repeat Task",
-//                subTitle: "Select when to repeat your task",
-//                style: .info
-//            )
-            
-        } else {
-            
-        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -223,8 +233,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! AddTaskDateTableViewCell
                 dateDue = cell.notifDatePicker.date
                 tableView.deleteRows(at: [dueDatePickerIndexPath ?? IndexPath(row: 1, section: 1)], with: .none)
-                let dateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
-                dateCell.repeatLabel.text = "Due Date is ".localized + "\(ControlUtil.dateToString(date: dateDue))"
+                let dateCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskDueTableViewCell
+                dateCell.dueLabel.text = "Due Date is ".localized + "\(ControlUtil.dateToString(date: dateDue))"
             }
         }
         // Notification saved
@@ -232,6 +242,55 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! AddTaskDateTableViewCell
 //            notif = cell.notifDatePicker.date
         }
+    }
+    
+    @objc func dateButtonPressed (_ dateButton: UIButton) {
+        print(dateButton.tag)
+        // certain date
+        if dateButton.tag < 7 {
+            if dateButtonsSelected[dateButton.tag] {
+                dateButtonsSelected[dateButton.tag] = false
+                dateButton.backgroundColor = clearColor
+//                dateButton.layer.borderColor = dateButtonColor.cgColor
+            } else {
+                dateButtonsSelected[dateButton.tag] = true
+                dateButton.backgroundColor = highlightedColor
+//                dateButton.layer.borderColor = highlightedColor.cgColor
+//                self.repeatString = dateButton.tag.toDateString(dateString: self.repeatString)
+            }
+        }
+        // all dates
+        else if dateButton.tag == 7 {
+            datesButton(changeValue: true)
+        }
+        // monthly & yearly
+        else if dateButton.tag >= 8 {
+            if dateButtonsSelected[dateButton.tag] {
+                dateButtonsSelected[dateButton.tag] = false
+                dateButton.backgroundColor = clearColor
+            } else {
+                dateButtonsSelected[dateButton.tag] = true
+                datesButton(changeValue: false)
+                dateButton.backgroundColor = highlightedColor
+            }
+        }
+    }
+    
+    func datesButton(changeValue: Bool) {
+        let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! AddTaskRepeatTableViewCell
+        let color = changeValue ? highlightedColor : clearColor
+        for tag in 0...6 {
+            cell.dateButtons[tag].backgroundColor = color
+            self.dateButtonsSelected[tag] = changeValue
+        }
+//        if cell.dateButtons[8].backgroundColor != clearColor {
+//            cell.dateButtons[8].backgroundColor = clearColor
+//            self.dateButtonsSelected[8] = false
+//        }
+//        if cell.dateButtons[9].backgroundColor != clearColor {
+//            cell.dateButtons[9].backgroundColor = clearColor
+//            self.dateButtonsSelected[9] = false
+//        }
     }
     
     @objc func switchIsChanged (_ sender: Any) {
@@ -254,7 +313,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.textField.errorMessage = emptyTitleAlert
             return
         }
-        _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatInt))
+        _ = MainViewController.Database.UpsertTask(task: Task(ID: 0, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatString))
         MainViewController.mainView.tableView.reloadData()
         self.navigationController?.popViewController(animated: true)
     }
@@ -297,10 +356,10 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func dueDatePickerChanged(picker: UIDatePicker) {
         dateDue = picker.date
         
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskRepeatTableViewCell
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddTaskDueTableViewCell
         
         let dateString = ControlUtil.dateToString(date: dateDue)
-        cell.repeatLabel.text = "Due Date is ".localized + "\(dateString)"
+        cell.dueLabel.text = "Due Date is ".localized + "\(dateString)"
     }
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
