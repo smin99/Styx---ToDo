@@ -30,7 +30,7 @@ class Task {
     var imageList: Array<Image>!
     var listCompleted: Int!
     
-    init(ID: Int64 = 0, LabelID: Int64 = 0, Title: String = "", Due: Date, Detail: String = "", NotifDate: Date, isNotif: Bool = false, isDone: Bool = false, isDeleted: Bool = false, listCompleted: Int = 0, isRepeat: Bool = false, dateToRepeat:String = "") {
+    init(ID: Int64 = 0, LabelID: Int64 = 0, Title: String = "", Due: Date = Date(timeIntervalSince1970: 0), Detail: String = "", NotifDate: Date, isNotif: Bool = false, isDone: Bool = false, isDeleted: Bool = false, listCompleted: Int = 0, isRepeat: Bool = false, dateToRepeat:String = "") {
         self.ID = ID
         self.LabelID = LabelID
         self.Title = Title

@@ -272,7 +272,24 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @objc func settingTask(_ sender: Any) {
+        let viewcontroller = storyboard?.instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+        let tasks = MainViewController.Database.GetTaskList()
+        let task: Task = tasks[tasks.firstIndex(where: {$0.ID == self.taskID})!]
+        viewcontroller.taskID = task.ID
+        viewcontroller.labelID = task.LabelID
+        viewcontroller.taskTitle = self.taskTitle
+        viewcontroller.taskDetail = task.Detail
         
+        viewcontroller.isDueShow = task.Due == Date(timeIntervalSince1970: 0) ? false : true
+        viewcontroller.dateDue = task.Due
+        viewcontroller.isNotifShow = task.isNotif
+        viewcontroller.notif = task.NotifDate
+        viewcontroller.isRepeat = task.isRepeat
+        viewcontroller.repeatString = task.dateToRepeat
+        
+        viewcontroller.isEditingPage = true
+        viewcontroller.navigationItem.title = "Edit Task"
+        self.navigationController?.pushViewController(viewcontroller, animated: true)
     }
     
 }

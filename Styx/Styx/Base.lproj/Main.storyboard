@@ -989,7 +989,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-4c-sMV">
-                                            <rect key="frame" x="16" y="8" width="263" height="21"/>
+                                            <rect key="frame" x="16" y="8" width="235" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="uIB-jb-lnV"/>
                                             </constraints>
@@ -1039,7 +1039,7 @@
                                         <constraint firstItem="sl4-2S-umf" firstAttribute="leading" secondItem="zuz-KZ-aBg" secondAttribute="trailing" constant="8" id="Fgv-GO-Fn4"/>
                                         <constraint firstItem="sl4-2S-umf" firstAttribute="top" secondItem="mfb-cx-CdQ" secondAttribute="top" constant="8" id="S7E-Ra-hmt"/>
                                         <constraint firstItem="tCP-Xl-A3L" firstAttribute="leading" secondItem="tK2-Yz-iOu" secondAttribute="trailing" constant="8" id="bOA-Yk-DsR"/>
-                                        <constraint firstItem="sl4-2S-umf" firstAttribute="leading" secondItem="ssT-4c-sMV" secondAttribute="trailing" constant="8" id="fZM-sF-9Wr"/>
+                                        <constraint firstItem="zuz-KZ-aBg" firstAttribute="leading" secondItem="ssT-4c-sMV" secondAttribute="trailing" constant="8" id="fZM-sF-9Wr"/>
                                         <constraint firstAttribute="trailing" secondItem="tCP-Xl-A3L" secondAttribute="trailing" constant="8" id="lZO-lA-dGH"/>
                                         <constraint firstItem="ssT-4c-sMV" firstAttribute="leading" secondItem="mfb-cx-CdQ" secondAttribute="leading" constant="16" id="oZX-Dn-jEe"/>
                                         <constraint firstItem="ssT-4c-sMV" firstAttribute="top" secondItem="mfb-cx-CdQ" secondAttribute="top" constant="8" id="vGV-zr-YXY"/>

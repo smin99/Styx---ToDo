@@ -69,4 +69,15 @@ class ControlUtil {
         dateFormatter.locale = Locale.current
         return "\(dateFormatter.string(from: date))"
     }
+    
+    static func arrayToString(dates: [Int]) -> String {
+        var rtv: String = ""
+        for val in dates {
+            if rtv != "" {
+                rtv = rtv + ","
+            }
+            rtv = rtv + String(val)
+        }
+        return rtv
+    }
 }
