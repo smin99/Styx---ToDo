@@ -489,8 +489,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJC-xo-dyg">
-                                                    <rect key="frame" x="129" y="7" width="117" height="30"/>
-                                                    <state key="normal" title="Show Completed"/>
+                                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
                                                     <connections>
                                                         <action selector="showCompleteButtonAction:" destination="THp-Sp-j8n" eventType="touchUpInside" id="Uqq-mc-Ano"/>
                                                     </connections>

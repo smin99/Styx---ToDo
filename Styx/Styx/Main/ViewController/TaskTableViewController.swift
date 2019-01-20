@@ -114,7 +114,7 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
         else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShowCompletedListTableViewCell", for: indexPath) as! ShowCompletedListTableViewCell
-            cell.showCompleteButton.titleLabel?.text = isCompleteShow()
+            cell.showCompleteButton.setTitle(isCompleteShow(), for: .normal)
 
             return cell
         }
@@ -209,6 +209,14 @@ class TaskTableViewController: UIViewController, UITableViewDataSource, UITableV
             return true
         } else {
             return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if sourceIndexPath.section != proposedDestinationIndexPath.section {
+            return sourceIndexPath
+        } else {
+            return proposedDestinationIndexPath
         }
     }
     
