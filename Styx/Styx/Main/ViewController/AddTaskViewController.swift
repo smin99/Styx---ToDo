@@ -196,16 +196,24 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let repeatDates: [String]! = self.repeatString.components(separatedBy: ",")
                 var repeatTags: [Int]! = []
                 for date in repeatDates {
-                    repeatTags.append(Int(date)!)
+                    if date != "" {
+                        repeatTags.append(Int(date)!)
+                    }
                 }
                 
                 for tag in 0...9 {
                     
-                    if tag == repeatTags[0] {
+                    if repeatTags.count != 0 && tag == repeatTags[0] {
                         
                         repeatTags.remove(at: 0)
                         dateButtonsSelected[tag] = true
-                        
+                        if tag < 6 {
+                            cell.dateButtons[tag].backgroundColor = highlightedColor
+                        } else if tag == 8 {
+                            cell.monthlyButton.backgroundColor = highlightedColor
+                        } else if tag == 9 {
+                            cell.yearlyButton.backgroundColor = highlightedColor
+                        }
                     }
                 }
                 
