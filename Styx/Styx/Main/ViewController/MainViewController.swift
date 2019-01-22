@@ -66,8 +66,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let sideMenu = storyboard?.instantiateViewController(withIdentifier: "leftSideMenu") {
             SideMenuManager.default.menuLeftNavigationController = sideMenu as? UISideMenuNavigationController
             
-            SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-            SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+            SideMenuManager.default.menuAddPanGestureToPresent(toView: self.tableView)
+            SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.tableView)
         }
         
         // Add two bar buttons at right side of navigation bar
@@ -106,6 +106,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if isInitData {
+            
+            initNavigation()
+            return
+        }
+        
         EZLoadingActivity.show("Loading...".localized, disableUI: true)
         DispatchQueue.global().async {
             
@@ -220,6 +226,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+        cell.selectionStyle = .none
+        
         return cell
         
     }
@@ -294,5 +302,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.initControl()
             SwiftMessages.show(config: config, view: view)
         }
+    }
+    
+    public func initNavigation () {
+        if self.labelList == nil {
+            self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: 0)
+        } else {
+            self.navigationController?.navigationBar.barTintColor = UIColorForLabel.UIColorFromRGB(colorid: self.labelList[self.labelIndex].ColorID)
+        }
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationItem.title = self.labelList[self.labelIndex].Title
     }
 }

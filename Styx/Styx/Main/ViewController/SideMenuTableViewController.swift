@@ -105,6 +105,7 @@ class SideMenuTableViewController: UITableViewController {
                 }
                 tableView.reloadData()
                 MainViewController.mainView.tableView.reloadData()
+                MainViewController.mainView.initNavigation()
                 SwiftMessages.hide()
             }
             

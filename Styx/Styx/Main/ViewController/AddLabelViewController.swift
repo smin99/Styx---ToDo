@@ -12,7 +12,7 @@ import SkyFloatingLabelTextField
 class AddLabelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var labelTitle: String!
+    var labelTitle: String! = ""
     var labelColorID: Int!
     
     var txtFieldTitle: SkyFloatingLabelTextField!
@@ -140,7 +140,7 @@ class AddLabelViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     @objc func doneAdding (_ sender: Any) {
-        if labelTitle != nil {
+        if labelTitle != "" {
             if labelColorID == nil {
                 labelColorID = 0
             }
