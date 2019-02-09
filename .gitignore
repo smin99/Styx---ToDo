@@ -1,7 +1,7 @@
 # API Keys #
 ##############
 GlobalConsts.swift
-GoogleService-info.plist
+GoogleService-Info.plist
 FIROptions.h
 
 # Compiled source #
