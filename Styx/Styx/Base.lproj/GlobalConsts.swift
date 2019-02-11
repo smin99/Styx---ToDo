@@ -12,7 +12,7 @@ import Foundation
 class ConstsCommon {
     
     // https://linkmaker.itunes.apple.com/ko-kr/details/930852632?country=us&mediaType=ios_apps&term=Kyungha+Hwang&type=ipadsoftware
-    static let iTunesCompanyUrl = "itms-apps://geo.itunes.apple.com/us/developer//id930852632"  // 12057773785
+    static let iTunesCompanyUrl = "itms-apps://geo.itunes.apple.com/us/developer//idN5CD2AU49J"  // 12057773785
     
     static let iTunesAppUrl = "itms-apps://itunes.apple.com/app/id1447817705"
     

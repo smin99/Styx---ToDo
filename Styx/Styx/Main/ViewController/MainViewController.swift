@@ -217,7 +217,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.taskProgressBar.progress = progressFloat
             cell.taskProgressPercentageLabel.text = String(format: "%.2f", progressFloat * 100) + " %"
             
-            if !labelList[labelIndex].taskList[indexPath.row].isDone {
+            // times in seconds
+            let dateGap = labelList[labelIndex].taskList[indexPath.row].Due.timeIntervalSinceNow
+            let warningRestraint = ControlUtil.warningDate(num: AppDefaults.getDefaultsInt(key: "WarningTime"))
+            
+            if !labelList[labelIndex].taskList[indexPath.row].isDone && Int(dateGap) < warningRestraint {
                 warningSign = UIImage(named: "WarningIcon")
                 cell.warningMark.titleLabel!.text = ""
                 cell.warningMark.setImage(warningSign, for: .normal)
