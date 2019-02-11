@@ -86,7 +86,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
         }
-        // Recommend to Friends:
+        // Recommend to Friends
         else if indexPath.section == 1 && indexPath.row == 2 {
             
             let url = URL(string: ConstsCommon.iTunesAppUrl)!

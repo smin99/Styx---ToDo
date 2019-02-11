@@ -80,4 +80,31 @@ class ControlUtil {
         }
         return rtv
     }
+    
+    
+    // receives the warning time index and returns the time in seconds
+    static func warningDate(num: Int) -> Int {
+        // ["30 minutes before", "1 hour before", "12 hours before", "1 day before", "3 days before", "a week before"]
+        var rtv = 0
+        
+        switch num {
+        case 0: // 30 minutes
+            rtv = 60 * 30
+        case 1: // 1 hour
+            rtv = 60 * 60
+        case 2: // 3 hours
+            rtv = 60 * 60 * 3
+        case 3: // 12 hours
+            rtv = 60 * 60 * 12
+        case 4: // 1 day
+            rtv = 60 * 60 * 24
+        case 5: // 3 days
+            rtv = 60 * 60 * 24 * 3
+        case 6: // a week
+            rtv = 60 * 60 * 24 * 7
+        default:
+            rtv = 0
+        }
+        return rtv
+    }
 }

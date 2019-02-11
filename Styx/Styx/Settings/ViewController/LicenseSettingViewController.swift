@@ -10,21 +10,15 @@ import UIKit
 
 class LicenseSettingViewController: UIViewController {
 
+    @IBOutlet weak var oslTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationItem.title = "Open Source License".localized
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        oslTextView.setContentOffset(CGPoint.zero, animated: false)
     }
-    */
-
 }
