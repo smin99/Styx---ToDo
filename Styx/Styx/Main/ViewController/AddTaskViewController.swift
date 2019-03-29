@@ -68,7 +68,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
                 txtFieldTitle = cell.textField
                 cell.textField.tag = 0
                 txtFieldTitle.delegate = self
-                cell.textField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingDidEnd)
+                // responsive saving
+                cell.textField.addTarget(self, action: #selector(titleChanged(_:)), for: UIControl.Event.editingChanged)
                 
                 // for editing existing task
                 if isEditingPage {
@@ -305,6 +306,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // Called when date button is pressed
     @objc func dateButtonPressed (_ dateButton: UIButton) {
         print(dateButton.tag)
         // certain date
@@ -337,6 +339,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // When the button for all days is clicked --> highlight all dates and clear the highlight for monthly/yearly
     func datesButton(changeValue: Bool) {
         let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! AddTaskRepeatTableViewCell
         let color = changeValue ? highlightedColor : clearColor
@@ -354,6 +357,8 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
+    // Switch for the Reminder (Notification)
     @objc func switchIsChanged (_ sender: Any) {
         if !isNotifShow {
             isNotifShow = true
@@ -366,6 +371,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // Tapping the "Done" button for saving
     @objc func doneAdding (_ sender: Any) {
         if self.taskTitle.isEmpty {
             let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddTaskTableViewCell
@@ -390,8 +396,9 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.popViewController(animated: true)
     }
     
+    // Each time when the title is changed; If the title is empty, change the color and display the error message
     @objc func titleChanged(_ textfield: SkyFloatingLabelTextField) {
-        taskTitle = textfield.text
+        self.taskTitle = textfield.text
         if taskTitle.isEmpty {
             textfield.lineColor = UIColor.red
             textfield.errorColor = UIColor.red
@@ -402,10 +409,12 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // Save when details ended editing
     @objc func detailsChanged(_ textfield: UITextField) {
         taskDetail = textfield.text
     }
     
+    // When the date picker for notification changed
     @objc func datePickerChanged(picker: UIDatePicker) {
         notif = picker.date
         
@@ -425,6 +434,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    // When the date picker for due date has changed
     @objc func dueDatePickerChanged(picker: UIDatePicker) {
         dateDue = picker.date
         
@@ -434,6 +444,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.dueLabel.text = "Due Date is ".localized + "\(dateString)"
     }
     
+    // Changing index path to insert date picker for date picker
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
         if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
             return indexPath
@@ -442,6 +453,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // Allow closing keyboards when clicked enter
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         if textField.tag == 0 {
             textField.resignFirstResponder()

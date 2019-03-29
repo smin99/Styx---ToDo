@@ -33,8 +33,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var editButton: UIBarButtonItem!
     var settingButton: UIBarButtonItem!
     
-    var warningSign: UIImage!
-    
     // add button
     var actionButton: JJFloatingActionButton!
     
@@ -204,34 +202,34 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell") as! TaskTableViewCell
 
         if !labelList[labelIndex].taskList.isEmpty {
-            for list in labelList[labelIndex].taskList[indexPath.row].listList {
+            let task = labelList[labelIndex].taskList[indexPath.row]
+            
+            for list in task.listList {
                 if list.isDone { numListCompleted = numListCompleted + 1 }
             }
             
-            cell.titleLabel.text = labelList[labelIndex].taskList[indexPath.row].Title
-            cell.dueLabel.text = ControlUtil.dateToString(date: labelList[labelIndex].taskList[indexPath.row].Due)
+            cell.titleLabel.text = task.Title
+            cell.dueLabel.text = ControlUtil.dateToString(date: task.Due)
         
-            let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(Double(numListCompleted) / Double(labelList[labelIndex].taskList[indexPath.row].listList.count))
+            let progressFloat: Float = numListCompleted == 0 ? 0.0 : Float(Double(numListCompleted) / Double(task.listList.count))
     //        print("\(numListCompleted)")
     //        print("\(Double(numListCompleted) / Double(labelList[labelIndex].taskList[indexPath.row].listList.count))")
             cell.taskProgressBar.progress = progressFloat
             cell.taskProgressPercentageLabel.text = String(format: "%.2f", progressFloat * 100) + " %"
             
             // times in seconds
-            let dateGap = labelList[labelIndex].taskList[indexPath.row].Due.timeIntervalSinceNow
+            let dateGap = task.Due.timeIntervalSinceNow
             let warningRestraint = ControlUtil.warningDate(num: AppDefaults.getDefaultsInt(key: "WarningTime"))
             
-            if !labelList[labelIndex].taskList[indexPath.row].isDone && Int(dateGap) < warningRestraint {
-                warningSign = UIImage(named: "WarningIcon")
+            if !task.isDone && Int(dateGap) < warningRestraint && dateGap > 0 {
                 cell.warningMark.titleLabel!.text = ""
-                cell.warningMark.setImage(warningSign, for: .normal)
+                cell.warningMark.setImage(UIImage(named: "WarningIcon"), for: .normal)
                 cell.warningMark.tintColor = UIColorForLabel.UIColorFromRGB(rgbValue: UInt(0xF7CD4D))
     //            cell.warningMark.backgroundColor = UIColor.red
             }
         }
         
         cell.selectionStyle = .none
-        
         return cell
         
     }
