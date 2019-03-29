@@ -951,9 +951,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ftt-EP-L4Y">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ftt-EP-L4Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -7859,6 +7858,12 @@ Cg
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ftt-EP-L4Y" firstAttribute="leading" secondItem="Z55-Yu-2Yn" secondAttribute="leading" id="HQ2-ae-Wb7"/>
+                            <constraint firstItem="Ftt-EP-L4Y" firstAttribute="bottom" secondItem="Z55-Yu-2Yn" secondAttribute="bottom" id="Rne-o1-Thk"/>
+                            <constraint firstItem="Ftt-EP-L4Y" firstAttribute="trailing" secondItem="Z55-Yu-2Yn" secondAttribute="trailing" id="gSf-CZ-VAQ"/>
+                            <constraint firstItem="Ftt-EP-L4Y" firstAttribute="top" secondItem="Z55-Yu-2Yn" secondAttribute="top" id="nuy-ET-taW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Z55-Yu-2Yn"/>
                     </view>
                     <connections>

@@ -46,6 +46,7 @@
 		567A9D6921E13CBA00894D91 /* TaskSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567A9D6821E13CBA00894D91 /* TaskSettingViewController.swift */; };
 		567A9D6B21E1408100894D91 /* AddTaskDueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567A9D6A21E1408100894D91 /* AddTaskDueTableViewCell.swift */; };
 		567A9D6D21E1559B00894D91 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567A9D6C21E1559B00894D91 /* IntExtension.swift */; };
+		567FBD262211F8B000DF342B /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567FBD252211F8B000DF342B /* AppDefaults.swift */; };
 		568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */; };
 		568EC45521D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */; };
 		568EC45721D6C0FD004C8E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568EC45621D6C0FC004C8E33 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		568EC45B21DAA4A4004C8E33 /* ControlUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568EC45A21DAA4A4004C8E33 /* ControlUtil.swift */; };
 		568F803721C36B5F00D8F652 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568F803621C36B5F00D8F652 /* List.swift */; };
 		56C0CB3521DE6F8A0041864C /* AddLabelColorIDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0CB3421DE6F8A0041864C /* AddLabelColorIDTableViewCell.swift */; };
+		56CC3BD0220F2D1400713147 /* WarningDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CC3BCF220F2D1400713147 /* WarningDatePickerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,7 @@
 		567A9D6821E13CBA00894D91 /* TaskSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSettingViewController.swift; sourceTree = "<group>"; };
 		567A9D6A21E1408100894D91 /* AddTaskDueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDueTableViewCell.swift; sourceTree = "<group>"; };
 		567A9D6C21E1559B00894D91 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		567FBD252211F8B000DF342B /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		568EC45221D6BED4004C8E33 /* TaskNotifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNotifTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45421D6BEE3004C8E33 /* AddTaskDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		568EC45621D6C0FC004C8E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		568EC45A21DAA4A4004C8E33 /* ControlUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlUtil.swift; sourceTree = "<group>"; };
 		568F803621C36B5F00D8F652 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		56C0CB3421DE6F8A0041864C /* AddLabelColorIDTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLabelColorIDTableViewCell.swift; sourceTree = "<group>"; };
+		56CC3BCF220F2D1400713147 /* WarningDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		A07E8C5BEDFD7638C623837F /* Pods-Styx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.release.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.release.xcconfig"; sourceTree = "<group>"; };
 		BB9F35C68141377B8E513CDB /* Pods-Styx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Styx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Styx/Pods-Styx.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +210,7 @@
 				56435C8C21C17FEC00D31172 /* Data */,
 				568EC45C21DAA674004C8E33 /* Utilities */,
 				5608DABE21D154DC00219D32 /* GlobalConsts.swift */,
+				567FBD252211F8B000DF342B /* AppDefaults.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			children = (
 				5608DAC121D164CA00219D32 /* WarningSettingTableViewCell.swift */,
 				5608DAC321D164DA00219D32 /* NotificationSettingTableViewCell.swift */,
+				56CC3BCF220F2D1400713147 /* WarningDatePickerTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5678526321D0970900BD6192 /* WarningSettingViewController.swift in Sources */,
+				567FBD262211F8B000DF342B /* AppDefaults.swift in Sources */,
 				568EC45321D6BED4004C8E33 /* TaskNotifTableViewCell.swift in Sources */,
 				568EC45921D8379F004C8E33 /* AddTaskRepeatTableViewCell.swift in Sources */,
 				56C0CB3521DE6F8A0041864C /* AddLabelColorIDTableViewCell.swift in Sources */,
@@ -499,6 +506,7 @@
 				560A5CDE21CF0C890092B0C5 /* SettingViewController.swift in Sources */,
 				561C542121C4067E00A880BE /* Image.swift in Sources */,
 				568F803721C36B5F00D8F652 /* List.swift in Sources */,
+				56CC3BD0220F2D1400713147 /* WarningDatePickerTableViewCell.swift in Sources */,
 				560A5CDC21CD6C820092B0C5 /* UIViewControllerExtension.swift in Sources */,
 				561C543F21CB440E00A880BE /* SideMenuTableViewController.swift in Sources */,
 				5665355821D6B17700D9FF92 /* AddLabelViewController.swift in Sources */,

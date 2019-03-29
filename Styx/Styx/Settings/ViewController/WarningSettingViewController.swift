@@ -71,7 +71,8 @@ class WarningSettingViewController: UIViewController, UITableViewDelegate, UITab
             cell.timePicker.dataSource = self
             cell.timePicker.delegate = self
             if AppDefaults.isKeyPresentInUserDefaults(key: "WarningTime") {
-                cell.timePicker.selectRow(AppDefaults.getDefaultsInt(key: "WarningTime"), inComponent: 1, animated: true)
+                print(AppDefaults.getDefaultsInt(key: "WarningTime"))
+                cell.timePicker.selectRow(AppDefaults.getDefaultsInt(key: "WarningTime"), inComponent: 0, animated: true)
             }
             cell.selectionStyle = .none
             return cell
@@ -80,6 +81,7 @@ class WarningSettingViewController: UIViewController, UITableViewDelegate, UITab
     
     @objc func doneEditing(_ sender: Any) {
         AppDefaults.setDefaultsInt(key: "WarningTime", value: timeSelected)
+        MainViewController.mainView.tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
 }

@@ -14,6 +14,7 @@ class AppDefaults {
     static let DeviceID             = "DeviceID"            // String, UIDevice.current.identifierForVendor
     
     static let warningTime          = "WarningTime"         // Time to display the warning sign
+    static let lastLabel            = "LabelItem"           // Last label to display
     
     static func getDefaults(key: String) -> String {
         return UserDefaults.standard.string(forKey: key) ?? ""
