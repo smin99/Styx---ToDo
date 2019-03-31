@@ -64,6 +64,7 @@ class ControlUtil {
     
     static func dateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yy/MM/dd HH-mm a"
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale.current

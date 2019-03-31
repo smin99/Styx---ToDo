@@ -231,7 +231,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             return 160.0
         } else if indexPath.section == 1 {
             return 60
-        } else if indexPath.section == 2 && isNotifShow {
+        } else if indexPath.section == 2 && isNotifShow {   // when expanded
             return 120
         } else if indexPath.section == 3 {
             return 120
@@ -318,6 +318,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 dateButtonsSelected[dateButton.tag] = true
                 dateButton.backgroundColor = highlightedColor
+                weekDate(changeValue: false)
 //                dateButton.layer.borderColor = highlightedColor.cgColor
 //                self.repeatString = dateButton.tag.toDateString(dateString: self.repeatString)
             }
@@ -339,7 +340,20 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    // When the button for all days is clicked --> highlight all dates and clear the highlight for monthly/yearly
+    // Clear monthly/yearly buttons
+    func weekDate(changeValue: Bool) {
+        let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! AddTaskRepeatTableViewCell
+        if cell.monthlyButton.backgroundColor != clearColor {
+            cell.monthlyButton.backgroundColor = clearColor
+            self.dateButtonsSelected[8] = false
+        }
+        if cell.yearlyButton.backgroundColor != clearColor {
+            cell.yearlyButton.backgroundColor = clearColor
+            self.dateButtonsSelected[9] = false
+        }
+    }
+    
+    // When the button for all days OR monthly/yearly is clicked --> clear or highlight all dates buttons
     func datesButton(changeValue: Bool) {
         let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! AddTaskRepeatTableViewCell
         let color = changeValue ? highlightedColor : clearColor
@@ -392,6 +406,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate, UITableViewD
         repeatString = ControlUtil.arrayToString(dates: repeatDates)
         
         _ = MainViewController.Database.UpsertTask(task: Task(ID: taskID, LabelID: labelID, Title: taskTitle, Due: dateDue, Detail: taskDetail, NotifDate: notif, isNotif: isNotifShow, isRepeat: isRepeat, dateToRepeat: repeatString))
+        MainViewController.mainView.viewDidAppear(true)
         MainViewController.mainView.tableView.reloadData()
         self.navigationController?.popViewController(animated: true)
     }
