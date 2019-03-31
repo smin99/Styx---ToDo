@@ -15,7 +15,7 @@ class WarningSettingViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     
     var doneButton: UIBarButtonItem!
-    var timeSelected = 0
+    var timeSelected = AppDefaults.getDefaultsInt(key: "WarningTime")
     
     override func viewDidLoad() {
         super.viewDidLoad()

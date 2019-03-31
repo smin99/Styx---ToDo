@@ -64,7 +64,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let sideMenu = storyboard?.instantiateViewController(withIdentifier: "leftSideMenu") {
             SideMenuManager.default.menuLeftNavigationController = sideMenu as? UISideMenuNavigationController
             
-            SideMenuManager.default.menuAddPanGestureToPresent(toView: self.tableView)
+//            SideMenuManager.default.menuAddPanGestureToPresent(toView: self.tableView)
             SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.tableView)
         }
         
@@ -96,19 +96,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         print("View will appear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         print("View will disappear")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if isInitData {
-            
-            initNavigation()
-            return
-        }
+        super.viewDidAppear(animated)
         
         EZLoadingActivity.show("Loading...".localized, disableUI: true)
         DispatchQueue.global().async {
@@ -123,7 +121,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 /* first time to use the app: initialize empty label
                  _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "New Label", ColorID: 0))
-                 
                 */
                 
                 _ = MainViewController.Database.UpsertLabel(label: Label(ID: 0, Title: "Homework", ColorID: 0))
