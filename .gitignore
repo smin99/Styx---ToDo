@@ -25,6 +25,7 @@ FIROptions.h
 *.rar
 *.tar
 *.zip
+Styx/Pods/*
 
 # Logs and databases #
 ######################

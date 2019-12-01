@@ -34,7 +34,5 @@
 	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1057605928499:ios:42f879968145d816</string>
-	<key>DATABASE_URL</key>
-	<string>https://styx-640b4.firebaseio.com</string>
 </dict>
 </plist>

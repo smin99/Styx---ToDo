@@ -6,8 +6,8 @@ target 'Styx' do
   use_frameworks!
 
   # Pods for Styx
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
+#  pod 'Firebase/Core'
+#  pod 'Firebase/Messaging'
 
   pod 'SwiftMessages'
   pod 'SQLite.swift', '~> 0.11.5'

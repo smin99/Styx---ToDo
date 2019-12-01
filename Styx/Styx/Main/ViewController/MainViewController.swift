@@ -36,6 +36,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // add button
     var actionButton: JJFloatingActionButton!
     
+    // warning Time Setting
+    var warningRestraint: Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -88,6 +91,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
+        
+        warningRestraint = ControlUtil.warningDate(num: AppDefaults.getDefaultsInt(key: "WarningTime"))
+        
         // Designs
         tableView.separatorStyle = .none
         
@@ -216,9 +222,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             // times in seconds
             let dateGap = task.Due.timeIntervalSinceNow
-            let warningRestraint = ControlUtil.warningDate(num: AppDefaults.getDefaultsInt(key: "WarningTime"))
             
-            if !task.isDone && Int(dateGap) < warningRestraint && dateGap > 0 {
+            if !task.isDone && (Int(dateGap) < warningRestraint) && (dateGap > 0) {
                 cell.warningMark.titleLabel!.text = ""
                 cell.warningMark.setImage(UIImage(named: "WarningIcon"), for: .normal)
                 cell.warningMark.tintColor = UIColorForLabel.UIColorFromRGB(rgbValue: UInt(0xF7CD4D))

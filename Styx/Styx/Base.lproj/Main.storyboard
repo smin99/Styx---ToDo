@@ -7907,7 +7907,7 @@ Cg
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-4c-sMV">
-                                            <rect key="frame" x="16" y="8" width="235" height="21"/>
+                                            <rect key="frame" x="16" y="8" width="215" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="uIB-jb-lnV"/>
                                             </constraints>
@@ -7916,32 +7916,32 @@ Cg
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM/DD/YY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl4-2S-umf">
-                                            <rect key="frame" x="287" y="8" width="80" height="18"/>
+                                            <rect key="frame" x="267" y="8" width="100" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="oGg-gz-CkI"/>
-                                                <constraint firstAttribute="width" constant="80" id="sdQ-FP-Vou"/>
+                                                <constraint firstAttribute="width" constant="100" id="sdQ-FP-Vou"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCP-Xl-A3L">
-                                            <rect key="frame" x="287" y="34" width="80" height="14.5"/>
+                                            <rect key="frame" x="267" y="34" width="100" height="14.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="tBI-n5-bx0"/>
+                                                <constraint firstAttribute="width" constant="100" id="tBI-n5-bx0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tK2-Yz-iOu">
-                                            <rect key="frame" x="16" y="40" width="263" height="5"/>
+                                            <rect key="frame" x="16" y="40" width="243" height="5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="5" id="G8Q-cN-cVQ"/>
                                             </constraints>
                                         </progressView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuz-KZ-aBg">
-                                            <rect key="frame" x="259" y="8" width="20" height="20"/>
+                                            <rect key="frame" x="239" y="8" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="4w8-sK-lfx"/>
                                                 <constraint firstAttribute="width" constant="20" id="cEt-MT-tQ0"/>
